@@ -53,7 +53,7 @@
         </div>
         <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
             {#await repos.json()}
-                {#each Array(6).fill(null) as _}
+                {#each Array(6) as _}
                     <Repository />
                 {/each}
             {:then repos}
