@@ -41,7 +41,10 @@
                         href="https://github.com/lemonyte/http-waifus">fun</a
                     >.
                 </li>
-                <li>🤝 I'm quite fond of open source and I'm always looking for ways to contribute and give back.</li>
+                <li>
+                    🤝 I'm quite <a href="https://liberamanifesto.com">fond of open source</a> and I'm always looking for
+                    ways to contribute and give back.
+                </li>
                 <li>
                     💭 I'm dreaming of a future where software and hardware exist in the hands of the people, for the
                     people, and by the people, without technological limitations.
