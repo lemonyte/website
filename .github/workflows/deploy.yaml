@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -29,13 +29,12 @@ jobs:
       - name: Build static site
         env:
           BASE_PATH: ${{ github.repository.name == format('{0}.github.io', github.repository_owner) && '' || format('/{0}', github.event.repository.name) }}
-        run: |
-          npm run build
+        run: npm run build
 
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "build/"
+          path: build/
 
   deploy:
     name: Deploy
