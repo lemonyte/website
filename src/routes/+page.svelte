@@ -9,6 +9,10 @@
     const { reposResponse } = data;
 </script>
 
+<svelte:head>
+    <title>Lemonyte</title> 
+</svelte:head>
+
 {#each Array(16) as _}
     <Blob spread={250} parallax_sensitivity={0.05} />
 {/each}
