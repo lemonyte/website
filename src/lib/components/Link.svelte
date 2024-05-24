@@ -6,7 +6,7 @@
     export let color = false;
 </script>
 
-<a href={url} target="_blank" rel="nofollow" class="p-1 w-9 h-9 rounded-md select-none">
+<a href={url} target="_blank" rel="nofollow" class="w-9 h-9 rounded-md select-none">
     <img
         src={icon_url}
         {alt}
