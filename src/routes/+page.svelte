@@ -13,8 +13,8 @@
     <title>Lemonyte</title> 
 </svelte:head>
 
-{#each Array(16) as _}
-    <Blob spread={250} parallax_sensitivity={0.05} />
+{#each Array(24) as _}
+    <Blob spread={350} parallax_sensitivity={0.05} />
 {/each}
 <div class="flex justify-center text-neutral-800 dark:text-neutral-200" in:blur={{ duration: 1000 }}>
     <div class="w-screen flex flex-col gap-6">
