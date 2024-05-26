@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-    <title>Lemonyte</title> 
+    <title>Lemonyte</title>
 </svelte:head>
 
 {#each Array(24) as _}
