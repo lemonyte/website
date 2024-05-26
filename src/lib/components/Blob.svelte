@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     export let spread = 250;
-    export let parallax_sensitivity = 0.05;
+    export let parallaxSensitivity = 0.05;
 
     let blob: Element;
     let color: string;
