@@ -4,39 +4,51 @@
     export let spread = 250;
     export let parallaxSensitivity = 0.05;
 
-    let blob: Element;
-    let color: string;
+    let clientWidth: number;
+    let clientHeight: number;
     let offsetX: number;
     let offsetY: number;
-    let offsetZ: number;
-    let duration: number;
-    let currentOffsetX: number;
-    let currentOffsetY: number;
+    const offsetZ = Math.random();
+    const styles = {
+        left: "",
+        top: "",
+        "--breathe-speed": `${5 + Math.floor(Math.random() * 15)}s`,
+        "background-color": "black",
+    };
 
     onMount(() => {
-        color = `rgb(${Math.floor(Math.random() * 127)}, ${Math.floor(Math.random() * 255)}, 255)`;
-        offsetX = Math.floor(blob.clientWidth / 2 + spread * (Math.random() - 0.5) * 2);
-        offsetY = Math.floor(blob.clientHeight / 2 + spread * (Math.random() - 0.5) * 2);
-        offsetZ = Math.random();
-        duration = 5 + Math.floor(Math.random() * 15);
+        offsetX = Math.floor(clientWidth / 2 + spread * (Math.random() - 0.5) * 2);
+        offsetY = Math.floor(clientHeight / 2 + spread * (Math.random() - 0.5) * 2);
+        styles.left = `calc(50vw - ${offsetX}px)`;
+        styles.top = `calc(50vh - ${offsetY}px)`;
+        styles["background-color"] =
+            `rgb(${Math.floor(Math.random() * 127)}, ${Math.floor(Math.random() * 255)}, 255)`;
     });
 
     const parallax = (event: MouseEvent) => {
-        const center = [window.innerWidth / 2, window.innerHeight / 2];
-        const mouseOffset = [
-            (event.clientX - center[0]) * parallax_sensitivity * offsetZ,
-            (event.clientY - center[1]) * parallax_sensitivity * offsetZ,
-        ];
-        currentOffsetX += mouseOffset[0];
-        currentOffsetY += mouseOffset[1];
+        const center = {
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+        };
+        const mouseOffset = {
+            x: (event.clientX - center.x) * parallaxSensitivity * offsetZ,
+            y: (event.clientY - center.y) * parallaxSensitivity * offsetZ,
+        };
+        styles.left = `calc(50vw - ${offsetX + mouseOffset.x}px)`;
+        styles.top = `calc(50vh - ${offsetY + mouseOffset.y}px)`;
     };
 </script>
 
+<svelte:window on:mousemove={parallax} />
+
 <div
-    bind:this={blob}
-    on:mousemove={parallax}
+    bind:clientWidth
+    bind:clientHeight
     class="bg-blob"
-    style="left: calc(50vw - {offsetX}px); top: calc(50vh - {offsetY}px); --breathe-speed: {duration}s; background-color: {color};"
+    style:left={styles.left}
+    style:top={styles.top}
+    style:--breathe-speed={styles["--breathe-speed"]}
+    style:background-color={styles["background-color"]}
     role="none"
 ></div>
 
