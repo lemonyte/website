@@ -1,5 +1,5 @@
-export const load = async ({ fetch }) => {
+export const load = ({ fetch }) => {
     return {
-        reposResponse: fetch("https://gh-pinned-repos--master.deno.dev/?username=lemonyte"),
+        reposResponse: fetch("https://gh-pinned-repos-tsj7ta5xfhep.deno.dev/?username=lemonyte"),
     };
 };
