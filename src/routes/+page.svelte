@@ -23,7 +23,7 @@
                 <h1 class="text-9xl select-none">Lemonyte</h1>
             </div>
             <div
-                class="flex flex-shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl"
+                class="flex flex-shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
             >
                 {#each links as link}
                     <Link {...link} />
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="flex flex-col items-center w-full">
-            <div class="w-2/3 p-6 backdrop-blur-3xl rounded-xl">
+            <div class="w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40">
                 <p>
                     Hello fellow traveller! I'm <strong>Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the
                     world of software and technology.
@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="flex flex-col items-center">
-            <div class="w-2/3 p-6 backdrop-blur-3xl rounded-xl">
+            <div class="w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40">
                 <h2 class="text-2xl mb-4">Skills</h2>
                 <div class="grid grid-cols-[repeat(auto-fit,_minmax(40px,_1fr))] gap-1">
                     {#each skills as skill}

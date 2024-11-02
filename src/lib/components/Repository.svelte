@@ -11,14 +11,14 @@
 
 <a
     href={link}
-    class="p-3 rounded-lg transition ease-in duration-100 select-none bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+    class="p-3 rounded-lg transition ease-in duration-100 select-none bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 !bg-opacity-40"
 >
     <div class="justify-between flex flex-row">
         <div class="text-xl overflow-hidden text-ellipsis whitespace-nowrap" class:animate-pulse={!repo}>
             {repo || "Loading…"}
         </div>
         {#if language}
-            <div class="p-1 text-xs rounded-md items-center flex bg-neutral-300 dark:bg-neutral-700">
+            <div class="p-1 text-xs rounded-md items-center flex bg-neutral-300 dark:bg-neutral-700 !bg-opacity-40">
                 {language}
             </div>
         {/if}
