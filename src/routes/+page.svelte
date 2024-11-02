@@ -1,12 +1,12 @@
 <script lang="ts">
+    import type { PageData } from "./$types";
     import { blur } from "svelte/transition";
     import Repository from "$lib/components/Repository.svelte";
     import Link from "$lib/components/Link.svelte";
-    import { skills, links } from "$lib/data";
     import Blob from "$lib/components/Blob.svelte";
+    import { skills, links } from "$lib/data";
 
-    export let data;
-    const { reposResponse } = data;
+    const { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
@@ -82,7 +82,7 @@
         </div>
         <div class="flex flex-col items-center">
             <div class="w-2/3 p-6 backdrop-blur-3xl rounded-xl grid grid-cols-1 gap-2 md:grid-cols-2">
-                {#await reposResponse}
+                {#await data.reposResponse}
                     {#each Array(6) as _}
                         <Repository />
                     {/each}

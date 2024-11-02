@@ -1,20 +1,24 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
-    export let spread = 250;
-    export let parallaxSensitivity = 0.05;
+    interface Props {
+        spread?: number;
+        parallaxSensitivity?: number;
+    }
 
-    let clientWidth: number;
-    let clientHeight: number;
+    let { spread = 250, parallaxSensitivity = 0.05 }: Props = $props();
+
+    let clientWidth: number = $state(0);
+    let clientHeight: number = $state(0);
     let offsetX: number;
     let offsetY: number;
     const offsetZ = Math.random();
-    const styles = {
+    const styles = $state({
         left: "",
         top: "",
         "--breathe-speed": `${5 + Math.floor(Math.random() * 15)}s`,
         "background-color": "black",
-    };
+    });
 
     onMount(() => {
         offsetX = Math.floor(clientWidth / 2 + spread * (Math.random() - 0.5) * 2);
@@ -39,7 +43,7 @@
     };
 </script>
 
-<svelte:window on:mousemove={parallax} />
+<svelte:window onmousemove={parallax} />
 
 <div
     bind:clientWidth
@@ -73,7 +77,7 @@
 
     .bg-blob {
         @apply blur-3xl;
-        /* This forces the blob's position to the center of the page. */
+        /* Bug: this forces the blob's position to the center of the page. */
         /* offset-path: circle(5%); */
         position: fixed;
         width: 20vh;
