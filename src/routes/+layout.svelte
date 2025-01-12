@@ -1,12 +1,12 @@
 <script lang="ts">
-    import type { Snippet } from "svelte";
     import "../app.css";
 
-    interface Props {
-        children?: Snippet;
-    }
-
-    const { children }: Props = $props();
+    const { children } = $props();
 </script>
 
-{@render children?.()}
+<svelte:head>
+    <title>Lemonyte</title>
+    <meta name="description" content="Open-source developer and computer science student. Explore my skills, projects, and more." />
+</svelte:head>
+
+{@render children()}
