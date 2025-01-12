@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { PageData } from "./$types";
-    import { blur } from "svelte/transition";
     import Repository from "$lib/components/Repository.svelte";
     import IconLink from "$lib/components/IconLink.svelte";
     import Blob from "$lib/components/Blob.svelte";
@@ -13,7 +12,7 @@
     <Blob spread={350} parallaxSensitivity={0.05} />
 {/each}
 
-<div class="flex justify-center text-neutral-800 dark:text-neutral-200" in:blur={{ duration: 1000 }}>
+<div class="flex justify-center text-neutral-800 dark:text-neutral-200">
     <div class="w-screen flex flex-col gap-6">
         <div class="flex items-center flex-col">
             <div class="h-screen flex flex-col justify-center">
