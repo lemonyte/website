@@ -12,7 +12,7 @@
     <Blob spread={350} parallaxSensitivity={0.05} />
 {/each}
 
-<div class="flex justify-center text-neutral-800 dark:text-neutral-200">
+<div class="flex justify-center text-neutral-800 dark:text-neutral-200 mb-10">
     <div class="w-screen flex flex-col gap-6">
         <div class="flex items-center flex-col">
             <div class="h-screen flex flex-col justify-center">
