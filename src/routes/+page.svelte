@@ -2,7 +2,7 @@
     import type { PageData } from "./$types";
     import { blur } from "svelte/transition";
     import Repository from "$lib/components/Repository.svelte";
-    import Link from "$lib/components/Link.svelte";
+    import IconLink from "$lib/components/IconLink.svelte";
     import Blob from "$lib/components/Blob.svelte";
     import { skills, links } from "$lib/data";
 
@@ -23,7 +23,7 @@
                 class="flex flex-shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
             >
                 {#each links as link}
-                    <Link {...link} />
+                    <IconLink {...link} />
                 {/each}
             </div>
         </div>
@@ -76,7 +76,7 @@
                 <h2 class="text-2xl mb-4">Skills</h2>
                 <div class="grid grid-cols-[repeat(auto-fit,_minmax(40px,_1fr))] gap-1">
                     {#each skills as skill}
-                        <Link {...skill} />
+                        <IconLink {...skill} />
                     {/each}
                 </div>
             </div>
