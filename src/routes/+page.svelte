@@ -20,7 +20,7 @@
     <div class="w-screen flex flex-col gap-6">
         <div class="flex items-center flex-col">
             <div class="h-screen flex flex-col justify-center">
-                <h1 class="text-9xl select-none">Lemonyte</h1>
+                <h1 class="text-7xl sm:text-8xl md:text-9xl select-none">Lemonyte</h1>
             </div>
             <div
                 class="flex flex-shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
@@ -31,9 +31,11 @@
             </div>
         </div>
         <div class="flex flex-col items-center w-full">
-            <div class="w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40">
+            <div
+                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
+            >
                 <p>
-                    Hello fellow traveller! I'm <strong>Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the
+                    Hi, I'm <strong>Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the
                     world of software and technology.
                 </p>
                 <ul class="p-4 list-disc">
@@ -71,7 +73,9 @@
             </div>
         </div>
         <div class="flex flex-col items-center">
-            <div class="w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40">
+            <div
+                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
+            >
                 <h2 class="text-2xl mb-4">Skills</h2>
                 <div class="grid grid-cols-[repeat(auto-fit,_minmax(40px,_1fr))] gap-1">
                     {#each skills as skill}
@@ -81,22 +85,25 @@
             </div>
         </div>
         <div class="flex flex-col items-center">
-            <div class="w-2/3 p-6 backdrop-blur-3xl rounded-xl grid grid-cols-1 gap-2 md:grid-cols-2">
-                {#await data.reposResponse}
-                    {#each Array(6) as _}
-                        <Repository />
-                    {/each}
-                {:then repos}
-                    {#await repos.json() then repos}
-                        {#each repos as repo}
-                            <Repository {...repo} />
+            <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40">
+                <h2 class="text-2xl mb-4">Projects</h2>
+                <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+                    {#await data.reposResponse}
+                        {#each Array(6) as _}
+                            <Repository />
                         {/each}
+                    {:then repos}
+                        {#await repos.json() then repos}
+                            {#each repos as repo}
+                                <Repository {...repo} />
+                            {/each}
+                        {:catch error}
+                            <pre class="text-red-500">{error.message}</pre>
+                        {/await}
                     {:catch error}
                         <pre class="text-red-500">{error.message}</pre>
                     {/await}
-                {:catch error}
-                    <pre class="text-red-500">{error.message}</pre>
-                {/await}
+                </div>
             </div>
         </div>
     </div>
@@ -104,11 +111,7 @@
 
 <style lang="postcss">
     a {
-        @apply transition text-sky-500;
-    }
-
-    a:hover {
-        @apply brightness-75;
+        @apply transition text-sky-700 dark:text-sky-500 hover:underline hover:brightness-150 dark:hover:brightness-75;
     }
 
     li {
