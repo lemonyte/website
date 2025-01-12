@@ -32,8 +32,8 @@
                 class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
             >
                 <p>
-                    Hi, I'm <strong>Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the
-                    world of software and technology.
+                    Hi, I'm <strong>Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the world of software and
+                    technology.
                 </p>
                 <ul class="p-4 list-disc">
                     <li>
@@ -82,7 +82,9 @@
             </div>
         </div>
         <div class="flex flex-col items-center">
-            <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40">
+            <div
+                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
+            >
                 <h2 class="text-2xl mb-4">Projects</h2>
                 <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
                     {#await data.reposResponse}
