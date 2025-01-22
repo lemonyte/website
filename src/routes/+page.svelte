@@ -39,7 +39,7 @@
                         ❤️ I love
                         <a href="https://github.com/lemonyte/terminal-player">terminals</a>
                         and making things that are
-                        <a href="https://github.com/lemonyte/ferry-planner">useful</a>
+                        <a href="https://ferryplanner.ca">useful</a>
                         to others.
                     </li>
                     <li>
@@ -54,7 +54,7 @@
                     </li>
                     <li>
                         🔥 I believe in writing structured, readable, maintainable code, and occasionally having some
-                        <a href="https://github.com/lemonyte/http-waifus">fun</a>.
+                        <a href="https://httpwaifus.com">fun</a>.
                     </li>
                     <li>
                         🤝 I'm quite
