@@ -88,7 +88,6 @@
             var(--breathe-speed) ease-in-out infinite alternate breathe,
             60s linear infinite rotate;
         transition: background-color 10s;
-        z-index: -30;
         left: 40vw;
         top: 40vh;
         background-color: black;
