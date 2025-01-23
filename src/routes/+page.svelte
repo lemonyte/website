@@ -19,7 +19,7 @@
                 <h1 class="text-7xl sm:text-8xl md:text-9xl select-none">Lemonyte</h1>
             </div>
             <div
-                class="flex flex-shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
+                class="flex shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
             >
                 {#each links as link}
                     <IconLink {...link} />
@@ -28,7 +28,7 @@
         </div>
         <div class="flex flex-col items-center w-full">
             <div
-                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
+                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
             >
                 <p>
                     Hi, I'm <strong>Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the world of software and
@@ -70,10 +70,10 @@
         </div>
         <div class="flex flex-col items-center">
             <div
-                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
+                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
             >
                 <h2 class="text-2xl mb-4">Skills</h2>
-                <div class="grid grid-cols-[repeat(auto-fit,_minmax(40px,_1fr))] gap-1">
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-1">
                     {#each skills as skill}
                         <IconLink {...skill} />
                     {/each}
@@ -82,11 +82,11 @@
         </div>
         <div class="flex flex-col items-center">
             <div
-                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100 dark:bg-neutral-900 !bg-opacity-40"
+                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
             >
                 <h2 class="text-2xl mb-4">Projects</h2>
                 <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-                    {#await data.reposResponse}
+                    {#await data.reposPromise}
                         {#each Array(6) as _}
                             <Repository />
                         {/each}
@@ -108,6 +108,8 @@
 </div>
 
 <style lang="postcss">
+    @reference "tailwindcss/theme";
+
     a {
         @apply transition text-sky-700 dark:text-sky-500 hover:underline hover:brightness-150 dark:hover:brightness-75;
     }

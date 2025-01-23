@@ -11,19 +11,19 @@
 
 <a
     href={link}
-    class="p-3 rounded-lg transition ease-in duration-100 select-none bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 !bg-opacity-40"
+    class="p-3 rounded-lg transition select-none bg-neutral-100/40 hover:bg-neutral-200/40 dark:bg-neutral-900/40 dark:hover:bg-neutral-800/40"
 >
     <div class="justify-between flex flex-row">
-        <div class="text-xl overflow-hidden text-ellipsis whitespace-nowrap" class:animate-pulse={!repo}>
+        <div class={["text-xl overflow-hidden text-ellipsis whitespace-nowrap", { "animate-pulse": !repo }]}>
             {repo || "Loading…"}
         </div>
         {#if language}
-            <div class="p-1 text-xs rounded-md items-center flex bg-neutral-300 dark:bg-neutral-700 !bg-opacity-40">
+            <div class="p-1 text-xs rounded-md items-center flex bg-neutral-300/40 dark:bg-neutral-700/40">
                 {language}
             </div>
         {/if}
     </div>
-    <div class="text-neutral-500 text-sm text-ellipsis truncate" class:animate-pulse={!repo}>
+    <div class={["text-neutral-500 text-sm line-clamp-1", { "animate-pulse": !repo }]}>
         {description || "Loading..."}
     </div>
 </a>

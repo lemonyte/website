@@ -14,10 +14,9 @@
     <img
         src={icon_url}
         {alt}
-        class="flex-shrink-0 transition ease-in duration-100 {animateHover
-            ? color
-                ? 'saturate-0 hover:saturate-100'
-                : 'opacity-50 hover:opacity-100'
-            : ''}"
+        class={[
+            "shrink-0 transition",
+            animateHover && (color ? "saturate-0 hover:saturate-100" : "opacity-50 hover:opacity-100"),
+        ]}
     />
 </a>

@@ -57,6 +57,8 @@
 ></div>
 
 <style lang="postcss">
+    @reference "tailwindcss/theme";
+
     @keyframes breathe {
         0% {
             opacity: 0.2;

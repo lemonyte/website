@@ -6,7 +6,10 @@
 
 <svelte:head>
     <title>Lemonyte</title>
-    <meta name="description" content="Open-source developer and computer science student. Explore my skills, projects, and more." />
+    <meta
+        name="description"
+        content="Open-source developer and computer science student. Explore my skills, projects, and more."
+    />
 </svelte:head>
 
 {@render children()}
