@@ -6,27 +6,19 @@
         parallaxSensitivity?: number;
     }
 
-    let { spread = 250, parallaxSensitivity = 0.05 }: Props = $props();
+    let { spread = 350, parallaxSensitivity = 0.05 }: Props = $props();
 
-    let clientWidth: number = $state(0);
-    let clientHeight: number = $state(0);
-    let offsetX: number;
-    let offsetY: number;
+    let clientWidth = $state(0);
+    let clientHeight = $state(0);
+    let offsetX = 0;
+    let offsetY = 0;
     const offsetZ = Math.random();
     const styles = $state({
         left: "",
         top: "",
+        "background-color": "",
         "--breathe-speed": `${5 + Math.floor(Math.random() * 15)}s`,
-        "background-color": "black",
-    });
-
-    onMount(() => {
-        offsetX = Math.floor(clientWidth / 2 + spread * (Math.random() - 0.5) * 2);
-        offsetY = Math.floor(clientHeight / 2 + spread * (Math.random() - 0.5) * 2);
-        styles.left = `calc(50vw - ${offsetX}px)`;
-        styles.top = `calc(50vh - ${offsetY}px)`;
-        styles["background-color"] =
-            `rgb(${Math.floor(Math.random() * 127)}, ${Math.floor(Math.random() * 255)}, 255)`;
+        "--move-speed": "0s",
     });
 
     const parallax = (event: MouseEvent) => {
@@ -41,6 +33,16 @@
         styles.left = `calc(50vw - ${offsetX + mouseOffset.x}px)`;
         styles.top = `calc(50vh - ${offsetY + mouseOffset.y}px)`;
     };
+
+    onMount(() => {
+        offsetX = Math.floor(clientWidth / 2 + spread * (Math.random() - 0.5) * 2);
+        offsetY = Math.floor(clientHeight / 2 + spread * (Math.random() - 0.5) * 2);
+        styles.left = `calc(50vw - ${offsetX}px)`;
+        styles.top = `calc(50vh - ${offsetY}px)`;
+        styles["background-color"] =
+            `rgb(${Math.floor(Math.random() * 127)}, ${Math.floor(Math.random() * 255)}, 255)`;
+        setTimeout(() => (styles["--move-speed"] = `2s`), 1000);
+    });
 </script>
 
 <svelte:window onmousemove={parallax} />
@@ -49,11 +51,12 @@
     bind:clientWidth
     bind:clientHeight
     class="bg-blob"
+    role="none"
     style:left={styles.left}
     style:top={styles.top}
-    style:--breathe-speed={styles["--breathe-speed"]}
     style:background-color={styles["background-color"]}
-    role="none"
+    style:--breathe-speed={styles["--breathe-speed"]}
+    style:--move-speed={styles["--move-speed"]}
 ></div>
 
 <style lang="postcss">
@@ -68,28 +71,18 @@
         }
     }
 
-    @keyframes rotate {
-        0% {
-            offset-distance: 0%;
-        }
-        100% {
-            offset-distance: 100%;
-        }
-    }
-
     .bg-blob {
-        @apply blur-3xl;
-        /* Bug: this forces the blob's position to the center of the page. */
-        /* offset-path: circle(5%); */
-        position: fixed;
+        @apply blur-3xl bg-white dark:bg-black;
         width: 20vh;
         height: 20vh;
-        animation:
-            var(--breathe-speed) ease-in-out infinite alternate breathe,
-            60s linear infinite rotate;
-        transition: background-color 10s;
+        position: fixed;
         left: 40vw;
         top: 40vh;
-        background-color: black;
+        z-index: -20;
+        transition:
+            background-color var(--breathe-speed),
+            left var(--move-speed) cubic-bezier(0.1, 0, 0.5, 1),
+            top var(--move-speed) cubic-bezier(0.1, 0, 0.5, 1);
+        animation: var(--breathe-speed) ease-in-out infinite alternate breathe;
     }
 </style>
