@@ -69,7 +69,7 @@
         <div class="flex flex-col items-center">
             <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40">
                 <h2 class="text-2xl mb-4">Skills</h2>
-                <div class="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-1">
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-x-4 gap-y-4">
                     {#each skills as skill}
                         <IconLink {...skill} />
                     {/each}
