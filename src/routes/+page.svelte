@@ -9,14 +9,14 @@
 </script>
 
 {#each Array(24) as _}
-    <Blob spread={350} parallaxSensitivity={0.05} />
+    <Blob />
 {/each}
 
 <div class="flex justify-center text-neutral-800 dark:text-neutral-200 pb-10">
     <div class="w-screen flex flex-col gap-6">
         <div class="flex items-center flex-col">
             <div class="h-screen flex flex-col justify-center">
-                <h1 class="text-7xl sm:text-8xl md:text-9xl select-none">Lemonyte</h1>
+                <h1 class="text-7xl sm:text-8xl md:text-9xl select-none opacity-90 mix-blend-luminosity">Lemonyte</h1>
             </div>
             <div
                 class="flex shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
@@ -27,9 +27,7 @@
             </div>
         </div>
         <div class="flex flex-col items-center w-full">
-            <div
-                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
-            >
+            <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40">
                 <p>
                     Hi, I'm <strong>Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the world of software and
                     technology.
@@ -69,9 +67,7 @@
             </div>
         </div>
         <div class="flex flex-col items-center">
-            <div
-                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
-            >
+            <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40">
                 <h2 class="text-2xl mb-4">Skills</h2>
                 <div class="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-1">
                     {#each skills as skill}
@@ -81,9 +77,7 @@
             </div>
         </div>
         <div class="flex flex-col items-center">
-            <div
-                class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
-            >
+            <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40">
                 <h2 class="text-2xl mb-4">Projects</h2>
                 <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
                     {#await data.reposPromise}
