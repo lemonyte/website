@@ -12,6 +12,4 @@
     />
 </svelte:head>
 
-<div class="bg-white dark:bg-black">
-    {@render children()}
-</div>
+{@render children()}
