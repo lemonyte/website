@@ -50,7 +50,7 @@
 <div
     bind:clientWidth
     bind:clientHeight
-    class="bg-blob"
+    class="bg-blob blur-3xl bg-white dark:bg-black"
     role="none"
     style:left={styles.left}
     style:top={styles.top}
@@ -60,8 +60,6 @@
 ></div>
 
 <style lang="postcss">
-    @reference "tailwindcss/theme";
-
     @keyframes breathe {
         0% {
             opacity: 0.2;
@@ -72,7 +70,6 @@
     }
 
     .bg-blob {
-        @apply blur-3xl bg-white dark:bg-black;
         width: 20vh;
         height: 20vh;
         position: fixed;
