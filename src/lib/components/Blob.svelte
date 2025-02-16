@@ -73,9 +73,10 @@
         width: 20vh;
         height: 20vh;
         position: fixed;
-        left: 40vw;
-        top: 40vh;
+        left: 50vw;
+        top: 50vh;
         z-index: -20;
+        transform: translate(-50%, -50%);
         transition:
             background-color var(--breathe-speed),
             left var(--move-speed) cubic-bezier(0.1, 0, 0.5, 1),
