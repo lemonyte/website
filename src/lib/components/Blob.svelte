@@ -30,15 +30,15 @@
             x: (event.clientX - center.x) * parallaxSensitivity * offsetZ,
             y: (event.clientY - center.y) * parallaxSensitivity * offsetZ,
         };
-        styles.left = `calc(50vw - ${offsetX + mouseOffset.x}px)`;
-        styles.top = `calc(50vh - ${offsetY + mouseOffset.y}px)`;
+        styles.left = `calc(50vw + ${offsetX + mouseOffset.x}px)`;
+        styles.top = `calc(50vh + ${offsetY + mouseOffset.y}px)`;
     };
 
     onMount(() => {
         offsetX = Math.floor(clientWidth / 2 + spread * (Math.random() - 0.5) * 2);
         offsetY = Math.floor(clientHeight / 2 + spread * (Math.random() - 0.5) * 2);
-        styles.left = `calc(50vw - ${offsetX}px)`;
-        styles.top = `calc(50vh - ${offsetY}px)`;
+        styles.left = `calc(50vw + ${offsetX}px)`;
+        styles.top = `calc(50vh + ${offsetY}px)`;
         styles["background-color"] =
             `rgb(${Math.floor(Math.random() * 127)}, ${Math.floor(Math.random() * 255)}, 255)`;
         setTimeout(() => (styles["--move-speed"] = `2s`), 1000);
