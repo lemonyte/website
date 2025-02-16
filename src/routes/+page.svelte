@@ -12,6 +12,14 @@
     <Blob />
 {/each}
 
+<div class="hidden fixed top-0 left-0 h-screen md:flex flex-col justify-center">
+    <div class="flex flex-col items-center p-4 gap-4">
+        {#each links as link}
+            <IconLink {...link} />
+        {/each}
+    </div>
+</div>
+
 <div class="flex justify-center text-neutral-800 dark:text-neutral-200 pb-10">
     <div class="w-screen flex flex-col gap-6">
         <div class="flex items-center flex-col">
@@ -19,7 +27,7 @@
                 <h1 class="text-7xl sm:text-8xl md:text-9xl select-none opacity-90 mix-blend-luminosity">Lemonyte</h1>
             </div>
             <div
-                class="flex shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
+                class="flex md:hidden shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
             >
                 {#each links as link}
                     <IconLink {...link} />
