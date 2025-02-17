@@ -84,9 +84,9 @@ export const skills = [
         alt: "FastAPI",
     },
     {
-        url: "https://deta.space",
-        iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/deta.svg",
-        alt: "Deta",
+        url: "https://www.cloudflare.com",
+        iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/cloudflare.svg",
+        alt: "Cloudflare",
     },
     {
         url: "https://www.sqlite.org/index.html",
