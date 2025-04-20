@@ -1,11 +1,10 @@
 <script lang="ts">
-    import type { PageData } from "./$types";
     import Repository from "$lib/components/Repository.svelte";
     import IconLink from "$lib/components/IconLink.svelte";
     import Blob from "$lib/components/Blob.svelte";
     import { skills, links } from "$lib/data";
 
-    const { data }: { data: PageData } = $props();
+    const { data } = $props();
 </script>
 
 {#each Array(24) as _}

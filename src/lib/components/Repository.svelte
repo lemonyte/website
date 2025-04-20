@@ -6,7 +6,7 @@
         language?: string;
     }
 
-    let { repo = "", link = "", description = "", language = "" }: Props = $props();
+    const { repo = "", link = "", description = "", language = "" }: Props = $props();
 </script>
 
 <a

@@ -6,7 +6,7 @@
         parallaxSensitivity?: number;
     }
 
-    let { spread = 350, parallaxSensitivity = 0.05 }: Props = $props();
+    const { spread = 350, parallaxSensitivity = 0.05 }: Props = $props();
 
     let clientWidth = $state(0);
     let clientHeight = $state(0);
