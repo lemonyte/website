@@ -1,15 +1,13 @@
 <script lang="ts">
-    import Repository from "$lib/components/Repository.svelte";
+    import Island from "$lib/components/Island.svelte";
+    import Card from "$lib/components/Card.svelte";
     import IconLink from "$lib/components/IconLink.svelte";
-    import Blob from "$lib/components/Blob.svelte";
+    import PostList from "$lib/components/PostList.svelte";
     import { skills, links } from "$lib/data";
+    import { posts } from "$lib/posts";
 
     const { data } = $props();
 </script>
-
-{#each Array(24) as _}
-    <Blob />
-{/each}
 
 <div class="hidden fixed top-0 left-0 h-screen md:flex flex-col justify-center">
     <div class="flex flex-col items-center p-4 gap-4">
@@ -19,7 +17,7 @@
     </div>
 </div>
 
-<div class="flex justify-center text-neutral-800 dark:text-neutral-200 pb-10">
+<div class="flex justify-center text-neutral-800 dark:text-neutral-200">
     <div class="w-screen flex flex-col gap-6">
         <div class="flex items-center flex-col">
             <div class="h-screen flex flex-col justify-center">
@@ -33,11 +31,11 @@
                 {/each}
             </div>
         </div>
-        <div class="flex flex-col items-center w-full">
-            <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40">
+        <Island>
+            <div class="max-w-none prose prose-neutral dark:prose-invert">
                 <p>
-                    Hi, I'm <strong>Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the world of software and
-                    technology.
+                    Hi, I'm <strong class="font-semibold">Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the
+                    world of software and technology.
                 </p>
                 <ul class="p-4 list-disc">
                     <li>
@@ -72,50 +70,43 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="flex flex-col items-center">
-            <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40">
-                <h2 class="text-2xl mb-4">Skills</h2>
-                <div class="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-x-4 gap-y-4">
-                    {#each skills as skill}
-                        <IconLink {...skill} />
+        </Island>
+        <Island>
+            <h2 class="text-2xl mb-4">Projects</h2>
+            <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+                {#await data.reposPromise}
+                    {#each Array(6) as _}
+                        <Card />
                     {/each}
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-col items-center">
-            <div class="w-11/12 md:w-2/3 p-6 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40">
-                <h2 class="text-2xl mb-4">Projects</h2>
-                <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-                    {#await data.reposPromise}
-                        {#each Array(6) as _}
-                            <Repository />
+                {:then repos}
+                    {#await repos.json() then repos}
+                        {#each repos.slice(0, 6) as repo}
+                            <Card
+                                title={repo.repo}
+                                href={repo.link}
+                                description={repo.description}
+                                tags={[repo.language]}
+                            />
                         {/each}
-                    {:then repos}
-                        {#await repos.json() then repos}
-                            {#each repos as repo}
-                                <Repository {...repo} />
-                            {/each}
-                        {:catch error}
-                            <pre class="text-red-500">{error.message}</pre>
-                        {/await}
                     {:catch error}
                         <pre class="text-red-500">{error.message}</pre>
                     {/await}
-                </div>
+                {:catch error}
+                    <pre class="text-red-500">{error.message}</pre>
+                {/await}
             </div>
-        </div>
+        </Island>
+        <Island>
+            <h2 class="text-2xl mb-4">Posts</h2>
+            <PostList {posts} />
+        </Island>
+        <Island>
+            <h2 class="text-2xl mb-4">Skills</h2>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-x-4 gap-y-4">
+                {#each skills as skill}
+                    <IconLink {...skill} />
+                {/each}
+            </div>
+        </Island>
     </div>
 </div>
-
-<style lang="postcss">
-    @reference "tailwindcss/theme";
-
-    a {
-        @apply transition text-sky-700 dark:text-sky-500 hover:underline hover:brightness-150 dark:hover:brightness-75;
-    }
-
-    li {
-        @apply my-1;
-    }
-</style>
