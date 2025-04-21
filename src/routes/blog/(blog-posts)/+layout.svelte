@@ -7,7 +7,6 @@
     import Island from "$lib/components/Island.svelte";
     import PostList from "$lib/components/PostList.svelte";
     import Tag from "$lib/components/Tag.svelte";
-    import { url } from "$lib/config";
 
     const { children, data } = $props();
     const { post, posts } = $derived(data);
