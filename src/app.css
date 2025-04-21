@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-night-owl.min.css");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -17,4 +18,8 @@
     @variant prose-a {
         @apply underline transition-all duration-75 decoration-sky-500 decoration-1 hover:decoration-2;
     }
+}
+
+pre[class*="language-"] {
+    background-color: var(--tw-prose-pre-bg);
 }
