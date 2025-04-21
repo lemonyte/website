@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Blob from "$lib/components/Blob.svelte";
     import "../app.css";
 
     const { children } = $props();
@@ -12,4 +13,10 @@
     />
 </svelte:head>
 
-{@render children()}
+{#each Array(24) as _}
+    <Blob />
+{/each}
+
+<div class="pb-12">
+    {@render children()}
+</div>
