@@ -1,5 +1,20 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
     @apply bg-white text-black dark:bg-black dark:text-white;
+}
+
+.prose {
+    @variant prose-code {
+        &:not(pre code) {
+            @apply px-1 py-0.5 rounded-sm before:content-none after:content-none;
+            background-color: var(--tw-prose-pre-bg);
+            color: var(--tw-prose-pre-code);
+        }
+    }
+
+    @variant prose-a {
+        @apply underline transition-all duration-75 decoration-sky-500 decoration-1 hover:decoration-2;
+    }
 }
