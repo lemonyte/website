@@ -1,5 +1,5 @@
 {
-    "name": "lemonyte.github.io",
+    "name": "website",
     "version": "0.0.1",
     "private": true,
     "type": "module",
@@ -11,7 +11,7 @@
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
     },
     "devDependencies": {
-        "@sveltejs/adapter-static": "^3.0.8",
+        "@sveltejs/adapter-cloudflare": "^7.0.1",
         "@sveltejs/kit": "^2.20.6",
         "@sveltejs/vite-plugin-svelte": "^5.0.3",
         "@tailwindcss/typography": "^0.5.16",
