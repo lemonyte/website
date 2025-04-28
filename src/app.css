@@ -6,6 +6,10 @@
     @apply bg-white text-black dark:bg-black dark:text-white;
 }
 
+@utility link {
+    @apply underline transition-all duration-75 decoration-sky-500 decoration-1 hover:decoration-2;
+}
+
 .prose {
     @variant prose-code {
         &:not(pre code) {
@@ -16,7 +20,7 @@
     }
 
     @variant prose-a {
-        @apply underline transition-all duration-75 decoration-sky-500 decoration-1 hover:decoration-2;
+        @apply link;
     }
 }
 
