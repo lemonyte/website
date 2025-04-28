@@ -13,24 +13,26 @@
 
 <a
     {href}
-    class="p-3 rounded-lg transition select-none bg-neutral-200/40 hover:bg-neutral-300/40 dark:bg-neutral-900/40 dark:hover:bg-neutral-800/40"
+    class="flex flex-col p-3 rounded-lg transition select-none bg-neutral-200/40 hover:bg-neutral-300/40 dark:bg-neutral-900/40 dark:hover:bg-neutral-800/40"
 >
-    <div class="flex flex-row gap-2">
-        <div
+    <div class="flex flex-col lg:flex-row gap-1">
+        <span
             class={[
-                "text-xl font-semibold mr-auto overflow-hidden text-ellipsis whitespace-nowrap",
+                "text-xl font-semibold mr-auto line-clamp-1",
                 { "animate-pulse": !title },
             ]}
         >
             {title || "Loading…"}
+        </span>
+        <div class="flex flex-row gap-2 items-center overflow-hidden">
+            {#if tags}
+                {#each tags as tag}
+                    <Tag>{tag}</Tag>
+                {/each}
+            {/if}
         </div>
-        {#if tags}
-            {#each tags as tag}
-                <Tag>{tag}</Tag>
-            {/each}
-        {/if}
     </div>
-    <div class={["text-neutral-500 dark:text-neutral-400 text-sm line-clamp-1", { "animate-pulse": !description }]}>
+    <span class={["text-neutral-500 dark:text-neutral-400 text-sm line-clamp-1", { "animate-pulse": !description }]}>
         {description || "Loading..."}
-    </div>
+    </span>
 </a>
