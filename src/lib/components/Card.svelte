@@ -18,13 +18,13 @@
     <div class="flex flex-col lg:flex-row gap-1">
         <span
             class={[
-                "text-xl font-semibold mr-auto line-clamp-1",
+                "text-xl font-semibold text-ellipsis overflow-hidden whitespace-nowrap",
                 { "animate-pulse": !title },
             ]}
         >
             {title || "Loading…"}
         </span>
-        <div class="flex flex-row gap-2 items-center overflow-hidden">
+        <div class="flex flex-row gap-2 shrink-0 lg:ml-auto items-center overflow-hidden">
             {#if tags}
                 {#each tags as tag}
                     <Tag>{tag}</Tag>
@@ -32,7 +32,7 @@
             {/if}
         </div>
     </div>
-    <span class={["text-neutral-500 dark:text-neutral-400 text-sm line-clamp-1", { "animate-pulse": !description }]}>
+    <span class={["text-neutral-500 dark:text-neutral-400 text-sm text-ellipsis overflow-hidden whitespace-nowrap", { "animate-pulse": !description }]}>
         {description || "Loading..."}
     </span>
 </a>

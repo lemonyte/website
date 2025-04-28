@@ -17,6 +17,4 @@
     <Blob />
 {/each}
 
-<div class="pb-12">
-    {@render children()}
-</div>
+{@render children()}
