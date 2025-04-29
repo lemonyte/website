@@ -5,9 +5,12 @@
     import PostList from "$lib/components/PostList.svelte";
     import { skills, links } from "$lib/data";
     import { posts } from "$lib/posts";
+    import Head from "$lib/components/Head.svelte";
 
     const { data } = $props();
 </script>
+
+<Head />
 
 <div class="hidden fixed top-0 left-0 h-screen md:flex flex-col justify-center">
     <div class="flex flex-col items-center p-4 gap-4">

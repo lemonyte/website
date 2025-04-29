@@ -1,7 +1,10 @@
 <script lang="ts">
     import Island from "$lib/components/Island.svelte";
     import { page } from "$app/state";
+    import Head from "$lib/components/Head.svelte";
 </script>
+
+<Head />
 
 <div class="my-auto">
     <Island>

@@ -1,9 +1,12 @@
 <script lang="ts">
     import Island from "$lib/components/Island.svelte";
     import PostList from "$lib/components/PostList.svelte";
+    import Head from "$lib/components/Head.svelte";
 
     const { data } = $props();
 </script>
+
+<Head title={data.tag ? `Posts on ${data.tag}` : "Posts"} description="Lemonyte's Blog" />
 
 <Island>
     <h1 class="text-2xl mb-4">

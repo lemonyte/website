@@ -7,6 +7,7 @@
     import Island from "$lib/components/Island.svelte";
     import PostList from "$lib/components/PostList.svelte";
     import Tag from "$lib/components/Tag.svelte";
+    import Head from "$lib/components/Head.svelte";
 
     const { children, data } = $props();
     const { post, posts } = $derived(data);
@@ -17,6 +18,17 @@
         day: "numeric",
     };
 </script>
+
+<Head title={post.title} description={post.description} type="article">
+    <meta property="og:article:published_time" content={post.date.toISOString()} />
+    {#if post.updated}
+        <meta property="og:article:modified_time" content={post.updated.toISOString()} />
+    {/if}
+    <meta property="og:article:author" content="Lemonyte" />
+    {#each post.tags as tag}
+        <meta property="og:article:tag" content={tag} />
+    {/each}
+</Head>
 
 <main>
     <Island>
