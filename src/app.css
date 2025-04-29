@@ -16,6 +16,7 @@
             @apply px-1 py-0.5 rounded-sm before:content-none after:content-none;
             background-color: var(--tw-prose-pre-bg);
             color: var(--tw-prose-pre-code);
+            overflow-wrap: break-word;
         }
     }
 
