@@ -37,7 +37,7 @@
     <meta property="og:type" content={type} />
     <meta property="og:url" content={url} />
     {#if image}
-        <meta property="og:image" content={image} />
+        <meta property="og:image" content={new URL(image, config.baseUrl).href} />
     {/if}
     <meta property="og:site_name" content={siteName} />
     {#if children}

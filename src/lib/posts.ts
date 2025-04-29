@@ -4,7 +4,8 @@ interface PostMetadata {
     date: string;
     updated?: string;
     tags: string[];
-    published: boolean;
+    image?: string;
+    visible: boolean;
 }
 
 export interface Post extends Omit<PostMetadata, "date" | "updated"> {
@@ -21,7 +22,7 @@ export const posts: Post[] = Object.entries(import.meta.glob("/src/routes/blog/*
             const date = new Date(metadata.date);
             const updated = metadata.updated ? new Date(metadata.updated) : undefined;
             const post = { ...metadata, date, updated, slug };
-            return post.published ? post : null;
+            return post.visible ? post : null;
         }
         return null;
     })

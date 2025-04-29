@@ -19,7 +19,7 @@
     };
 </script>
 
-<Head title={post.title} description={post.description} type="article">
+<Head title={post.title} description={post.description} type="article" image={post.image}>
     <meta property="og:article:published_time" content={post.date.toISOString()} />
     {#if post.updated}
         <meta property="og:article:modified_time" content={post.updated.toISOString()} />
