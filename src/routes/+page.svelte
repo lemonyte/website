@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="flex justify-center text-neutral-800 dark:text-neutral-200 mb-16">
+<div class="flex justify-center text-neutral-800 dark:text-neutral-200">
     <div class="w-screen flex flex-col gap-6">
         <div class="flex items-center flex-col">
             <div class="h-screen flex flex-col justify-center">
@@ -34,7 +34,7 @@
         <Island>
             <div class="max-w-none prose prose-neutral dark:prose-invert">
                 <p>
-                    Hi, I'm <strong class="font-semibold">Lemonyte</strong>, an open-sourcerer 🧙‍♂️ passionate about the
+                    Hi, I'm <b>Lemonyte</b>, an open-sourcerer 🧙‍♂️ passionate about the
                     world of software and technology.
                 </p>
                 <ul class="p-4 list-disc">
