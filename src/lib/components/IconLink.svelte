@@ -15,7 +15,7 @@
         src={iconUrl}
         {alt}
         class={[
-            "shrink-0 transition",
+            "shrink-0 transition duration-75",
             animateHover && (color ? "saturate-0 hover:saturate-100" : "opacity-50 hover:opacity-100"),
         ]}
     />
