@@ -23,6 +23,12 @@
     @variant prose-a {
         @apply link;
     }
+
+    @variant prose-headings {
+        & .icon-link {
+            @apply before:content-["#"] mr-2 opacity-60;
+        }
+    }
 }
 
 pre[class*="language-"] {
