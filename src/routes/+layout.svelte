@@ -13,7 +13,7 @@
 
 <div class="min-h-screen flex flex-col">
     {#if page.url.pathname !== "/"}
-        <nav class="mb-8 md:mt-4">
+        <nav class="mb-8 md:mt-4 select-none">
             <Island>
                 <div class="flex flex-row gap-4 items-center">
                     <span class="font-semibold text-lg">Lemonyte</span>
