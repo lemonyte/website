@@ -7,18 +7,25 @@ export const links = [
         color: false,
     },
     {
-        label: "Matrix",
-        url: "https://matrix.to/#/@lemonyte:matrix.org",
-        iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/matrix.svg",
-        animateHover: true,
-        color: false,
-    },
-    {
         label: "Discord",
         url: "https://discord.com/users/710569497081151590",
         iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/discord.svg",
         animateHover: true,
         color: true,
+    },
+    {
+        label: "Email",
+        url: "mailto:contact@lemonyte.com",
+        iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/email.svg",
+        animateHover: true,
+        color: false,
+    },
+    {
+        label: "Matrix",
+        url: "https://matrix.to/#/@lemonyte:matrix.org",
+        iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/matrix.svg",
+        animateHover: true,
+        color: false,
     },
 ];
 
