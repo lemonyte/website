@@ -1,6 +1,7 @@
 import adapter from "@sveltejs/adapter-cloudflare";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import { mdsvex } from "mdsvex";
+import remarkGithub from "remark-github";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeCallouts from "rehype-callouts";
@@ -13,6 +14,7 @@ const config = {
     preprocess: [
         vitePreprocess(),
         mdsvex({
+            remarkPlugins: [remarkGithub],
             rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeCallouts],
         }),
     ],

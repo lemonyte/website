@@ -3,6 +3,10 @@
     "version": "0.0.1",
     "private": true,
     "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lemonyte/website.git"
+    },
     "scripts": {
         "dev": "vite dev",
         "build": "vite build",
@@ -21,6 +25,7 @@
         "rehype-autolink-headings": "^7.1.0",
         "rehype-callouts": "^2.0.2",
         "rehype-slug": "^6.0.0",
+        "remark-github": "^12.0.0",
         "svelte": "^5.28.2",
         "svelte-check": "^4.1.6",
         "tailwindcss": "^4.0.0",
