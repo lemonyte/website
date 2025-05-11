@@ -8,6 +8,7 @@
     import PostList from "$lib/components/PostList.svelte";
     import Tag from "$lib/components/Tag.svelte";
     import Head from "$lib/components/Head.svelte";
+    import Giscus from "@giscus/svelte";
 
     const { children, data } = $props();
     const { post, posts } = $derived(data);
@@ -60,6 +61,26 @@
         </article>
     </Island>
 </main>
+
+<aside class="mt-8">
+    <Island>
+        <Giscus
+            id="comments"
+            repo="lemonyte/website"
+            repoId="R_kgDOKC4xmg"
+            category="Giscus comments"
+            categoryId="DIC_kwDOKC4xms4CqA6y"
+            mapping="pathname"
+            term=""
+            strict="1"
+            reactionsEnabled="1"
+            inputPosition="top"
+            theme="transparent_dark"
+            lang="en"
+            loading="lazy"
+        />
+    </Island>
+</aside>
 
 <aside class="mt-16">
     <Island>
