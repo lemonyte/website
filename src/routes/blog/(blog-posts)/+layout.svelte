@@ -82,7 +82,7 @@
     </Island>
 </aside>
 
-<aside class="mt-16">
+<aside class="mt-8">
     <Island>
         <h2 class="text-2xl mb-4">More Posts</h2>
         <PostList posts={posts.filter((otherPost) => otherPost.slug !== post.slug)} limit={3} />
