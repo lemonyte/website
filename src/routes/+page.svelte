@@ -107,7 +107,7 @@
             </div>
         </Island>
         <Island>
-            <h2 class="text-2xl mb-4">Posts</h2>
+            <h2 class="text-2xl mb-4"><a href="/blog" class="link">Posts</a></h2>
             <PostList {posts} />
         </Island>
         <Island>
