@@ -6,10 +6,6 @@
     :root {
         @apply bg-white text-black dark:bg-black dark:text-white;
     }
-
-    img {
-        @apply rounded-md;
-    }
 }
 
 @utility link {
@@ -17,6 +13,10 @@
 }
 
 .prose {
+    img {
+        @apply rounded-md;
+    }
+
     @variant prose-code {
         &:not(pre code) {
             @apply px-1 py-0.5 rounded-sm before:content-none after:content-none;
