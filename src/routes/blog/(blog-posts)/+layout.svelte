@@ -8,6 +8,8 @@
     import PostList from "$lib/components/PostList.svelte";
     import Tag from "$lib/components/Tag.svelte";
     import Head from "$lib/components/Head.svelte";
+    import TocIsland from "$lib/components/TocIsland.svelte";
+    import Toc from "svelte-toc";
     import Giscus from "@giscus/svelte";
 
     const { children, data } = $props();
@@ -31,60 +33,72 @@
     {/each}
 </Head>
 
-<main>
-    <Island>
-        <article>
-            <div class="flex flex-col gap-2">
-                {#if post}
-                    <h1 class="text-4xl font-semibold">{post.title}</h1>
-                    <div class="text-neutral-500 dark:text-neutral-400">
-                        <span>Published {post.date.toLocaleDateString(undefined, dateOptions)}</span>
-                        {#if post.updated}
-                            <span> • </span>
-                            <span>
-                                Updated {post.updated.toLocaleDateString(undefined, dateOptions)}
-                            </span>
-                        {/if}
-                    </div>
-                    {#if post.tags.length}
-                        <div class="flex flex-row gap-2">
-                            {#each post.tags as tag}
-                                <Tag hover={true}><a href={`/blog/${tag}`}>{tag}</a></Tag>
-                            {/each}
+<div class="relative">
+    <TocIsland>
+        <Toc />
+    </TocIsland>
+
+    <main>
+        <Island>
+            <article>
+                <div class="flex flex-col gap-2">
+                    {#if post}
+                        <h1 class="text-4xl font-semibold">{post.title}</h1>
+                        <div class="text-neutral-500 dark:text-neutral-400">
+                            <span>Published {post.date.toLocaleDateString(undefined, dateOptions)}</span>
+                            {#if post.updated}
+                                <span> • </span>
+                                <span>
+                                    Updated {post.updated.toLocaleDateString(undefined, dateOptions)}
+                                </span>
+                            {/if}
                         </div>
+                        {#if post.tags.length}
+                            <div class="flex flex-row gap-2">
+                                {#each post.tags as tag}
+                                    <Tag hover={true}><a href={`/blog/${tag}`}>{tag}</a></Tag>
+                                {/each}
+                            </div>
+                        {/if}
                     {/if}
-                {/if}
-            </div>
-            <div class="mt-8 max-w-none prose prose-neutral dark:prose-invert">
-                {@render children()}
-            </div>
-        </article>
-    </Island>
-</main>
+                </div>
+                <div class="mt-8 max-w-none prose prose-neutral dark:prose-invert">
+                    <div class="xl:hidden">
+                        <Toc breakpoint={0} title="Table of contents" />
+                    </div>
+                    {#if post.image}
+                        <img src={post.image} alt="Banner" />
+                    {/if}
+                    {@render children()}
+                </div>
+            </article>
+        </Island>
+    </main>
 
-<aside class="mt-8">
-    <Island>
-        <Giscus
-            id="comments"
-            repo="lemonyte/website"
-            repoId="R_kgDOKC4xmg"
-            category="Giscus comments"
-            categoryId="DIC_kwDOKC4xms4CqA6y"
-            mapping="pathname"
-            term=""
-            strict="1"
-            reactionsEnabled="1"
-            inputPosition="top"
-            theme="transparent_dark"
-            lang="en"
-            loading="lazy"
-        />
-    </Island>
-</aside>
+    <aside class="mt-8">
+        <Island>
+            <Giscus
+                id="comments"
+                repo="lemonyte/website"
+                repoId="R_kgDOKC4xmg"
+                category="Giscus comments"
+                categoryId="DIC_kwDOKC4xms4CqA6y"
+                mapping="pathname"
+                term=""
+                strict="1"
+                reactionsEnabled="1"
+                inputPosition="top"
+                theme="transparent_dark"
+                lang="en"
+                loading="lazy"
+            />
+        </Island>
+    </aside>
 
-<aside class="mt-8">
-    <Island>
-        <h2 class="text-2xl mb-4">More Posts</h2>
-        <PostList posts={posts.filter((otherPost) => otherPost.slug !== post.slug)} limit={3} />
-    </Island>
-</aside>
+    <aside class="mt-8">
+        <Island>
+            <h2 class="text-2xl mb-4 toc-exclude"><a href="/blog" class="link">More Posts</a></h2>
+            <PostList posts={posts.filter((otherPost) => otherPost.slug !== post.slug)} limit={3} />
+        </Island>
+    </aside>
+</div>
