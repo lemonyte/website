@@ -1,15 +1,13 @@
 <script lang="ts">
     import Card from "$lib/components/Card.svelte";
     import type { Post } from "$lib/posts";
-    import type { Snippet } from "svelte";
 
     interface Props {
         posts: Post[];
         limit?: number;
-        heading?: Snippet;
     }
 
-    const { posts, heading, limit }: Props = $props();
+    const { posts, limit }: Props = $props();
 </script>
 
 <div>
