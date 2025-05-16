@@ -1,30 +1,26 @@
 export const links = [
     {
-        label: "GitHub",
         url: "https://github.com/lemonyte",
         iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/github.svg",
-        animateHover: true,
+        alt: "GitHub",
         color: false,
     },
     {
-        label: "Discord",
         url: "https://discord.com/users/710569497081151590",
         iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/discord.svg",
-        animateHover: true,
+        alt: "Discord",
         color: true,
     },
     {
-        label: "Email",
         url: "mailto:contact@lemonyte.com",
         iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/email.svg",
-        animateHover: true,
+        alt: "Email",
         color: false,
     },
     {
-        label: "Matrix",
         url: "https://matrix.to/#/@lemonyte:matrix.org",
         iconUrl: "https://github.com/lemonyte/lemonyte/raw/main/assets/matrix.svg",
-        animateHover: true,
+        alt: "Matrix",
         color: false,
     },
 ];
