@@ -19,7 +19,7 @@
     onMount(() => {
         styles.left = `calc(50vw - ${Math.floor(spread * (Math.random() - 0.5) * 2)}px)`;
         styles.top = `calc(50vh - ${Math.floor(spread * (Math.random() - 0.5) * 2)}px)`;
-        styles.backgroundColor = `rgb(${Math.floor(Math.random() * 180)}, ${Math.floor(Math.random() * 255)}, 255)`;
+        styles.backgroundColor = `rgb(${Math.floor(Math.random() * 127)}, ${Math.floor(Math.random() * 255)}, 255)`;
         styles.animationName = "fade-in, breathe";
         styles.breatheSpeed = 5 + Math.floor(Math.random() * 15);
     });
