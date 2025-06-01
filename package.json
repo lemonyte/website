@@ -15,23 +15,23 @@
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
     },
     "devDependencies": {
-        "@cloudflare/workers-types": "^4.20250430.0",
+        "@cloudflare/workers-types": "^4.20250601.0",
         "@giscus/svelte": "^3.1.0",
-        "@sveltejs/adapter-cloudflare": "^7.0.2",
-        "@sveltejs/kit": "^2.20.8",
+        "@sveltejs/adapter-cloudflare": "^7.0.3",
+        "@sveltejs/kit": "^2.21.1",
         "@sveltejs/vite-plugin-svelte": "^5.0.3",
         "@tailwindcss/typography": "^0.5.16",
-        "@tailwindcss/vite": "^4.1.5",
+        "@tailwindcss/vite": "^4.1.8",
         "mdsvex": "^0.12.6",
         "rehype-autolink-headings": "^7.1.0",
         "rehype-callouts": "^2.1.0",
         "rehype-slug": "^6.0.0",
         "remark-github": "^12.0.0",
-        "svelte": "^5.28.2",
-        "svelte-check": "^4.1.6",
-        "svelte-toc": "^0.6.0",
+        "svelte": "^5.33.11",
+        "svelte-check": "^4.2.1",
+        "svelte-toc": "^0.6.1",
         "tailwindcss": "^4.0.0",
         "typescript": "^5.8.3",
-        "vite": "^6.3.4"
+        "vite": "^6.3.5"
     }
 }
