@@ -48,11 +48,11 @@ pre[class*="language-"] {
 aside.toc {
     --toc-li-border-radius: var(--radius-md);
     --toc-active-border-radius: var(--toc-li-border-radius);
-    --toc-font-size: var(--text-base);
     --toc-li-color: rgb(from var(--tw-prose-body) r g b / 0.8);
     --toc-li-hover-color: var(--toc-li-color);
     --toc-active-color: var(--toc-li-color);
     --toc-active-bg: color-mix(in oklab, var(--color-neutral-300) 40%, transparent);
+    @apply font-sans text-base;
 
     @media (prefers-color-scheme: dark) {
         --toc-active-bg: color-mix(in oklab, var(--color-neutral-700) 40%, transparent);
@@ -60,10 +60,10 @@ aside.toc {
 
     /* Sidebar-style TOC styles. */
     @variant xl {
-        --toc-font-size: var(--text-lg);
         --toc-li-color: rgb(from var(--tw-prose-links) r g b / 0.4);
         --toc-active-color: var(--tw-prose-links);
         --toc-active-bg: transparent;
+        @apply text-lg;
     }
 }
 
@@ -73,7 +73,7 @@ aside.toc > nav {
 
 aside.toc > nav > h2 {
     color: var(--tw-prose-headings);
-    @apply pb-1 mb-2 border-b font-semibold;
+    @apply pb-1 mb-2 border-b font-semibold text-2xl;
 
     @variant xl {
         color: rgb(from var(--tw-prose-headings) r g b / 0.6);
@@ -81,7 +81,7 @@ aside.toc > nav > h2 {
 }
 
 aside.toc > nav > ol > li {
-    font-size: var(--toc-font-size) !important;
+    font: var(--toc-font) !important;
     @apply hover:bg-neutral-300/40 dark:hover:bg-neutral-700/40 transition line-clamp-1;
 }
 
