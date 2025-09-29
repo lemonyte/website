@@ -15,14 +15,20 @@
     {#if page.url.pathname !== "/"}
         <nav class="mb-8 md:mt-4 select-none">
             <Island>
-                <div class="flex flex-row gap-4 items-center">
+                <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
                     <span class="font-semibold text-lg">Lemonyte</span>
-                    <span class="opacity-50">•</span>
-                    <a href="/" class="link">Home</a>
-                    <span class="opacity-50">•</span>
-                    <a href="/blog" class="link">Blog</a>
-                    <span class="opacity-50">•</span>
-                    <a href="/challenges" class="link">CTF Challenges</a>
+                    <span class="flex gap-2 sm:gap-4">
+                        <span class="opacity-50">•</span>
+                        <a href="/" class="link">Home</a>
+                    </span>
+                    <span class="flex gap-2 sm:gap-4">
+                        <span class="opacity-50">•</span>
+                        <a href="/blog" class="link">Blog</a>
+                    </span>
+                    <span class="flex gap-2 sm:gap-4">
+                        <span class="opacity-50">•</span>
+                        <a href="/challenges" class="link">CTF Challenges</a>
+                    </span>
                 </div>
             </Island>
         </nav>
