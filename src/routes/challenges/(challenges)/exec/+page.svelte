@@ -1,8 +1,12 @@
 <script lang="ts">
+    import Prism from "prismjs";
+    import "prismjs/components/prism-python";
     import Giscus from "@giscus/svelte";
     import Head from "$lib/components/Head.svelte";
     import Island from "$lib/components/Island.svelte";
     import Tag from "$lib/components/Tag.svelte";
+
+    const codePreamble = `code = compile("print(...)", "<flag>", "exec")`;
 
     const { data } = $props();
     const { challenge } = $derived(data);
@@ -99,9 +103,11 @@
         <div class="flex flex-col gap-4">
             <h2 class="text-2xl mb-4">Try your code</h2>
             <div class="flex flex-col items-stretch">
-                <span class="p-2 select-none font-mono border border-sky-500 border-b-0 rounded-t-lg">
-                    code = compile("print(...)", "&lt;flag&gt;", "exec")
-                </span>
+                <pre class="whitespace-normal">
+                    <code class="block p-2 select-none border border-sky-500 border-b-0 rounded-t-lg">
+                        {@html Prism.highlight(codePreamble, Prism.languages.javascript, "javascript")}
+                    </code>
+                </pre>
 
                 <textarea
                     bind:value={solution}
