@@ -21,7 +21,7 @@
             }
 
             isSubmitting = true;
-            const response = await fetch("https://proxy-exec-function.lemonyte.workers.dev/", {
+            const response = await fetch("https://exec.func.lemonyte.com/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ code: solution }),
