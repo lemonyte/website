@@ -15,7 +15,7 @@
         {#each limit ? challenges.slice(0, limit) : challenges as challenge}
             <Card
                 title={challenge.title}
-                href={`/challenge/${challenge.slug}`}
+                href={`/challenges/${challenge.slug}`}
                 description={challenge.description}
                 tags={[challenge.language, challenge.difficulty]}
             />
