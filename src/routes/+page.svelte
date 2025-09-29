@@ -113,7 +113,7 @@
             <PostList {posts} />
         </Island>
         <Island>
-            <h2 class="text-2xl mb-4"><a href="/ctf" class="link">CTF Challenges</a></h2>
+            <h2 class="text-2xl mb-4"><a href="/challenges" class="link">CTF Challenges</a></h2>
             <ChallengeList {challenges} />
         </Island>
         <Island>
