@@ -21,6 +21,8 @@
                     <a href="/" class="link">Home</a>
                     <span class="opacity-50">•</span>
                     <a href="/blog" class="link">Blog</a>
+                    <span class="opacity-50">•</span>
+                    <a href="/ctf" class="link">CTF Challenges</a>
                 </div>
             </Island>
         </nav>

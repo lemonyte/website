@@ -1,0 +1,132 @@
+<script lang="ts">
+    import Giscus from "@giscus/svelte";
+    import Head from "$lib/components/Head.svelte";
+    import Island from "$lib/components/Island.svelte";
+    import Tag from "$lib/components/Tag.svelte";
+
+    const { data } = $props();
+    const { challenge } = $derived(data);
+
+    let solution = $state("");
+    let resultStatus: boolean | undefined = $state(undefined);
+    let resultText = $state("Click Submit to check your solution.");
+
+    async function submit() {
+        const response = await fetch("https://proxy-exec-function.lemonyte.workers.dev/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code: solution }),
+        });
+        resultStatus = response.status === 200;
+        resultText = await response.text();
+    }
+</script>
+
+<Head title={challenge.title} description={challenge.description}></Head>
+
+<div class="flex flex-col gap-8">
+    <Island>
+        <div class="flex flex-col">
+            <div class="flex flex-col gap-2">
+                <h1 class="text-4xl font-semibold">{challenge.title}</h1>
+                <div class="text-neutral-500 dark:text-neutral-400 prose prose-neutral dark:prose-invert">
+                    <span>Created by <a href="https://elliott.diy">Elliott</a> and <a href="/">Lemonyte</a></span>
+                </div>
+
+                <div class="flex flex-row gap-2">
+                    <Tag>{challenge.language}</Tag>
+                    <Tag>{challenge.difficulty}</Tag>
+                </div>
+            </div>
+            <div class="mt-8 prose prose-neutral dark:prose-invert">
+                <p>
+                    The flag is hidden in a <code>print</code> statement inside a compiled code object. This is
+                    provided to you in a variable named <code>code</code>
+                </p>
+                <p>Your task is to execute it so that it prints the flag.</p>
+                <p>
+                    However, built-in execution functions like <code>exec</code> and <code>eval</code> are blocked by a
+                    custom security mechanism. The challenge is to bypass these restrictions and successfully run the code
+                    object.
+                </p>
+                <p>
+                    To pass the challenge, the flag must be printed to <code>stdout</code>. Submit your Python code
+                    below to attempt the challenge.
+                </p>
+                <p>Need a hand or more detailed instructions? Shoot me a DM on Discord!</p>
+                <p>
+                    <i>Originally hosted on <a href="https://whcc.club">whcc.club</a></i>
+                </p>
+
+                <details>
+                    <summary class="select-none font-bold">Show hint</summary>
+                    <p>
+                        Security controls are rarely perfect, and this one is no exception. The execution environment
+                        uses a custom package,
+                        <a href="https://pypi.org/project/safe-exec/" target="_blank">safe-exec</a>. Understanding its
+                        behavior might help you find a way to run the <code>code</code> object.
+                    </p>
+                    <p>
+                        Also, keep in mind that compiled code objects can contain nested <code>exec</code> <i>and</i>
+                        <code>eval</code> calls.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </Island>
+
+    <Island>
+        <div class="flex flex-col gap-4">
+            <h2 class="text-2xl mb-4">Try your code</h2>
+            <div class="flex flex-col items-stretch">
+                <span class="p-2 select-none font-mono border border-sky-500 border-b-0 rounded-t-lg">
+                    code = compile("print(...)", "&lt;flag&gt;", "exec")
+                </span>
+
+                <textarea
+                    bind:value={solution}
+                    rows="10"
+                    placeholder="exec(code)"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    class={[
+                        "p-2 border font-mono border-sky-500 border-t-0 rounded-b-lg",
+                        "focus-visible:outline-none resize-y whitespace-pre overflow-auto",
+                    ]}
+                >
+                </textarea>
+            </div>
+
+            <button
+                onclick={submit}
+                class={[
+                    "font-semibold whitespace-nowrap p-2 rounded-lg",
+                    "bg-neutral-300/40 dark:bg-neutral-700/40 transition hover:bg-neutral-300/80 dark:hover:bg-neutral-700/80",
+                ]}>Submit</button
+            >
+            <div class="prose prose-neutral dark:prose-invert">
+                <p style:color={resultStatus === true ? "green" : resultStatus === false ? "red" : "unset"}>
+                    {resultText}
+                </p>
+            </div>
+        </div>
+    </Island>
+
+    <Island>
+        <Giscus
+            id="comments"
+            repo="lemonyte/website"
+            repoId="R_kgDOKC4xmg"
+            category="Giscus comments"
+            categoryId="DIC_kwDOKC4xms4CqA6y"
+            mapping="pathname"
+            term=""
+            strict="1"
+            reactionsEnabled="1"
+            inputPosition="top"
+            theme="transparent_dark"
+            lang="en"
+            loading="lazy"
+        />
+    </Island>
+</div>
