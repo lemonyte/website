@@ -52,6 +52,10 @@
             </div>
             <div class="mt-8 prose prose-neutral dark:prose-invert">
                 <p>
+                    Welcome to the Exec CTF challenge! Can you break out of a custom-built Python jail and successfully
+                    use <code>exec()</code>?
+                </p>
+                <p>
                     The flag is hidden in a <code>print</code> statement inside a compiled code object. This is
                     provided to you in a variable named <code>code</code>
                 </p>
@@ -65,7 +69,11 @@
                     To pass the challenge, the flag must be printed to <code>stdout</code>. Submit your Python code
                     below to attempt the challenge.
                 </p>
-                <p>Need a hand or more detailed instructions? Shoot me a DM on Discord!</p>
+                <p>
+                    You can download a local testing environment
+                    <a href="/assets/challenges/exec_challenge_local.zip">here</a>. Need a hand or more detailed
+                    instructions? Shoot me a DM on Discord!
+                </p>
                 <p>
                     <i>Originally hosted on <a href="https://whcc.club">whcc.club</a></i>
                 </p>
