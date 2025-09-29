@@ -1,11 +1,13 @@
 <script lang="ts">
-    import Island from "$lib/components/Island.svelte";
     import Card from "$lib/components/Card.svelte";
+    import Head from "$lib/components/Head.svelte";
+    import Island from "$lib/components/Island.svelte";
     import IconLink from "$lib/components/IconLink.svelte";
     import PostList from "$lib/components/PostList.svelte";
+    import ChallengeList from "$lib/components/ChallengeList.svelte";
     import { skills, links } from "$lib/data";
     import { posts } from "$lib/posts";
-    import Head from "$lib/components/Head.svelte";
+    import { challenges } from "$lib/challenges";
 
     const { data } = $props();
 </script>
@@ -109,6 +111,10 @@
         <Island>
             <h2 class="text-2xl mb-4"><a href="/blog" class="link">Posts</a></h2>
             <PostList {posts} />
+        </Island>
+        <Island>
+            <h2 class="text-2xl mb-4"><a href="/ctf" class="link">CTF Challenges</a></h2>
+            <ChallengeList {challenges} />
         </Island>
         <Island>
             <h2 class="text-2xl mb-4">Skills</h2>
