@@ -25,13 +25,24 @@
             }
 
             isSubmitting = true;
-            const response = await fetch("https://exec-ctf.func.lemonyte.com/", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ code: solution }),
-            });
-            resultStatus = response.status === 200;
-            resultText = resultStatus ? "Success! You solved it 🎉" : "That didn't work. Try again? 🤔";
+            try {
+                const response = await fetch("https://exec-ctf.func.lemonyte.com/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ code: solution }),
+                });
+                resultStatus = response.status === 200;
+                if (response.status === 200) {
+                    resultText = "Success! You solved it 🎉";
+                } else if (response.status === 406) {
+                    resultText = "Your solution didn't work. Try again? 🤔";
+                } else {
+                    throw new Error(`${response.status} ${await response.text()}`);
+                }
+            } catch (error) {
+                resultStatus = false;
+                resultText = `Something went wrong 😓 (it probably wasn't your fault)\n${error}`;
+            }
         } finally {
             isSubmitting = false;
         }
@@ -141,7 +152,7 @@
                     resultStatus === false && "bg-red-400/30",
                 ]}
             >
-                <p>{resultText}</p>
+                <p class="whitespace-pre-line">{resultText}</p>
             </div>
         </div>
     </Island>
