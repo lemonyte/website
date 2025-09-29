@@ -10,15 +10,27 @@
     let solution = $state("");
     let resultStatus: boolean | undefined = $state(undefined);
     let resultText = $state("Click Submit to check your solution.");
+    let isSubmitting = $state(false);
 
     async function submit() {
-        const response = await fetch("https://proxy-exec-function.lemonyte.workers.dev/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ code: solution }),
-        });
-        resultStatus = response.status === 200;
-        resultText = await response.text();
+        try {
+            if (!solution.trim()) {
+                resultStatus = false;
+                resultText = "There's no code to submit yet!";
+                return;
+            }
+
+            isSubmitting = true;
+            const response = await fetch("https://proxy-exec-function.lemonyte.workers.dev/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ code: solution }),
+            });
+            resultStatus = response.status === 200;
+            resultText = resultStatus ? "Success! You solved it 🎉" : "That didn't work. Try again? 🤔";
+        } finally {
+            isSubmitting = false;
+        }
     }
 </script>
 
@@ -100,14 +112,22 @@
             <button
                 onclick={submit}
                 class={[
-                    "font-semibold whitespace-nowrap p-2 rounded-lg",
-                    "bg-neutral-300/40 dark:bg-neutral-700/40 transition hover:bg-neutral-300/80 dark:hover:bg-neutral-700/80",
-                ]}>Submit</button
+                    "text-xl font-semibold whitespace-nowrap p-2 rounded-lg bg-neutral-300/40 dark:bg-neutral-700/40",
+                    "transition hover:bg-neutral-300/80 dark:hover:bg-neutral-700/80",
+                    "disabled:opacity-50 disabled:cursor-not-allowed",
+                ]}
+                disabled={isSubmitting}
             >
-            <div class="prose prose-neutral dark:prose-invert">
-                <p style:color={resultStatus === true ? "green" : resultStatus === false ? "red" : "unset"}>
-                    {resultText}
-                </p>
+                Submit
+            </button>
+            <div
+                class={[
+                    "text-center p-4 rounded-lg",
+                    resultStatus === true && "bg-green-400/30",
+                    resultStatus === false && "bg-red-400/30",
+                ]}
+            >
+                <p>{resultText}</p>
             </div>
         </div>
     </Island>
