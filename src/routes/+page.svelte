@@ -68,7 +68,7 @@
                     </li>
                     <li>
                         🔎 I enjoy dabbling in areas like reverse engineering,
-                        <a href="https://solve.whcc.club/exec">CTF challenges</a>, obfuscation,
+                        <a href="/challenges/exec">CTF challenges</a>, obfuscation,
                         <a href="https://wikipedia.org/wiki/Quine_(computing)">quines</a>, and
                         <a href="https://github.com/lemonyte/_">weird things no one asked for</a>.
                     </li>
