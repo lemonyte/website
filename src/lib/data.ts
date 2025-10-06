@@ -23,6 +23,12 @@ export const links = [
         alt: "Matrix",
         color: false,
     },
+    {
+        url: "/pgp.asc",
+        iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte/main/assets/key.svg",
+        alt: "PGP Key",
+        color: false,
+    },
 ];
 
 export const skills = [
