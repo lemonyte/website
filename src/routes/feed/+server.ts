@@ -3,7 +3,7 @@ import { posts } from "$lib/posts";
 
 export const prerender = true;
 
-export async function GET() {
+export const GET = async () => {
     const xml = `
         <?xml version="1.0" encoding="UTF-8"?>
         <feed xmlns="http://www.w3.org/2005/Atom">

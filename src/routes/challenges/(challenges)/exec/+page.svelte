@@ -16,7 +16,7 @@
     let resultText = $state("Click Submit to check your solution.");
     let isSubmitting = $state(false);
 
-    async function submit() {
+    const submit = async () => {
         try {
             if (!solution.trim()) {
                 resultStatus = false;
@@ -46,7 +46,7 @@
         } finally {
             isSubmitting = false;
         }
-    }
+    };
 </script>
 
 <Head title={challenge.title} description={challenge.description}></Head>
