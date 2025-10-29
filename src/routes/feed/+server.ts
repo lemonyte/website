@@ -40,7 +40,7 @@ export async function GET() {
 
     return new Response(xml, {
         headers: {
-            "Content-Type": "application/xml",
+            "Content-Type": "application/atom+xml",
         },
     });
 }
