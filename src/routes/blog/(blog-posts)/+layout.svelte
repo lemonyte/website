@@ -46,14 +46,27 @@
                 <div class="flex flex-col gap-2">
                     {#if post}
                         <h1 class="text-4xl font-semibold">{post.title}</h1>
-                        <div class="text-neutral-500 dark:text-neutral-400">
-                            <span>Published {post.date.toLocaleDateString(undefined, dateOptions)}</span>
-                            {#if post.updated}
-                                <span> • </span>
-                                <span>
-                                    Updated {post.updated.toLocaleDateString(undefined, dateOptions)}
+                        <div>
+                            {#if post.authors.length}
+                                <span class="inline-flex flex-row w-min">
+                                    {#each post.authors as author, index}
+                                        <a href={author.url} class="link">{author.name}</a>
+                                        {#if index < post.authors.length - 1}
+                                            <span class="text-neutral-500 dark:text-neutral-400">,&nbsp;</span>
+                                        {/if}
+                                    {/each}
                                 </span>
+                                <span class="text-neutral-500 dark:text-neutral-400"> • </span>
                             {/if}
+                            <span class="text-neutral-500 dark:text-neutral-400">
+                                <span>{post.date.toLocaleDateString(undefined, dateOptions)}</span>
+                                {#if post.updated}
+                                    <span> • </span>
+                                    <span>
+                                        Updated {post.updated.toLocaleDateString(undefined, dateOptions)}
+                                    </span>
+                                {/if}
+                            </span>
                         </div>
                         {#if post.tags.length}
                             <div class="flex flex-row gap-2">
