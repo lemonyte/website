@@ -31,7 +31,7 @@
         <title>{`${title} | ${config.siteName}`}</title>
     {/if}
     <link rel="canonical" href={url} />
-    <link href="/feed" type="application/atom+xml" rel="alternate" title="Atom feed" />
+    <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Atom feed" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
