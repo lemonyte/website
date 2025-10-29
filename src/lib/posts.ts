@@ -1,8 +1,15 @@
+export interface Author {
+    name: string;
+    email?: string;
+    url?: string;
+}
+
 interface PostMetadata {
     title: string;
     description: string;
     date: string;
     updated?: string;
+    authors: Author[];
     tags: string[];
     image?: string;
     visible: boolean;
