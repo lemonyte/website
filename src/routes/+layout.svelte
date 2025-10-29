@@ -17,7 +17,7 @@
         <Island>
             <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
                 <span class="flex flex-row items-center">
-                    <span class="font-semibold text-xl mix-blend-multiply">Lemonyte</span>
+                    <span class="font-semibold text-xl opacity-60">Lemonyte</span>
                     <button
                         class={[
                             "inline-flex items-center justify-center sm:hidden text-2xl ml-auto",
