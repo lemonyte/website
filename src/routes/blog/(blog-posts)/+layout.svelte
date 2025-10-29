@@ -27,7 +27,9 @@
     {#if post.updated}
         <meta property="og:article:modified_time" content={post.updated.toISOString()} />
     {/if}
-    <meta property="og:article:author" content="Lemonyte" />
+    {#each post.authors as author}
+        <meta property="og:article:author" content={author.name} />
+    {/each}
     {#each post.tags as tag}
         <meta property="og:article:tag" content={tag} />
     {/each}
