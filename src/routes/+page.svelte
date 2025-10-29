@@ -24,12 +24,9 @@
 
 <div class="flex justify-center text-neutral-800 dark:text-neutral-200">
     <div class="w-screen flex flex-col gap-6">
-        <div class="flex items-center flex-col">
-            <div class="h-screen flex flex-col justify-center">
-                <h1 class="text-7xl sm:text-8xl md:text-9xl select-none opacity-90 mix-blend-luminosity">Lemonyte</h1>
-            </div>
+        <div class="flex items-center flex-col md:hidden">
             <div
-                class="flex md:hidden shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
+                class="flex items-center shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
             >
                 {#each links as link}
                     <IconLink {...link} />
@@ -37,12 +34,10 @@
             </div>
         </div>
         <Island>
+            <h2 class="text-2xl">👋 Hi, I'm <b>Lemonyte</b></h2>
             <div class="max-w-none prose prose-neutral dark:prose-invert">
-                <p>
-                    👋 Hi, I'm <b>Lemonyte</b>. Open-sourcerer, IT student, STEM teacher, and aspiring cybersecurity
-                    researcher.
-                </p>
-                <ul class="p-4 list-disc">
+                <p>Open-sourcerer, IT student, STEM teacher, and aspiring cybersecurity researcher.</p>
+                <ul class="px-4 list-disc">
                     <li>
                         ❤️ I love
                         <a href="/blog/beamng-malware">cybersecurity</a>,
