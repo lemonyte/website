@@ -10,7 +10,8 @@
 
 <span
     class={[
-        "text-sm whitespace-nowrap text-ellipsis overflow-hidden capitalize p-1 rounded-md bg-neutral-300/40 dark:bg-neutral-700/40",
+        "text-sm whitespace-nowrap text-ellipsis overflow-hidden capitalize p-1 rounded-md",
+        "bg-neutral-300/40 dark:bg-neutral-700/40",
         hover && "transition hover:bg-neutral-300/80 dark:hover:bg-neutral-700/80",
     ]}
 >
