@@ -34,49 +34,52 @@
             </div>
         </div>
         <Island>
-            <h2 class="text-2xl">👋 Hi, I'm <b>Lemonyte</b></h2>
-            <div class="max-w-none prose prose-neutral dark:prose-invert">
-                <p>Open-sourcerer, IT student, STEM teacher, and aspiring cybersecurity researcher.</p>
-                <ul class="px-4 list-disc">
-                    <li>
-                        ❤️ I love
-                        <a href="/blog/beamng-malware">cybersecurity</a>,
-                        <a href="https://github.com/lemonyte/terminal-player">terminals</a>, and making things that are
-                        <a href="https://ferryplanner.ca">useful</a>
-                        to others.
-                    </li>
-                    <li>
-                        🧠 I'm always trying to expand my knowledge and skillset, so I'm
-                        <a href="https://github.com/lemonyte/dvd-screensaver">learning Rust</a> 🦀 right now.
-                    </li>
-                    <li>
-                        💡 I like to learn about anything that sparks my interest, like
-                        <a href="https://github.com/lemonyte/website">web development</a>,
-                        <a href="https://github.com/lemonyte/pyautotrace">image vectorization</a>,
-                        <a href="https://github.com/lemonyte/safe-exec">malware analysis</a>,
-                        <a href="https://github.com/lemonyte/russian-roulette-bot">Discord bots</a>, and
-                        <a href="https://github.com/lemonyte/stegosaurus">cryptography</a> to name a few.
-                    </li>
-                    <li>
-                        🔥 I care about user experience, system reliability, security, and occasionally having some
-                        <a href="https://httpwaifus.com">fun</a>.
-                    </li>
-                    <li>
-                        🔎 I enjoy dabbling in areas like reverse engineering,
-                        <a href="/challenges/exec">CTF challenges</a>, obfuscation,
-                        <a href="https://wikipedia.org/wiki/Quine_(computing)">quines</a>, and
-                        <a href="https://github.com/lemonyte/_">weird things no one asked for</a>.
-                    </li>
-                    <li>
-                        🤝 I'm quite
-                        <a href="https://liberamanifesto.com">fond of open source</a>
-                        and I'm always looking for ways to
-                        <a href="https://github.com/microsoft/PowerToys/pull/38052">contribute</a> and
-                        <a href="https://github.com/pydantic/bump-pydantic/pull/92">give back</a>.
-                    </li>
-                    <li>🔧 I mostly work in Python, JavaScript/TypeScript, HTML & CSS, Rust, and Svelte.</li>
-                </ul>
-            </div>
+            <main>
+                <h2 class="text-2xl">👋 Hi, I'm <b>Lemonyte</b></h2>
+                <div class="max-w-none prose prose-neutral dark:prose-invert">
+                    <p>Open-sourcerer, IT student, STEM teacher, and aspiring cybersecurity researcher.</p>
+                    <ul class="px-4 list-disc">
+                        <li>
+                            ❤️ I love
+                            <a href="/blog/beamng-malware">cybersecurity</a>,
+                            <a href="https://github.com/lemonyte/terminal-player">terminals</a>,
+                            and making things that are
+                            <a href="https://ferryplanner.ca">useful</a>
+                            to others.
+                        </li>
+                        <li>
+                            🧠 I'm always trying to expand my knowledge and skillset, so I'm
+                            <a href="https://github.com/lemonyte/dvd-screensaver">learning Rust</a> 🦀 right now.
+                        </li>
+                        <li>
+                            💡 I like to learn about anything that sparks my interest, like
+                            <a href="https://github.com/lemonyte/website">web development</a>,
+                            <a href="https://github.com/lemonyte/pyautotrace">image vectorization</a>,
+                            <a href="https://github.com/lemonyte/safe-exec">malware analysis</a>,
+                            <a href="https://github.com/lemonyte/russian-roulette-bot">Discord bots</a>, and
+                            <a href="https://github.com/lemonyte/stegosaurus">cryptography</a> to name a few.
+                        </li>
+                        <li>
+                            🔥 I care about user experience, system reliability, security, and occasionally having some
+                            <a href="https://httpwaifus.com">fun</a>.
+                        </li>
+                        <li>
+                            🔎 I enjoy dabbling in areas like reverse engineering,
+                            <a href="/challenges/exec">CTF challenges</a>, obfuscation,
+                            <a href="https://wikipedia.org/wiki/Quine_(computing)">quines</a>, and
+                            <a href="https://github.com/lemonyte/_">weird things no one asked for</a>.
+                        </li>
+                        <li>
+                            🤝 I'm quite
+                            <a href="https://liberamanifesto.com">fond of open source</a>
+                            and I'm always looking for ways to
+                            <a href="https://github.com/microsoft/PowerToys/pull/38052">contribute</a> and
+                            <a href="https://github.com/pydantic/bump-pydantic/pull/92">give back</a>.
+                        </li>
+                        <li>🔧 I mostly work in Python, JavaScript/TypeScript, HTML & CSS, Rust, and Svelte.</li>
+                    </ul>
+                </div>
+            </main>
         </Island>
         <Island>
             <h2 class="text-2xl mb-4">Projects</h2>
