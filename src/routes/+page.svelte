@@ -5,7 +5,7 @@
     import IconLink from "$lib/components/IconLink.svelte";
     import PostList from "$lib/components/PostList.svelte";
     import ChallengeList from "$lib/components/ChallengeList.svelte";
-    import { skills, links } from "$lib/data";
+    import { skills } from "$lib/data";
     import { posts } from "$lib/posts";
     import { challenges } from "$lib/challenges";
 
@@ -14,28 +14,8 @@
 
 <Head />
 
-<div class="hidden fixed top-0 left-0 h-screen md:flex flex-col justify-center">
-    <div class="flex flex-col items-center p-4 gap-4">
-        {#each links as link}
-            <IconLink {...link} />
-        {/each}
-    </div>
-</div>
-
 <div class="flex justify-center text-neutral-800 dark:text-neutral-200">
     <div class="w-screen flex flex-col gap-6">
-        <div class="flex items-center flex-col md:hidden">
-            <div
-                class={[
-                    "flex items-center shrink-0 gap-4 backdrop-blur-3xl p-4 rounded-xl",
-                    "text-neutral-700 dark:text-neutral-300 bg-neutral-100/40 dark:bg-neutral-900/40",
-                ]}
-            >
-                {#each links as link}
-                    <IconLink {...link} />
-                {/each}
-            </div>
-        </div>
         <Island>
             <main>
                 <h2 class="text-2xl">👋 Hi, I'm <b>Lemonyte</b></h2>

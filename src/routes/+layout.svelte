@@ -1,6 +1,8 @@
 <script lang="ts">
     import Blob from "$lib/components/Blob.svelte";
     import Island from "$lib/components/Island.svelte";
+    import IconLink from "$lib/components/IconLink.svelte";
+    import { links } from "$lib/data";
     import "../app.css";
 
     const { children } = $props();
@@ -12,8 +14,16 @@
     <Blob />
 {/each}
 
-<div class="min-h-screen flex flex-col">
-    <nav class="mb-8 md:mt-4 select-none">
+<div class="hidden fixed top-0 left-0 h-screen md:flex flex-col justify-center">
+    <div class="flex flex-col items-center p-4 gap-4">
+        {#each links as link}
+            <IconLink {...link} />
+        {/each}
+    </div>
+</div>
+
+<div class="min-h-screen flex flex-col gap-8">
+    <nav class="md:mt-4 select-none">
         <Island>
             <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
                 <span class="flex flex-row items-center">
@@ -37,7 +47,33 @@
         </Island>
     </nav>
 
-    <div class="mb-16">
+    <div>
         {@render children()}
     </div>
+
+    <footer class="mb-4 mt-auto">
+        <Island>
+            <div class="flex flex-row">
+                <div class="flex flex-col gap-2">
+                    <div class="prose prose-neutral dark:prose-invert text-sm">
+                        © {new Date().getFullYear()} Lemonyte.<br />
+                        Made with <a href="https://svelte.dev/">Svelte</a> and a keyboard.<br />
+                        Powered by <a href="https://pages.dev">Cloudflare</a> and late-night debugging.
+                    </div>
+                    <div class="flex flex-row gap-3 shrink-0">
+                        {#each links as link}
+                            <IconLink {...link} width="24px" height="24px" />
+                        {/each}
+                    </div>
+                </div>
+                <div class="flex flex-row prose prose-neutral dark:prose-invert text-sm ml-auto">
+                    <ul class="list-none">
+                        <li><a href="/sitemap.xml">Sitemap</a></li>
+                        <li><a href="/feed.xml">RSS/Atom feed</a></li>
+                        <li><a href="https://github.com/lemonyte/website">Source</a></li>
+                    </ul>
+                </div>
+            </div>
+        </Island>
+    </footer>
 </div>
