@@ -19,7 +19,7 @@
         "bg-neutral-200/40 hover:bg-neutral-300/40 dark:bg-neutral-900/40 dark:hover:bg-neutral-800/40",
     ]}
 >
-    <div class="flex flex-col lg:flex-row gap-1">
+    <div class="flex flex-row gap-1">
         <span
             class={[
                 "text-xl font-semibold text-ellipsis overflow-hidden whitespace-nowrap",
@@ -29,7 +29,7 @@
             {title || "Loading…"}
         </span>
         {#if tags && tagPosition === "title"}
-            <div class="flex flex-row gap-2 shrink-0 lg:ml-auto items-center overflow-hidden">
+            <div class="flex flex-row gap-2 shrink-0 ml-auto items-center overflow-hidden">
                 {#each tags as tag}
                     <Tag>{tag}</Tag>
                 {/each}
