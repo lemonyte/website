@@ -42,14 +42,10 @@
                         <li>
                             ❤️ I love
                             <a href="/blog/beamng-malware">cybersecurity</a>,
-                            <a href="https://github.com/lemonyte/terminal-player">terminals</a>,
-                            and making things that are
+                            <a href="https://github.com/lemonyte/terminal-player">terminals</a>, and making things that
+                            are
                             <a href="https://ferryplanner.ca">useful</a>
                             to others.
-                        </li>
-                        <li>
-                            🧠 I'm always trying to expand my knowledge and skillset, so I'm
-                            <a href="https://github.com/lemonyte/dvd-screensaver">learning Rust</a> 🦀 right now.
                         </li>
                         <li>
                             💡 I like to learn about anything that sparks my interest, like
@@ -60,14 +56,15 @@
                             <a href="https://github.com/lemonyte/stegosaurus">cryptography</a> to name a few.
                         </li>
                         <li>
-                            🔥 I care about user experience, system reliability, security, and occasionally having some
-                            <a href="https://httpwaifus.com">fun</a>.
-                        </li>
-                        <li>
                             🔎 I enjoy dabbling in areas like reverse engineering,
-                            <a href="/challenges/exec">CTF challenges</a>, obfuscation,
+                            <a href="/challenges/exec">CTF challenges</a>,
+                            <a href="https://github.com/lemonyte/no-code">obfuscation</a>,
                             <a href="https://wikipedia.org/wiki/Quine_(computing)">quines</a>, and
                             <a href="https://github.com/lemonyte/_">weird things no one asked for</a>.
+                        </li>
+                        <li>
+                            🔥 I care about user experience, system reliability, security, and occasionally having some
+                            <a href="https://httpwaifus.com">fun</a>.
                         </li>
                         <li>
                             🤝 I'm quite
@@ -76,7 +73,11 @@
                             <a href="https://github.com/microsoft/PowerToys/pull/38052">contribute</a> and
                             <a href="https://github.com/pydantic/bump-pydantic/pull/92">give back</a>.
                         </li>
-                        <li>🔧 I mostly work in Python, JavaScript/TypeScript, HTML & CSS, Rust, and Svelte.</li>
+                        <li>
+                            🧠 I'm always trying to expand my knowledge and skillset, so I'm
+                            <a href="https://github.com/lemonyte/dvd-screensaver">learning Rust</a> 🦀 right now.
+                        </li>
+                        <li>🔧 I mostly work in Python, JavaScript/TypeScript, HTML & CSS, Svelte, and Rust.</li>
                     </ul>
                 </div>
             </main>
@@ -86,7 +87,7 @@
             <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
                 {#await data.reposPromise}
                     {#each Array(6) as _}
-                        <Card />
+                        <Card tagPosition="title" />
                     {/each}
                 {:then repos}
                     {#await repos.json() then repos}
@@ -96,6 +97,7 @@
                                 href={repo.link}
                                 description={repo.description}
                                 tags={[repo.language]}
+                                tagPosition="title"
                             />
                         {/each}
                     {:catch error}
