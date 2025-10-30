@@ -26,7 +26,10 @@
     <div class="w-screen flex flex-col gap-6">
         <div class="flex items-center flex-col md:hidden">
             <div
-                class="flex items-center shrink-0 gap-4 text-neutral-700 dark:text-neutral-300 backdrop-blur-3xl p-4 rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40"
+                class={[
+                    "flex items-center shrink-0 gap-4 backdrop-blur-3xl p-4 rounded-xl",
+                    "text-neutral-700 dark:text-neutral-300 bg-neutral-100/40 dark:bg-neutral-900/40",
+                ]}
             >
                 {#each links as link}
                     <IconLink {...link} />

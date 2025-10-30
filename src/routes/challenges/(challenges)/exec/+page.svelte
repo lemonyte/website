@@ -137,8 +137,8 @@
             <button
                 onclick={submit}
                 class={[
-                    "text-xl font-semibold whitespace-nowrap p-2 rounded-lg bg-neutral-300/40 dark:bg-neutral-700/40",
-                    "transition hover:bg-neutral-300/80 dark:hover:bg-neutral-700/80",
+                    "text-xl font-semibold whitespace-nowrap p-2 rounded-lg transition",
+                    "bg-neutral-300/40 dark:bg-neutral-700/40 hover:bg-neutral-300/80 dark:hover:bg-neutral-700/80",
                     "disabled:opacity-50 disabled:cursor-not-allowed",
                 ]}
                 disabled={isSubmitting}
