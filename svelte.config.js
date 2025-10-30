@@ -20,15 +20,6 @@ const config = {
     ],
     kit: {
         adapter: adapter(),
-        prerender: {
-            handleHttpError: ({ path, message }) => {
-                // Ignore sitemap.xml from prerendering because it's generated after building.
-                if (path === "/sitemap.xml") {
-                    return;
-                }
-                throw new Error(message);
-            },
-        },
     },
 };
 
