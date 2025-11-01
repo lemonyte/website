@@ -43,4 +43,4 @@ export const GET = async () => {
             "Content-Type": "application/atom+xml",
         },
     });
-}
+};
