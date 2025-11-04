@@ -78,7 +78,7 @@ export const skills = [
         alt: "C#",
     },
     {
-        url: "https://www.w3schools.com/cpp",
+        url: "https://wikipedia.org/wiki/C++",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte/main/assets/cplusplus.svg",
         alt: "C++",
     },
