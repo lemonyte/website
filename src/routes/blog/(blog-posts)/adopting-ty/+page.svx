@@ -1,0 +1,121 @@
+---
+title: Adopting ty in pre-commit hooks and CI
+description: Replacing Pyright with ty for fast type checking and ditching pre-commit for prek.
+date: "2025-12-19T05:00:00Z"
+authors:
+  - name: Lemonyte
+    email: contact@lemonyte.com
+    url: https://lemonyte.com/
+tags:
+  - python
+  - devops
+  - code quality
+visible: true
+---
+
+I've long been a fan of code quality management tools like pre-commit and Ruff.
+Some years ago, I started setting up my Python repos with Flake8 for linting, Black for formatting, and Pyright for type checking, all wrapped into pre-commit hooks that run both locally before each commit and in GitHub Actions for that shiny green checkmark.
+
+It worked alright, but with one major drawback: all these tools running on every commit meant I could often hit "commit", step away to make a cup of tea while it was going, only to come back to everything failing because of some little bit of formatting I forgot to fix.
+When Astral started making waves in the ecosystem with Ruff, it was a breath of fresh air when the commit delay was barely noticeable again.
+
+Now, Ruff replaced Flake8, Black, and isort, but that still leaves us with the other side of the static analysis coin: type checking.
+As someone smart once said:
+
+> Committing should be a fast operation, so running a type checker in a pre-commit hook isn't ideal.
+
+## Astral's conquest
+
+Well, a year and a half has passed since that was said and Astral has been busy continuing their conquest of the Python tooling world.
+Enter ty, their third major offering, which promises to be a lightning-fast type checker.
+
+Great, so we can just pop Pyright out and shove ty in its place, right?
+Not so fast, there are a few things to consider when adopting *early beta* software like ty.
+
+## ty vs Pyright
+
+First, while ty is already quite capable, it doesn't yet cover all of the type analysis cases that the more established Pyright does.
+Even so, when I ran ty on a few of my projects, it surfaced a few issues that Pyright hadn't because of its different approach to type inference.
+
+As an example, consider a case when you want to check if a variable is a dictionary with string keys, while accepting `Any` as the input type (as you would in a [Pydantic validator](https://docs.pydantic.dev/latest/concepts/validators/#model-validators)).
+
+```python
+def foo[T: (Any, dict[str, Any])](param: T) -> T:
+    if isinstance(param, dict):
+        value = param.get("key")  # Argument to bound method `get` is incorrect: Expected `Never`, found `Literal["key"]`
+        if isinstance(value, int):
+            param["key"] = value + 10  # Invalid subscript assignment with key of type `Literal["key"]` and value of type `@Todo` on object of type `Top[dict[Unknown, Unknown]]`
+            return param  # Return type does not match returned value: expected `T@foo`, found `Top[dict[Unknown, Unknown]]`
+    return param
+```
+
+ty, as of version 0.0.4, raises some errors because it infers the type of `param` inside the first `if` block as `Top[dict[Unknown, Unknown]]`.
+It's not wrong, in fact because `isinstance()` doesn't accept parameterized generics like `dict[str, Any]`, there's no way to narrow down that `param` is indeed a dictionary with string keys when the original type hint allows `Any`.
+
+Pyright on the other hand optimistically resolves `param` as `dict[str, Any]*` inside the first `if` block, and doesn't raise any errors in this case.
+
+Now, let's simplify the example a bit and remove the type variable altogether:
+
+```python
+def bar(param: Any) -> Any:
+    if isinstance(param, dict):
+        value = param.get("key")
+        if isinstance(value, int):
+            param["key"] = value + 10
+            return param
+    return param
+```
+
+Inside the first `if` block Pyright resolves `param` as `dict[Unknown, Unknown]`, `value` as `Any | None`, and let's us do what we want in the assignment.
+
+ty however, now resolves `param` as `Any & Top[dict[Unknown, Unknown]]`, and `value` as `@Todo`, but without explicitly complaining.
+Clearly there are still some rough edges to be ironed out.
+
+Here's another for good measure:
+
+```python
+def ints_to_strs(x: Iterable[int]) -> Iterable[str]:
+    return map(str, x)  # Expected `Iterable[Buffer]`, found `Iterable[int]`
+```
+
+Seems like ty is picking the overload of `str()` which takes a `Buffer` instead of the one that takes an `object`.
+Interestingly enough, replace `Iterable[int]` with `Sequence[int]` and ty is happy again.
+
+## ty pre-commit hook
+
+As of writing, ty still hasn't added a pre-commit hook definition to their repo, and might not even get around to it before the stable release.
+Looking at [astral-sh/ty#269](https://github.com/astral-sh/ty/issues/269), though, there seems to be hope.
+
+In the meantime, I've opted for a local hook instead of using someone else's repo, in case it stops being maintained.
+If you want to give ty a spin in your pre-commit setup, you can add this to your `.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: local
+    hooks:
+      - id: ty-check
+        name: ty check
+        description: Type check with ty.
+        entry: uvx ty check
+        language: system
+        pass_filenames: false
+        require_serial: true
+```
+
+## Replacing pre-commit
+
+Since we're already sliding down the slippery slope of replacing every piece of Python tooling with an alternative written in Rust, it's only a matter of time before pre-commit itself needs a replacement.
+And what better opportunity than when you're already spending your hard-earned winter vacation reconfiguring your CI pipelines and dev tooling?
+
+There are [many](https://github.com/j178/prek/issues/73#issuecomment-3178076699) [reasons](https://github.com/numpy/numtype/issues/388#issuecomment-2746333410) besides performance to drop pre-commit, but suffice to say [prek](https://prek.j178.dev/) is a promising drop-in replacement that satisfies our insatiable hunger for "blazing fast Rust-based tooling".
+
+In stark contrast to pre-commit, prek's developer [merged a feature](https://github.com/j178/prek/pull/888#issuecomment-3665883010) at my request within a day, and prek worked out of the box with all of my existing pre-commit configurations, including the local ty hook above.
+I definitely recommend checking it out if you're tired of pre-commit [removing features](https://github.com/pre-commit/pre-commit/pull/3577) and use-cases you rely on.
+
+## Closing thoughts
+
+Though it's only been a few days since ty's first beta release, given Astral's track record with Ruff and uv, I think it's safe to say ty will get rapidly better in the coming months. I've gone ahead and replaced Pyright with ty in all of my projects that had type checking set up, including [pyautotrace](https://github.com/lemonyte/pyautotrace), [no-code](https://github.com/lemonyte/no-code), [safe-exec](https://github.com/lemonyte/safe-exec), and [ferry-planner](https://github.com/lemonyte/ferry-planner).
+
+I've also disabled Pylance in VS Code in favor of the ty extension, but with some per-project exceptions. [Contiguity's Python SDK](https://github.com/contiguity/python) for instance makes heavy use of type variables, so Pyright gets to stay on the throne a while longer there.
+
+Let me know in the comments how your experience with ty has been so far! I'm by no means an expert on type theory, so if I've made any mistakes in my examples please point them out as well.
