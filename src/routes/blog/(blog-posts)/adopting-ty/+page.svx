@@ -66,7 +66,7 @@ def bar(param: Any) -> Any:
     return param
 ```
 
-Inside the first `if` block Pyright resolves `param` as `dict[Unknown, Unknown]`, `value` as `Any | None`, and let's us do what we want in the assignment.
+Inside the first `if` block Pyright resolves `param` as `dict[Unknown, Unknown]`, `value` as `Any | None`, and lets us do what we want in the assignment.
 
 ty however, now resolves `param` as `Any & Top[dict[Unknown, Unknown]]`, and `value` as `@Todo`, but without explicitly complaining.
 Clearly there are still some rough edges to be ironed out.
@@ -83,7 +83,7 @@ Interestingly enough, replace `Iterable[int]` with `Sequence[int]` and ty is hap
 
 ## ty pre-commit hook
 
-As of writing, ty still hasn't added a pre-commit hook definition to their repo, and might not even get around to it before the stable release.
+As of writing, the ty team still hasn't added a pre-commit hook definition to their repo, and might not even get around to it before the stable release.
 Looking at [astral-sh/ty#269](https://github.com/astral-sh/ty/issues/269), though, there seems to be hope.
 
 In the meantime, I've opted for a local hook instead of using someone else's repo, in case it stops being maintained.
@@ -107,9 +107,9 @@ repos:
 Since we're already sliding down the slippery slope of replacing every piece of Python tooling with an alternative written in Rust, it's only a matter of time before pre-commit itself needs a replacement.
 And what better opportunity than when you're already spending your hard-earned winter vacation reconfiguring your CI pipelines and dev tooling?
 
-There are [many](https://github.com/j178/prek/issues/73#issuecomment-3178076699) [reasons](https://github.com/numpy/numtype/issues/388#issuecomment-2746333410) besides performance to drop pre-commit, but suffice to say [prek](https://prek.j178.dev/) is a promising drop-in replacement that satisfies our insatiable hunger for "blazing fast Rust-based tooling".
+There are [many](https://github.com/j178/prek/issues/73#issuecomment-3178076699) [reasons](https://github.com/numpy/numtype/issues/388#issuecomment-2746333410) besides performance to drop pre-commit, but suffice it to say [prek](https://prek.j178.dev/) is a promising drop-in replacement that satisfies our insatiable hunger for "blazing fast Rust-based tooling".
 
-In stark contrast to pre-commit, prek's developer [merged a feature](https://github.com/j178/prek/pull/888#issuecomment-3665883010) at my request within a day, and prek worked out of the box with all of my existing pre-commit configurations, including the local ty hook above.
+In stark contrast to pre-commit, prek's developer [merged a feature](https://github.com/j178/prek/pull/888#issuecomment-3665883010) within a day of my request, and prek worked out of the box with all of my existing pre-commit configurations, including the local ty hook above.
 I definitely recommend checking it out if you're tired of pre-commit [removing features](https://github.com/pre-commit/pre-commit/pull/3577) and use-cases you rely on.
 
 ## Closing thoughts
@@ -118,4 +118,4 @@ Though it's only been a few days since ty's first beta release, given Astral's t
 
 I've also disabled Pylance in VS Code in favor of the ty extension, but with some per-project exceptions. [Contiguity's Python SDK](https://github.com/contiguity/python) for instance makes heavy use of type variables, so Pyright gets to stay on the throne a while longer there.
 
-Let me know in the comments how your experience with ty has been so far! I'm by no means an expert on type theory, so if I've made any mistakes in my examples please point them out as well.
+Let me know in the comments how your experience with ty has been so far! I'm by no means an expert on Python's type system, so if I've made any mistakes in my examples please point them out as well.
