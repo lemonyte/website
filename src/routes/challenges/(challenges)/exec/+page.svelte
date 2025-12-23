@@ -63,6 +63,9 @@
                 <div class="flex flex-row gap-2">
                     <Tag>{challenge.language}</Tag>
                     <Tag>{challenge.difficulty}</Tag>
+                    {#each challenge.tags as tag}
+                        <Tag>{tag}</Tag>
+                    {/each}
                 </div>
             </div>
             <div class="mt-8 prose prose-neutral dark:prose-invert">

@@ -17,7 +17,7 @@
                 title={challenge.title}
                 href={`/challenges/${challenge.slug}`}
                 description={challenge.description}
-                tags={[challenge.language, challenge.difficulty]}
+                tags={[challenge.language, challenge.difficulty, ...challenge.tags]}
             />
         {/each}
     </div>

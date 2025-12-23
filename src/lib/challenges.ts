@@ -4,6 +4,7 @@ export interface CTFChallenge {
     slug: string;
     language: string;
     difficulty: "easy" | "medium" | "hard";
+    tags: string[];
 }
 
 export const challenges: CTFChallenge[] = [
@@ -13,5 +14,6 @@ export const challenges: CTFChallenge[] = [
         slug: "exec",
         language: "Python",
         difficulty: "medium",
+        tags: ["code execution", "jailbreak"],
     },
 ];
