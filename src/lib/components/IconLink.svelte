@@ -20,7 +20,7 @@
     }: Props = $props();
 </script>
 
-<a href={url} target="_blank" rel="nofollow" class="rounded-md select-none flex items-center">
+<a href={url} target="_blank" rel="nofollow" class="select-none flex items-center" style:width style:height>
     <img
         src={iconUrl}
         {alt}
