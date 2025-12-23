@@ -112,7 +112,7 @@
 
     <aside class="mt-8">
         <Island>
-            <h2 class="text-2xl mb-4 toc-exclude"><a href="/blog" class="link">More Posts</a></h2>
+            <h2 class="text-2xl mb-4 toc-exclude"><a href="/blog" class="link">Read next</a></h2>
             <PostList posts={posts.filter((otherPost) => otherPost.slug !== post.slug)} limit={3} />
         </Island>
     </aside>
