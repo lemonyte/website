@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Blob from "$lib/components/Blob.svelte";
+    import Background from "$lib/components/Background.svelte";
     import Island from "$lib/components/Island.svelte";
     import IconLink from "$lib/components/IconLink.svelte";
     import { links } from "$lib/data";
@@ -10,9 +10,7 @@
     let mobileNavOpen = $state(false);
 </script>
 
-{#each Array(24) as _}
-    <Blob />
-{/each}
+<Background />
 
 <div class="hidden fixed top-0 left-0 h-screen md:flex flex-col justify-center">
     <div class="flex flex-col items-center p-4 gap-4">
