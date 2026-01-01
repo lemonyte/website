@@ -35,6 +35,6 @@
     };
 </script>
 
-<Canvas autoplay class="w-full h-full fixed top-0 left-0 -z-20 blur-2xl">
+<Canvas autoplay pixelRatio={0.05} class="w-full h-full fixed top-0 left-0 -z-20 blur-2xl">
     <Layer {render} />
 </Canvas>
