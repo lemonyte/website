@@ -16,7 +16,7 @@
     -->
     <div
         class={[
-            "p-2 backdrop-blur-3xl rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40",
+            "p-2 rounded-xl bg-neutral-100/40 dark:bg-neutral-900/40",
             "sticky top-4 prose not-prose prose-neutral dark:prose-invert",
         ]}
     >
