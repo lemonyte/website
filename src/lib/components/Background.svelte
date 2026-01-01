@@ -4,16 +4,18 @@
 
     const { numBlobs = 24, spread = 0.8 } = $props();
 
-    const blobs = Array.from({ length: numBlobs }, () => ({
-        x: (Math.random() - 0.5) * 2 * spread,
-        y: (Math.random() - 0.5) * 2 * spread,
-        radius: 0.1 + Math.random() * 0.15,
-        r: Math.floor(Math.random() * 127),
-        g: Math.floor(Math.random() * 255),
-        b: 255,
-        breatheSpeed: 5 + Math.random() * 15,
-        breathePhase: Math.random() * Math.PI * 2,
-    }));
+    const blobs = $derived(
+        Array.from({ length: numBlobs }, () => ({
+            x: (Math.random() - 0.5) * 2 * spread,
+            y: (Math.random() - 0.5) * 2 * spread,
+            radius: 0.1 + Math.random() * 0.15,
+            r: Math.floor(Math.random() * 127),
+            g: Math.floor(Math.random() * 255),
+            b: 255,
+            breatheSpeed: 5 + Math.random() * 15,
+            breathePhase: Math.random() * Math.PI * 2,
+        })),
+    );
 
     const render: Render = ({ context, width, height, time }) => {
         time /= 1000;
