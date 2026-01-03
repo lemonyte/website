@@ -6,7 +6,6 @@
         animateHover?: boolean;
         animateMode?: "opacity" | "saturation";
         monochrome?: boolean;
-        followColorScheme?: boolean;
         width?: string;
         height?: string;
     }
@@ -32,7 +31,6 @@
             monochrome && "filter-monochrome",
             animateHover &&
                 (animateMode === "saturation" ? "saturate-0 hover:saturate-100" : "opacity-50 hover:opacity-100"),
-            // followColorScheme && "fix-safari-monochrome-svg",
         ]}
         {width}
         {height}

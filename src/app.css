@@ -22,17 +22,6 @@
     }
 }
 
-/* Fix for Safari not supporting media queries in SVGs. */
-/* https://bugs.webkit.org/show_bug.cgi?id=199134 */
-@utility fix-safari-monochrome-svg {
-    @supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none) {
-        @media (prefers-color-scheme: dark) {
-            --brightness: 2;
-        }
-        --brightness: 0;
-    }
-}
-
 .prose {
     img {
         @apply rounded-md;
