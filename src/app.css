@@ -12,6 +12,16 @@
     @apply underline transition-all duration-75 decoration-sky-500 decoration-1 hover:decoration-2;
 }
 
+/* Tailwind applies filters in the wrong order. */
+/* This utility also fixes https://bugs.webkit.org/show_bug.cgi?id=199134 */
+@utility filter-monochrome {
+    filter: invert(0.5) brightness(0);
+
+    @media (prefers-color-scheme: dark) {
+        filter: invert(0.5) brightness(2);
+    }
+}
+
 .prose {
     img {
         @apply rounded-md;

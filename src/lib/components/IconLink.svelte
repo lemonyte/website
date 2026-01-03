@@ -4,7 +4,8 @@
         iconUrl: string;
         alt?: string;
         animateHover?: boolean;
-        color?: boolean;
+        animateMode?: "opacity" | "saturation";
+        monochrome?: boolean;
         width?: string;
         height?: string;
     }
@@ -14,7 +15,8 @@
         iconUrl,
         alt = "",
         animateHover = true,
-        color = false,
+        animateMode = "opacity",
+        monochrome = false,
         width = "36px",
         height = "36px",
     }: Props = $props();
@@ -26,7 +28,9 @@
         {alt}
         class={[
             "shrink-0 transition duration-75",
-            animateHover && (color ? "saturate-0 hover:saturate-100" : "opacity-50 hover:opacity-100"),
+            monochrome && "filter-monochrome",
+            animateHover &&
+                (animateMode === "saturation" ? "saturate-0 hover:saturate-100" : "opacity-50 hover:opacity-100"),
         ]}
         {width}
         {height}
