@@ -89,21 +89,3 @@ aside.toc > nav > ol > li {
 aside.toc.mobile {
     @apply hidden;
 }
-
-@keyframes breathe {
-    0% {
-        opacity: 0.2;
-    }
-    100% {
-        opacity: 0.4;
-    }
-}
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0.2;
-    }
-}
