@@ -4,7 +4,8 @@
         iconUrl: string;
         alt?: string;
         animateHover?: boolean;
-        animateMode?: "opacity" | "saturation" | "monochrome-opacity";
+        animateMode?: "opacity" | "saturation";
+        monochrome?: boolean;
         followColorScheme?: boolean;
         width?: string;
         height?: string;
@@ -16,7 +17,7 @@
         alt = "",
         animateHover = true,
         animateMode = "opacity",
-        followColorScheme = false,
+        monochrome = false,
         width = "36px",
         height = "36px",
     }: Props = $props();
@@ -28,10 +29,10 @@
         {alt}
         class={[
             "shrink-0 transition duration-75",
+            monochrome && "filter-monochrome",
             animateHover &&
                 (animateMode === "saturation" ? "saturate-0 hover:saturate-100" : "opacity-50 hover:opacity-100"),
-            animateHover && animateMode === "monochrome-opacity" && "filter-monochrome",
-            followColorScheme && "fix-safari-monochrome-svg",
+            // followColorScheme && "fix-safari-monochrome-svg",
         ]}
         {width}
         {height}

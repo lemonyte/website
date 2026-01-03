@@ -3,32 +3,31 @@ export const links = [
         url: "https://github.com/lemonyte",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte/main/assets/github.svg",
         alt: "GitHub",
-        followColorScheme: true,
+        monochrome: true,
     },
     {
         url: "https://discord.com/users/710569497081151590",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte/main/assets/discord.svg",
         alt: "Discord",
-        followColorScheme: true,
-        animateMode: "monochrome-opacity",
+        monochrome: true,
     },
     {
         url: "mailto:contact@lemonyte.com",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte/main/assets/email.svg",
         alt: "Email",
-        followColorScheme: true,
+        monochrome: true,
     },
     {
         url: "https://matrix.to/#/@lemonyte:matrix.org",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte/main/assets/matrix.svg",
         alt: "Matrix",
-        followColorScheme: true,
+        monochrome: true,
     },
     {
         url: "/pgp.asc",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte/main/assets/key.svg",
         alt: "PGP Key",
-        followColorScheme: true,
+        monochrome: true,
     },
 ];
 
@@ -72,7 +71,7 @@ export const skills = [
         url: "https://www.rust-lang.org",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte/main/assets/rust.svg",
         alt: "Rust",
-        followColorScheme: true,
+        monochrome: true,
     },
     {
         url: "https://dotnet.microsoft.com/en-us/languages/csharp",
