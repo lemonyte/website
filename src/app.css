@@ -12,6 +12,26 @@
     @apply underline transition-all duration-75 decoration-sky-500 decoration-1 hover:decoration-2;
 }
 
+/* Tailwind applies filters in the wrong order. */
+@utility filter-monochrome {
+    filter: grayscale(1) brightness(var(--brightness, 0));
+
+    @media (prefers-color-scheme: dark) {
+        filter: invert(1) grayscale(1) brightness(var(--brightness, 2));
+    }
+}
+
+/* Fix for Safari not supporting media queries in SVGs. */
+/* https://bugs.webkit.org/show_bug.cgi?id=199134 */
+@utility fix-safari-monochrome-svg {
+    @media not all and (min-resolution:.001dpcm) {
+        @media (prefers-color-scheme: dark) {
+            --brightness: 2;
+        }
+        --brightness: 0;
+    }
+}
+
 .prose {
     img {
         @apply rounded-md;
