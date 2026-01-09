@@ -33,7 +33,7 @@
                         <li>
                             💡 I like to learn about anything that sparks my interest, like
                             <a href="https://github.com/lemonyte/website">web development</a>,
-                            <a href="https://github.com/lemonyte/pyautotrace">image vectorization</a>,
+                            <a href="https://pyautotrace.lemonyte.com">image vectorization</a>,
                             <a href="https://github.com/lemonyte/safe-exec">malware analysis</a>,
                             <a href="https://github.com/lemonyte/russian-roulette-bot">Discord bots</a>, and
                             <a href="https://github.com/lemonyte/stegosaurus">cryptography</a> to name a few.
