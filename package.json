@@ -19,7 +19,7 @@
         "@cloudflare/workers-types": "^4.20260115.0",
         "@giscus/svelte": "^3.1.0",
         "@sveltejs/adapter-cloudflare": "^7.2.4",
-        "@sveltejs/kit": "^2.49.4",
+        "@sveltejs/kit": "^2.49.5",
         "@sveltejs/vite-plugin-svelte": "^6.2.4",
         "@tailwindcss/typography": "^0.5.19",
         "@tailwindcss/vite": "^4.1.18",
