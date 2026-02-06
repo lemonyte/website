@@ -67,6 +67,14 @@
             </main>
         </Island>
         <Island>
+            <h2 class="text-2xl mb-4"><a href="/blog" class="link">Posts</a></h2>
+            <PostList {posts} />
+        </Island>
+        <Island>
+            <h2 class="text-2xl mb-4"><a href="/challenges" class="link">CTF Challenges</a></h2>
+            <ChallengeList {challenges} />
+        </Island>
+        <Island>
             <h2 class="text-2xl mb-4">Projects</h2>
             <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
                 {#await data.reposPromise}
@@ -91,14 +99,6 @@
                     <pre class="text-red-500">{error.message}</pre>
                 {/await}
             </div>
-        </Island>
-        <Island>
-            <h2 class="text-2xl mb-4"><a href="/blog" class="link">Posts</a></h2>
-            <PostList {posts} />
-        </Island>
-        <Island>
-            <h2 class="text-2xl mb-4"><a href="/challenges" class="link">CTF Challenges</a></h2>
-            <ChallengeList {challenges} />
         </Island>
         <Island>
             <h2 class="text-2xl mb-4">Skills</h2>
