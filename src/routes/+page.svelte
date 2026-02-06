@@ -8,6 +8,7 @@
     import { skills } from "$lib/data";
     import { posts } from "$lib/posts";
     import { challenges } from "$lib/challenges";
+    import type { Repository } from "$lib/repos";
 
     const { data } = $props();
 </script>
@@ -74,10 +75,10 @@
                     {/each}
                 {:then repos}
                     {#await repos.json() then repos}
-                        {#each repos.slice(0, 6) as repo}
+                        {#each (repos as Repository[]).slice(0, 6) as repo}
                             <Card
                                 title={repo.repo}
-                                href={repo.link}
+                                href={repo.website || repo.link}
                                 description={repo.description}
                                 tags={[repo.language]}
                                 tagPosition="title"
