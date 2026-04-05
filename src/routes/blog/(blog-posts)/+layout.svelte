@@ -71,7 +71,7 @@
                         {#if post.tags.length}
                             <div class="flex flex-row gap-2">
                                 {#each post.tags as tag}
-                                    <Tag hover={true}><a href={`/blog/${tag}`}>{tag}</a></Tag>
+                                    <Tag hover={true}><a href={`/blog/${encodeURIComponent(tag)}`}>{tag}</a></Tag>
                                 {/each}
                             </div>
                         {/if}
