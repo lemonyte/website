@@ -1,0 +1,69 @@
+---
+title: How to install Autopsy 4 on Kali Linux
+description: A short guide to installing Autopsy correctly.
+date: "2026-04-30"
+authors:
+  - name: Lemonyte
+    email: contact@lemonyte.com
+    url: https://lemonyte.com/
+tags:
+  - offsec
+  - forensics
+  - tutorial
+visible: true
+---
+
+Kali Linux comes with Autopsy 2.24 pre-installed, but if you want the latest version, you have to install it yourself.
+It turned out to be a bit of a hassle, so I'm writing down the steps I took for future reference.
+Maybe you'll find it useful too.
+
+I also tried a [Docker image](https://github.com/digitalsleuth/autopsy-docker) but Autopsy wasn't able to start.
+
+In this guide I'm working with Kali 2025.3 and Autopsy 4.22.1.
+
+## Step 1: Update apt sources
+
+Kali had removed Java 17 from their repos back in May 2025, so you need to add the Debian Bullseye repo to your apt sources.
+
+```bash
+echo "deb http://security.debian.org/debian-security bullseye-security main" | sudo tee -a /etc/apt/sources.list
+sudo apt update
+```
+
+## Step 2: Install dependencies
+
+Here you can just use Sleuth Kit's dependency installation script from their [instructions](https://github.com/sleuthkit/autopsy/blob/develop/Running_Linux_OSX.md).
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sleuthkit/autopsy/refs/heads/develop/linux_macos_install_scripts/install_prereqs_ubuntu.sh | bash
+sudo apt --fix-broken install --yes
+```
+
+## Step 3: Install Sleuth Kit
+
+```bash
+curl -OL https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.14.0/sleuthkit-java_4.14.0-1_amd64.deb
+sudo dpkg -i sleuthkit-java_4.14.0-1_amd64.deb
+```
+
+## Step 4: Install Autopsy
+
+As of writing, the latest version of Autopsy is 4.23.0, which requires Sleuth Kit 4.15.0.
+However, the latest version of Sleuth Kit available as a deb package is 4.14.0, so you have to install Autopsy 4.22.1 instead.
+
+```bash
+curl -OL https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.22.1/autopsy-4.22.1_v2.zip
+curl -OL https://raw.githubusercontent.com/sleuthkit/autopsy/refs/heads/develop/linux_macos_install_scripts/install_application.sh
+chmod +x install_application.sh
+./install_application.sh -z autopsy-4.22.1_v2.zip -i ~/autopsy -j /usr/lib/jvm/java-1.17.0-openjdk-amd64
+```
+
+The last argument should match the Java path that was printed in step 2.
+
+## Step 5: Run it
+
+Now you should be able to start Autopsy. Just make sure you gave your Kali VM at least 4 GB of RAM.
+
+```bash
+~/autopsy/autopsy-4.22.1/bin/autopsy
+```
