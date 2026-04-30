@@ -7,7 +7,7 @@ authors:
     email: contact@lemonyte.com
     url: https://lemonyte.com/
 tags:
-  - offsec
+  - cybersecurity
   - forensics
   - tutorial
 visible: true
