@@ -16,13 +16,13 @@
         "postbuild": "npx svelte-sitemap --domain https://lemonyte.com --out-dir .svelte-kit/cloudflare"
     },
     "devDependencies": {
-        "@cloudflare/workers-types": "^4.20260401.1",
+        "@cloudflare/workers-types": "^4.20260501.1",
         "@giscus/svelte": "^3.1.0",
         "@sveltejs/adapter-cloudflare": "^7.2.8",
-        "@sveltejs/kit": "^2.55.0",
+        "@sveltejs/kit": "^2.58.0",
         "@sveltejs/vite-plugin-svelte": "^7.0.0",
         "@tailwindcss/typography": "^0.5.19",
-        "@tailwindcss/vite": "^4.2.2",
+        "@tailwindcss/vite": "^4.2.4",
         "@types/prismjs": "^1.26.6",
         "mdsvex": "^0.12.7",
         "prismjs": "^1.30.0",
@@ -30,13 +30,13 @@
         "rehype-callouts": "2.1.0",
         "rehype-slug": "^6.0.0",
         "remark-github": "^12.0.0",
-        "svelte": "^5.55.1",
+        "svelte": "^5.55.5",
         "svelte-canvas": "^2.1.0",
-        "svelte-check": "^4.4.6",
+        "svelte-check": "^4.4.7",
         "svelte-sitemap": "^3.1.0",
         "svelte-toc": "^0.6.3",
-        "tailwindcss": "^4.2.2",
+        "tailwindcss": "^4.2.4",
         "typescript": "^5.9.3",
-        "vite": "^8.0.3"
+        "vite": "^8.0.10"
     }
 }
