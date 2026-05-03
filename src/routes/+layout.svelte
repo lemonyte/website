@@ -12,7 +12,7 @@
 
 <Background />
 
-<div class="hidden fixed top-0 left-0 h-screen md:flex flex-col justify-center">
+<div class="hidden fixed top-0 left-0 h-screen md:flex flex-col justify-center z-10">
     <div class="flex flex-col items-center p-4 gap-4">
         {#each links as link}
             <IconLink {...link} />
