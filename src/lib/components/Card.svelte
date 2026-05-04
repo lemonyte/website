@@ -5,11 +5,11 @@
         title?: string;
         href?: string;
         description?: string;
-        tags?: string[];
-        tagPosition?: "title" | "bottom";
+        titleTags?: string[];
+        bottomTags?: string[];
     }
 
-    const { title = "", href = "", description = "", tags = [], tagPosition = "bottom" }: Props = $props();
+    const { title = "", href = "", description = "", titleTags = [], bottomTags = [] }: Props = $props();
 </script>
 
 <a
@@ -20,39 +20,25 @@
     ]}
 >
     <div class="flex flex-row gap-1">
-        <span
-            class={[
-                "text-xl font-semibold text-ellipsis overflow-hidden whitespace-nowrap",
-                { "animate-pulse": !title },
-            ]}
-        >
-            {title || "Loading…"}
+        <span class="text-xl font-semibold text-ellipsis overflow-hidden whitespace-nowrap">
+            {title}
         </span>
-        {#if tags && tagPosition === "title"}
+        {#if titleTags.length}
             <div class="flex flex-row gap-2 shrink-0 ml-auto items-center overflow-hidden">
-                {#each tags as tag}
+                {#each titleTags as tag}
                     <Tag>{tag}</Tag>
                 {/each}
             </div>
         {/if}
     </div>
-    <span
-        class={[
-            "text-neutral-500 dark:text-neutral-400 text-sm text-ellipsis overflow-hidden whitespace-nowrap",
-            { "animate-pulse": !description },
-        ]}
-    >
-        {description || "Loading..."}
+    <span class="text-neutral-500 dark:text-neutral-400 text-sm text-ellipsis overflow-hidden whitespace-nowrap">
+        {description}
     </span>
-    {#if tagPosition === "bottom"}
+    {#if bottomTags.length}
         <div class="flex flex-row gap-2 mt-2 shrink-0 items-center overflow-hidden">
-            {#if tags.length}
-                {#each tags as tag}
-                    <Tag>{tag}</Tag>
-                {/each}
-            {:else}
-                <Tag>Loading...</Tag>
-            {/if}
+            {#each bottomTags as tag}
+                <Tag>{tag}</Tag>
+            {/each}
         </div>
     {/if}
 </a>

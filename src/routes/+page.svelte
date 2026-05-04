@@ -61,23 +61,22 @@
                             <a href="https://github.com/microsoft/PowerToys/pull/38052">contribute</a> and
                             <a href="https://github.com/pydantic/bump-pydantic/pull/92">give back</a>.
                         </li>
-                        <li>🔧 I mostly work in Python, JavaScript/TypeScript, HTML & CSS, Svelte, and Rust, with some C and Go on the side.</li>
+                        <li>
+                            🔧 I mostly work in Python, JavaScript/TypeScript, HTML & CSS, Svelte, and Rust, with some
+                            embedded C and Go on the side.
+                        </li>
                     </ul>
                     <h2 class="font-normal">What I'm doing now</h2>
                     <p>These days I'm...</p>
                     <ul>
                         <li>
                             Solving interesting problems in the Embedded Systems department of my university's
-                            <a href="https://en.wikipedia.org/wiki/Formula_Student">Formula Student</a> team, mostly related
-                            to vehicle telemetry and software quality.
+                            <a href="https://en.wikipedia.org/wiki/Formula_Student">Formula Student</a> team, like vehicle
+                            telemetry, hardware design, and software quality.
                         </li>
                         <li>
                             Developing a new social media app with a team of fellow students. It aims to bring people
                             together without the drawbacks of mainstream platforms.
-                        </li>
-                        <li>
-                            Dipping my toes into LAN parties, by helping organize one at my university and acting as
-                            webmaster.
                         </li>
                         <li>
                             Contributing to <a href="https://contiguity.com/">Contiguity</a>'s
@@ -105,7 +104,7 @@
             <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
                 {#await data.reposPromise}
                     {#each Array(6) as _}
-                        <Card tagPosition="title" />
+                        <Card title="Loading..." description="Loading..." titleTags={["Loading..."]} />
                     {/each}
                 {:then repos}
                     {#await repos.json() then repos}
@@ -114,8 +113,7 @@
                                 title={repo.repo}
                                 href={repo.website || repo.link}
                                 description={repo.description}
-                                tags={[repo.language]}
-                                tagPosition="title"
+                                titleTags={[repo.language]}
                             />
                         {/each}
                     {:catch error}

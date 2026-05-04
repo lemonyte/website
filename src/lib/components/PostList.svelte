@@ -8,12 +8,24 @@
     }
 
     const { posts, limit }: Props = $props();
+
+    const dateOptions: Intl.DateTimeFormatOptions = {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    };
 </script>
 
 <div>
     <div class="grid grid-cols-1 gap-2">
         {#each limit ? posts.slice(0, limit) : posts as post}
-            <Card title={post.title} href={`/blog/${post.slug}`} description={post.description} tags={post.tags} />
+            <Card
+                title={post.title}
+                href={`/blog/${post.slug}`}
+                description={post.description}
+                titleTags={[post.date.toLocaleDateString(undefined, dateOptions)]}
+                bottomTags={post.tags}
+            />
         {/each}
     </div>
 </div>

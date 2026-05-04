@@ -35,3 +35,8 @@ export const posts: Post[] = Object.entries(import.meta.glob("/src/routes/blog/*
     })
     .filter((post) => post !== null)
     .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+export const tags = Array.from(new Set(posts.flatMap((post) => post.tags))).sort(
+    (a, b) =>
+        posts.filter((post) => post.tags.includes(b)).length - posts.filter((post) => post.tags.includes(a)).length,
+);
