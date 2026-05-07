@@ -28,3 +28,5 @@ Disallow: /wired/
 
 User-agent: *
 Allow: /
+
+Sitemap: https://lemonyte.com/sitemap.xml
