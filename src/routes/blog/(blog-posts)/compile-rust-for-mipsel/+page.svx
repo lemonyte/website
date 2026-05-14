@@ -1,0 +1,178 @@
+---
+title: How to compile Rust for MIPS without FPU support
+description: Getting a Rust program running on a Teltonika RUT956 router.
+date: "2026-05-14"
+authors:
+  - name: Lemonyte
+    email: contact@lemonyte.com
+    url: https://lemonyte.com/
+tags:
+  - rust
+  - embedded
+  - tutorial
+visible: true
+---
+
+In my Formula Student team I'm using a [Teltonika RUT956](https://www.teltonika-networks.com/products/routers/rut956) router for relaying telemetry data over UDP to a base station outside the car.
+This thing has a 32-bit little-endian MIPS CPU without a floating-point unit (FPU).
+You can install Python on it, but the RUT956 isn't very powerful,
+so Python is too slow for handling real-time telemetry data.
+
+I figured I'd give Rust a shot, which brings us to the topic of today's post:
+how do you compile Rust code for a MIPS target without FPU support?
+
+After spending weeks recompiling the Rust standard library and staring at assembly in `gdb`,
+I finally got it working and thought I'd write up a guide to save you (and future me) some pain.
+
+## Step 0: Set up your project
+
+If you don't already have one, make a new project.
+
+```bash
+cargo new --bin rust-mips-softfloat
+```
+
+Put this into `src/main.rs` to test floating-point functionality:
+
+```rust
+// src/main.rs
+use std::io;
+
+fn main() {
+    if let Some(Ok(line)) = io::stdin().lines().next() {
+        let x: f32 = line.trim().parse().unwrap();
+        println!("x = {x}");
+        println!("sin(x) = {}", x.sin());
+    }
+}
+```
+
+## Step 1: Get the cross-compilation toolchain
+
+> [!NOTE]
+> I'm using musl as the C standard library here.
+> You can try your luck with glibc, but that's on you to figure out.
+
+> [!NOTE]
+> Since my MIPS CPU is little-endian, I'm using the `mipsel` target and toolchain.
+> If you have a big-endian MIPS CPU, use `mips` instead for the target and cross-compilation toolchain.
+
+To link Rust code for MIPS, you'll need a cross-compilation toolchain.
+[musl.cc](https://musl.cc/) conveniently provides precompiled toolchains for various targets,
+including `mipsel-linux-muslsf-cross`, which is the one we need.
+
+That toolchain name means:
+
+- `mipsel`: A MIPS little-endian CPU
+- `linux`: running a Linux OS
+- `muslsf`: using the musl C standard library and **soft float**
+
+You *could* download it, extract it, add the `bin` directory to your `PATH`, and so on,
+but here's a Dockerfile that does the work for you without cluttering your pristine system (you did clear out your downloads folder in the last year, right?).
+
+```dockerfile
+# builder/Dockerfile
+FROM rust:1
+
+# Install the cross-compilation toolchain.
+RUN apt update \\\
+    && apt install -y --no-install-recommends curl ca-certificates tar \\\
+    && rm -rf /var/lib/apt/lists/*
+
+ARG TOOLCHAIN_ROOT=/opt/toolchains
+ARG TOOLCHAIN=mipsel-linux-muslsf-cross
+ARG LINKER=mipsel-linux-muslsf-gcc
+
+RUN mkdir -p ${TOOLCHAIN_ROOT} \\\
+    && curl -fsSL https://musl.cc/${TOOLCHAIN}.tgz | tar -xzf - -C ${TOOLCHAIN_ROOT}
+
+ENV PATH="${TOOLCHAIN_ROOT}/${TOOLCHAIN}/bin:${PATH}"
+ENV CARGO_TARGET_MIPSEL_UNKNOWN_LINUX_MUSL_LINKER=${LINKER}
+
+# Install a nightly Rust toolchain.
+RUN rustup toolchain install nightly --component rust-src
+
+RUN useradd -ms /bin/bash builder
+USER builder
+
+WORKDIR /workspace
+```
+
+## Step 2: Create a builder container
+
+To streamline the build process, create a `docker-compose.yaml` file:
+
+```yaml
+# docker-compose.yaml
+volumes:
+  cargo-cache:
+
+services:
+  builder:
+    build: ./builder
+    working_dir: /workspace
+    volumes:
+      - cargo-cache:/usr/local/cargo
+      - .:/workspace
+    command: cargo +nightly build --release --target mipsel-unknown-linux-musl -Z build-std
+```
+
+## Step 3: Build your code
+
+Now you can simply run
+
+```bash
+docker compose run --rm builder
+```
+
+and your binary will be at `target/mipsel-unknown-linux-musl/release/rust-mips-softfloat`.
+
+## Step 4: Check the binary
+
+To verify that the binary is actually using soft float,
+you can use `readelf` from the cross-compilation toolchain to check the attributes.
+
+```bash
+docker compose run --rm builder bash -c "mipsel-linux-muslsf-readelf -A target/mipsel-unknown-linux-musl/release/rust-mips-softfloat | head -n 12"
+```
+
+You should see something like this:
+
+```bash
+Attribute Section: gnu
+File Attributes
+  Tag_GNU_MIPS_ABI_FP: Soft float
+
+MIPS ABI Flags Version: 0
+
+ISA: MIPS32r2
+GPR size: 32
+CPR1 size: 0
+CPR2 size: 0
+FP ABI: Soft float
+ISA Extension: None
+```
+
+If you see "Hard float" instead,
+double-check you're using the `mipsel-unknown-linux-musl` target and `mipsel-linux-muslsf-gcc` linker.
+
+## Step 5: Test it on your device
+
+Copy the binary over to your MIPS device and give it a spin.
+It should calculate the sine of any input float without crashing due to illegal instructions.
+
+```bash
+$ ./rust-mips-softfloat
+4.2↵
+x = 4.2
+sin(x) = -0.87157565
+```
+
+## Conclusion
+
+That's it! I hope this guide helped you get your Rust code running on MIPS.
+
+If you ran into any issues, noticed a mistake,
+or just want to share your thoughts, drop a comment below or shoot me an email.
+
+Happy tinkering!
