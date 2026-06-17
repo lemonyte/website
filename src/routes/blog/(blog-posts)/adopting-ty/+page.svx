@@ -1,7 +1,8 @@
 ---
 title: Adopting ty in pre-commit hooks and CI
 description: Replacing Pyright with ty for fast type checking and ditching pre-commit for prek.
-date: "2025-12-19T05:00:00Z"
+date: "2025-12-19"
+updated: "2026-06-17"
 authors:
   - name: Lemonyte
     email: contact@lemonyte.com
@@ -82,6 +83,11 @@ Seems like ty is picking the overload of `str()` which takes a `Buffer` instead 
 Interestingly enough, replace `Iterable[int]` with `Sequence[int]` and ty is happy again.
 
 ## ty pre-commit hook
+
+> [!NOTE]
+> **Update June 17, 2026**:
+> There is now an [official ty pre-commit hook](https://github.com/astral-sh/ty-pre-commit).
+> The section below is outdated.
 
 As of writing, the ty team still hasn't added a pre-commit hook definition to their repo, and might not even get around to it before the stable release.
 Looking at [astral-sh/ty#269](https://github.com/astral-sh/ty/issues/269), though, there seems to be hope.
