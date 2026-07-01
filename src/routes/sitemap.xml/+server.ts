@@ -1,4 +1,4 @@
-import { response } from "super-sitemap";
+import { response } from "super-sitemap/sveltekit";
 import { baseUrl } from "$lib/config";
 
 export const GET = async () => {
