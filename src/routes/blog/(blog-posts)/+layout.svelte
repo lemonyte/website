@@ -1,8 +1,3 @@
-<script lang="ts" module>
-    import img from "$lib/components/LazyImg.svelte";
-    export { img };
-</script>
-
 <script lang="ts">
     import Island from "$lib/components/Island.svelte";
     import PostList from "$lib/components/PostList.svelte";
@@ -84,7 +79,7 @@
                         <Toc breakpoint={0} title="Table of contents" />
                     </div>
                     {#if post.image}
-                        <img src={post.image} alt="Banner" />
+                        <img src={post.image} alt="Banner" loading="lazy" />
                     {/if}
                     {@render children()}
                 </div>
