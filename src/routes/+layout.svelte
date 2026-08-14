@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Background from "$lib/components/Background.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import IconLink from "$lib/components/IconLink.svelte";
-    import { links } from "$lib/data";
+    import Background from "#lib/components/Background.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import IconLink from "#lib/components/IconLink.svelte";
+    import { links } from "#lib/data.ts";
     import "../app.css";
 
     const { children } = $props();

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import Island from "$lib/components/Island.svelte";
-    import PostList from "$lib/components/PostList.svelte";
-    import Tag from "$lib/components/Tag.svelte";
-    import Head from "$lib/components/Head.svelte";
-    import TocIsland from "$lib/components/TocIsland.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import PostList from "#lib/components/PostList.svelte";
+    import Tag from "#lib/components/Tag.svelte";
+    import Head from "#lib/components/Head.svelte";
+    import TocIsland from "#lib/components/TocIsland.svelte";
     import Toc from "svelte-toc";
     import Giscus from "@giscus/svelte";
 

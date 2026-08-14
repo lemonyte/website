@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Head from "$lib/components/Head.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import PostList from "$lib/components/PostList.svelte";
-    import Tag from "$lib/components/Tag.svelte";
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import PostList from "#lib/components/PostList.svelte";
+    import Tag from "#lib/components/Tag.svelte";
     import { page } from "$app/state";
-    import { posts, tags } from "$lib/posts";
+    import { posts, tags } from "#lib/posts.ts";
 
     let tagFilter = $derived(page.url.searchParams.get("tag"));
     let filteredPosts = $derived(posts.filter((post) => (tagFilter ? post.tags.includes(tagFilter) : true)));

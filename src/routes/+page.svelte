@@ -1,14 +1,14 @@
 <script lang="ts">
-    import Card from "$lib/components/Card.svelte";
-    import Head from "$lib/components/Head.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import IconLink from "$lib/components/IconLink.svelte";
-    import PostList from "$lib/components/PostList.svelte";
-    import ChallengeList from "$lib/components/ChallengeList.svelte";
-    import { skills } from "$lib/data";
-    import { posts } from "$lib/posts";
-    import { challenges } from "$lib/challenges";
-    import type { Repository } from "$lib/repos";
+    import Card from "#lib/components/Card.svelte";
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import IconLink from "#lib/components/IconLink.svelte";
+    import PostList from "#lib/components/PostList.svelte";
+    import ChallengeList from "#lib/components/ChallengeList.svelte";
+    import { skills } from "#lib/data.ts";
+    import { posts } from "#lib/posts.ts";
+    import { challenges } from "#lib/challenges.ts";
+    import type { Repository } from "#lib/repos.ts";
 
     const { data } = $props();
 </script>

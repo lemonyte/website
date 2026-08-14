@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Head from "$lib/components/Head.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import ChallengeList from "$lib/components/ChallengeList.svelte";
-    import { challenges } from "$lib/challenges";
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import ChallengeList from "#lib/components/ChallengeList.svelte";
+    import { challenges } from "#lib/challenges.ts";
 </script>
 
 <Head title="CTF Challenges" description="Lemonyte's CTF Challenges" />
