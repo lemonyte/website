@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import Island from "$lib/components/Island.svelte";
-    import Head from "$lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import Head from "#lib/components/Head.svelte";
 </script>
 
 <Head />

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import * as config from "$lib/config";
+    import * as config from "#lib/config.ts";
     import type { Snippet } from "svelte";
 
     interface Props {

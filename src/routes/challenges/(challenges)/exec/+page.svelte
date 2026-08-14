@@ -2,9 +2,9 @@
     import Prism from "prismjs";
     import "prismjs/components/prism-python";
     import Giscus from "@giscus/svelte";
-    import Head from "$lib/components/Head.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import Tag from "$lib/components/Tag.svelte";
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import Tag from "#lib/components/Tag.svelte";
 
     const codePreamble = `code = compile("print(...)", "<flag>", "exec")`;
 
