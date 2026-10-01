@@ -89,8 +89,13 @@ aside.toc {
         --bg-color: var(--color-neutral-700);
     }
 
-    > nav > h2 {
+    /* The title is a custom snippet, so svelte-toc's scoped title styles don't reach it. */
+    > nav > .toc-title {
         @apply border-b text-2xl;
+        padding: var(--toc-title-padding);
+        margin: var(--toc-title-margin);
+        color: var(--toc-title-color);
+        font-weight: var(--toc-title-font-weight);
     }
 
     > nav > ol > li {

@@ -5,9 +5,12 @@
     import { challenges } from "$lib/challenges";
 </script>
 
-<Head title="CTF Challenges" description="Lemonyte's CTF Challenges" />
+<Head
+    title="CTF Challenges"
+    description="Various custom-made security challenges to practice your cyber skills."
+/>
 
 <Island>
-    <h1 class="text-4xl font-semibold mb-4">Challenges</h1>
+    <h1 class="text-4xl font-semibold mb-4">CTF Challenges</h1>
     <ChallengeList {challenges} />
 </Island>

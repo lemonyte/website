@@ -3,9 +3,11 @@
     import PostList from "$lib/components/PostList.svelte";
     import Tag from "$lib/components/Tag.svelte";
     import Head from "$lib/components/Head.svelte";
+    import JsonLd from "$lib/components/JsonLd.svelte";
     import TocIsland from "$lib/components/TocIsland.svelte";
     import Toc from "svelte-toc";
     import Giscus from "@giscus/svelte";
+    import * as config from "$lib/config";
 
     const { children, data } = $props();
     const { post, posts } = $derived(data);
@@ -17,22 +19,47 @@
     };
 </script>
 
-<Head title={post.title} description={post.description} type="article" image={post.image}>
-    <meta property="og:article:published_time" content={post.date.toISOString()} />
+<Head
+    title={post.title}
+    description={post.description}
+    type="article"
+    image={post.image}
+    imageAlt={post.imageAlt}
+>
+    <meta property="article:published_time" content={post.date.toISOString()} />
     {#if post.updated}
-        <meta property="og:article:modified_time" content={post.updated.toISOString()} />
+        <meta property="article:modified_time" content={post.updated.toISOString()} />
     {/if}
     {#each post.authors as author}
-        <meta property="og:article:author" content={author.name} />
+        <meta property="article:author" content={author.url ?? author.name} />
     {/each}
     {#each post.tags as tag}
-        <meta property="og:article:tag" content={tag} />
+        <meta property="article:tag" content={tag} />
     {/each}
 </Head>
+<JsonLd
+    data={{
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.description,
+        url: new URL(`/blog/${post.slug}`, config.baseUrl).href,
+        mainEntityOfPage: new URL(`/blog/${post.slug}`, config.baseUrl).href,
+        datePublished: post.date.toISOString(),
+        dateModified: (post.updated ?? post.date).toISOString(),
+        ...(post.image && { image: new URL(post.image, config.baseUrl).href }),
+        author: post.authors.map((author) => ({ "@type": "Person", name: author.name, url: author.url })),
+        keywords: post.tags,
+    }}
+/>
 
 <div class="relative">
     <TocIsland>
-        <Toc />
+        <!-- Render TOC titles as paragraphs so they don't add headings to the page outline. -->
+        <Toc>
+            {#snippet titleSnippet()}
+                <p class="toc-title toc-exclude">On this page</p>
+            {/snippet}
+        </Toc>
     </TocIsland>
 
     <main>
@@ -54,11 +81,16 @@
                                 <span class="text-neutral-500 dark:text-neutral-400"> • </span>
                             {/if}
                             <span class="text-neutral-500 dark:text-neutral-400">
-                                <span>{post.date.toLocaleDateString(undefined, dateOptions)}</span>
+                                <time datetime={post.date.toISOString()}>
+                                    {post.date.toLocaleDateString(undefined, dateOptions)}
+                                </time>
                                 {#if post.updated}
                                     <span> • </span>
                                     <span>
-                                        Updated {post.updated.toLocaleDateString(undefined, dateOptions)}
+                                        Updated
+                                        <time datetime={post.updated.toISOString()}>
+                                            {post.updated.toLocaleDateString(undefined, dateOptions)}
+                                        </time>
                                     </span>
                                 {/if}
                             </span>
@@ -76,10 +108,14 @@
                 </div>
                 <div class="mt-8 max-w-none prose prose-neutral dark:prose-invert">
                     <div class="xl:hidden">
-                        <Toc breakpoint={0} title="Table of contents" />
+                        <Toc breakpoint={0}>
+                            {#snippet titleSnippet()}
+                                <p class="toc-title toc-exclude">Table of contents</p>
+                            {/snippet}
+                        </Toc>
                     </div>
                     {#if post.image}
-                        <img src={post.image} alt="Banner" loading="lazy" />
+                        <img src={post.image} alt={post.imageAlt ?? ""} fetchpriority="high" />
                     {/if}
                     {@render children()}
                 </div>

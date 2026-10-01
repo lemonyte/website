@@ -5,22 +5,50 @@
     import IconLink from "$lib/components/IconLink.svelte";
     import PostList from "$lib/components/PostList.svelte";
     import ChallengeList from "$lib/components/ChallengeList.svelte";
-    import { skills } from "$lib/data";
+    import JsonLd from "$lib/components/JsonLd.svelte";
+    import { links, skills } from "$lib/data";
     import { posts } from "$lib/posts";
     import { challenges } from "$lib/challenges";
+    import * as config from "$lib/config";
     import type { Repository } from "$lib/repos";
 
     const { data } = $props();
+
+    const personId = new URL("#person", config.baseUrl).href;
 </script>
 
 <Head />
+<JsonLd
+    data={{
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": new URL("#website", config.baseUrl).href,
+                url: config.baseUrl.href,
+                name: config.siteName,
+                description: config.description,
+                author: { "@id": personId },
+            },
+            {
+                "@type": "Person",
+                "@id": personId,
+                name: config.siteName,
+                url: config.baseUrl.href,
+                description: config.tagline,
+                sameAs: links
+                    .filter((link) => link.rel === "me" && link.url.startsWith("https://"))
+                    .map((link) => link.url),
+            },
+        ],
+    }}
+/>
 
 <div class="flex justify-center text-neutral-800 dark:text-neutral-200">
     <div class="w-screen flex flex-col gap-6">
         <Island>
             <main>
                 <div class="max-w-none prose prose-neutral dark:prose-invert">
-                    <h2 class="font-normal">👋 Hi, I'm <b>Lemonyte</b></h2>
+                    <h1 class="font-normal text-2xl mb-6">👋 Hi, I'm <b>Lemonyte</b></h1>
                     <p>Open-sourcerer, IT student, STEM teacher, and aspiring cybersecurity researcher.</p>
                     <ul class="px-4 list-disc">
                         <li>

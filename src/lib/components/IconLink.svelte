@@ -6,8 +6,9 @@
         animateHover?: boolean;
         animateMode?: "opacity" | "saturation";
         monochrome?: boolean;
-        width?: string;
-        height?: string;
+        rel?: string;
+        width?: number;
+        height?: number;
     }
 
     const {
@@ -17,12 +18,20 @@
         animateHover = true,
         animateMode = "opacity",
         monochrome = false,
-        width = "36px",
-        height = "36px",
+        rel = "nofollow",
+        width = 36,
+        height = 36,
     }: Props = $props();
 </script>
 
-<a href={url} target="_blank" rel="nofollow" class="select-none flex items-center" style:width style:height>
+<a
+    href={url}
+    target="_blank"
+    {rel}
+    class="select-none flex items-center"
+    style:width="{width}px"
+    style:height="{height}px"
+>
     <img
         src={iconUrl}
         {alt}

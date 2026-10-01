@@ -60,7 +60,7 @@
                     </div>
                     <div class="flex flex-row gap-3 shrink-0">
                         {#each links as link}
-                            <IconLink {...link} width="24px" height="24px" />
+                            <IconLink {...link} width={24} height={24} />
                         {/each}
                     </div>
                 </div>

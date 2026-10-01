@@ -10,7 +10,10 @@
     let filteredPosts = $derived(posts.filter((post) => (tagFilter ? post.tags.includes(tagFilter) : true)));
 </script>
 
-<Head title="Posts" description="Lemonyte's Blog" />
+<Head
+    title="Blog"
+    description="Posts by Lemonyte about cybersecurity, malware analysis, Rust, Python, embedded systems, and more."
+/>
 
 <Island>
     <h1 class="text-4xl font-semibold mb-4">Posts</h1>

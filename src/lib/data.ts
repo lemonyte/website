@@ -4,30 +4,35 @@ export const links = [
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte@main/assets/github.svg",
         alt: "GitHub",
         monochrome: true,
+        rel: "me",
     },
     {
         url: "https://discord.com/users/710569497081151590",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte@main/assets/discord.svg",
         alt: "Discord",
         monochrome: true,
+        rel: "me",
     },
     {
         url: "mailto:contact@lemonyte.com",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte@main/assets/email.svg",
         alt: "Email",
         monochrome: true,
+        rel: "me",
     },
     {
         url: "https://matrix.to/#/@lemonyte:matrix.org",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte@main/assets/matrix.svg",
         alt: "Matrix",
         monochrome: true,
+        rel: "me",
     },
     {
         url: "/pgp.asc",
         iconUrl: "https://cdn.statically.io/gh/lemonyte/lemonyte@main/assets/key.svg",
         alt: "PGP Key",
         monochrome: true,
+        rel: "pgpkey",
     },
 ];
 

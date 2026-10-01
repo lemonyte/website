@@ -12,6 +12,7 @@ interface PostMetadata {
     authors: Author[];
     tags: string[];
     image?: string;
+    imageAlt?: string;
     visible: boolean;
 }
 

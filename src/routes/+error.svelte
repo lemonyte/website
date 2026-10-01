@@ -4,7 +4,7 @@
     import Head from "$lib/components/Head.svelte";
 </script>
 
-<Head />
+<Head title={`${page.status} ${page.error?.message ?? ""}`.trim()} noindex />
 
 <div class="my-auto">
     <Island>
