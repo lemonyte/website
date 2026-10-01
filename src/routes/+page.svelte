@@ -13,8 +13,6 @@
     import type { Repository } from "$lib/repos";
 
     const { data } = $props();
-
-    const personId = new URL("#person", config.baseUrl).href;
 </script>
 
 <Head />
@@ -23,15 +21,15 @@
         "@graph": [
             {
                 "@type": "WebSite",
-                "@id": new URL("#website", config.baseUrl).href,
+                "@id": config.websiteId,
                 url: config.baseUrl.href,
                 name: config.siteName,
                 description: config.description,
-                author: { "@id": personId },
+                author: { "@id": config.personId },
             },
             {
                 "@type": "Person",
-                "@id": personId,
+                "@id": config.personId,
                 name: config.siteName,
                 url: config.baseUrl.href,
                 description: config.tagline,

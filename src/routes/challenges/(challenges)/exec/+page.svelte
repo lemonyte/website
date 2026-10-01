@@ -3,8 +3,10 @@
     import "prismjs/components/prism-python";
     import Giscus from "@giscus/svelte";
     import Head from "$lib/components/Head.svelte";
+    import JsonLd from "$lib/components/JsonLd.svelte";
     import Island from "$lib/components/Island.svelte";
     import Tag from "$lib/components/Tag.svelte";
+    import * as config from "$lib/config";
 
     const codePreamble = `code = compile("print(...)", "<flag>", "exec")`;
 
@@ -50,6 +52,22 @@
 </script>
 
 <Head title={challenge.title} description={challenge.description}></Head>
+<JsonLd
+    data={{
+        "@type": "LearningResource",
+        name: challenge.title,
+        description: challenge.description,
+        url: new URL(`/challenges/${challenge.slug}`, config.baseUrl).href,
+        learningResourceType: "CTF challenge",
+        educationalLevel: challenge.difficulty,
+        keywords: [challenge.language, ...challenge.tags],
+        author: [
+            { "@type": "Person", name: "Elliott", url: "https://elliott.diy" },
+            { "@id": config.personId },
+        ],
+        isPartOf: { "@id": config.websiteId },
+    }}
+/>
 
 <div class="flex flex-col gap-8">
     <Island>

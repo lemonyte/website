@@ -47,8 +47,14 @@
         datePublished: post.date.toISOString(),
         dateModified: (post.updated ?? post.date).toISOString(),
         ...(post.image && { image: new URL(post.image, config.baseUrl).href }),
-        author: post.authors.map((author) => ({ "@type": "Person", name: author.name, url: author.url })),
+        author: post.authors.map((author) => ({
+            "@type": "Person",
+            ...(author.url === config.baseUrl.href && { "@id": config.personId }),
+            name: author.name,
+            url: author.url,
+        })),
         keywords: post.tags,
+        isPartOf: { "@id": config.websiteId },
     }}
 />
 

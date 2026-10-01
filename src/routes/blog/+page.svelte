@@ -4,15 +4,33 @@
     import PostList from "$lib/components/PostList.svelte";
     import Tag from "$lib/components/Tag.svelte";
     import { page } from "$app/state";
+    import JsonLd from "$lib/components/JsonLd.svelte";
     import { posts, tags } from "$lib/posts";
+    import * as config from "$lib/config";
+
+    const description =
+        "Posts by Lemonyte about cybersecurity, malware analysis, Rust, Python, embedded systems, and more.";
 
     let tagFilter = $derived(page.url.searchParams.get("tag"));
     let filteredPosts = $derived(posts.filter((post) => (tagFilter ? post.tags.includes(tagFilter) : true)));
 </script>
 
-<Head
-    title="Blog"
-    description="Posts by Lemonyte about cybersecurity, malware analysis, Rust, Python, embedded systems, and more."
+<Head title="Blog" {description} />
+<JsonLd
+    data={{
+        "@type": "Blog",
+        name: "Lemonyte's Blog",
+        description,
+        url: new URL("/blog", config.baseUrl).href,
+        author: { "@id": config.personId },
+        isPartOf: { "@id": config.websiteId },
+        blogPost: posts.map((post) => ({
+            "@type": "BlogPosting",
+            headline: post.title,
+            url: new URL(`/blog/${post.slug}`, config.baseUrl).href,
+            datePublished: post.date.toISOString(),
+        })),
+    }}
 />
 
 <Island>
