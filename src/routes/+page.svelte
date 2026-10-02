@@ -63,7 +63,7 @@
             <main>
                 <div class="max-w-none prose prose-neutral dark:prose-invert">
                     <h1 class="font-normal text-2xl mb-6">👋 Hi, I'm <b>Lemonyte</b></h1>
-                    <p>Open-sourcerer, IT student, STEM teacher, and aspiring cybersecurity researcher.</p>
+                    <p>Open-sourcerer, cybersecurity student, STEM teacher, and motorsport enthusiast.</p>
                     <ul class="px-4 list-disc">
                         <li>
                             🧠 I look for places where I can apply my skills, tackle challenges, leave a positive
@@ -71,7 +71,7 @@
                         </li>
                         <li>
                             ❤️ I love
-                            <a href="/blog/beamng-malware">cybersecurity</a>,
+                            <a href="/blog/beamng-malware">cybersecurity</a>, computer networks
                             <a href="https://github.com/lemonyte/terminal-player">terminals</a>, and making things that
                             are
                             <a href="https://ferryplanner.ca">useful</a>
@@ -112,23 +112,25 @@
                     <p>These days I'm...</p>
                     <ul>
                         <li>
-                            Solving interesting problems in the Embedded Systems department of my university's
-                            <a href="https://en.wikipedia.org/wiki/Formula_Student">Formula Student</a> team, like vehicle
-                            telemetry, hardware design, and software quality.
+                            Head of the Embedded Systems department at <a href="https://greenbear.berlin">greenBEAR</a>,
+                            a Formula Student racing team. There I design & program ECUs, work on vehicle telemetry, and
+                            do a lot of other exciting things!
                         </li>
-                        <li>
-                            Developing a new social media app with a team of fellow students. It aims to bring people
-                            together without the drawbacks of mainstream platforms.
-                        </li>
-                        <li>
-                            Contributing to <a href="https://contiguity.com/">Contiguity</a>'s
-                            <a href="https://github.com/contiguity/python">Python SDK</a>.
-                        </li>
+                        <li>Using infrastructure domains for <a href="https://arpamail.lemonyte.com">email address masking</a>.</li>
                         <li>Reviving my bass guitar skills with an old (but solid!) Ibanez GSR200 PJ.</li>
                         <li>
                             Attempting to adapt to a <a href="https://polysleep.org/wiki/E2">polyphasic</a> sleep schedule.
                         </li>
                         <li>Working through my ever-growing backlog of personal projects and future blog posts...</li>
+                    </ul>
+                    <p>In the past I...</p>
+                    <ul>
+                        <li>Developed the backend for a new social media app with a team of fellow students.</li>
+                        <li>Organized retro LAN parties as part of the <a href="https://origolan.de">OrigoLAN</a> initiative.</li>
+                        <li>
+                            Contributed to <a href="https://contiguity.com/">Contiguity</a>'s
+                            <a href="https://github.com/contiguity/python">Python SDK</a>.
+                        </li>
                     </ul>
                 </div>
             </main>
