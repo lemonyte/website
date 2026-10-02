@@ -15,6 +15,7 @@
         "dev": "vite dev",
         "build": "vite build",
         "preview": "vite preview",
+        "deploy": "vite build && wrangler deploy",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "lint": "oxlint",
@@ -45,6 +46,7 @@
         "svelte-toc": "^0.7.0",
         "tailwindcss": "^4.3.3",
         "typescript": "^6.0.3",
-        "vite": "^8.3.1"
+        "vite": "^8.3.1",
+        "wrangler": "^4.147.0"
     }
 }

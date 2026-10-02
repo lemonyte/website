@@ -1,11 +1,16 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "website"
-compatibility_date = "2025-04-26"
+main = ".svelte-kit/cloudflare/_worker.js"
+compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_als"]
-pages_build_output_dir = ".svelte-kit/cloudflare"
+routes = [{ pattern = "lemonyte.com", custom_domain = true }]
+
+[assets]
+directory = ".svelte-kit/cloudflare"
+binding = "ASSETS"
 
 # Bind an R2 Bucket. Use R2 to store arbitrarily large blobs of data, such as files.
-# Docs: https://developers.cloudflare.com/pages/functions/bindings/#r2-buckets
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets
 [[r2_buckets]]
 binding = "MEDIA"
 bucket_name = "website-media"
