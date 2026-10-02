@@ -1,8 +1,7 @@
-export const GET = async ({ platform, params }) => {
-    if (platform === undefined) {
-        return new Response("Internal Server Error", { status: 500 });
-    }
-    const obj = await platform.env.MEDIA.get(params.path);
+import { env } from "cloudflare:workers";
+
+export const GET = async ({ params }) => {
+    const obj = await env.MEDIA.get(params.path);
     if (obj === null) {
         return new Response("Not Found", { status: 404 });
     }

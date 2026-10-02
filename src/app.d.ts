@@ -5,11 +5,6 @@ declare global {
         // interface Error {}
         // interface Locals {}
         // interface PageData {}
-        interface Platform {
-            env: Env;
-            cf: CfProperties;
-            ctx: ExecutionContext;
-        }
     }
 }
 
