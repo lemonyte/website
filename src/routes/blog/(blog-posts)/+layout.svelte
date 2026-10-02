@@ -108,6 +108,9 @@
                     {/if}
                 </div>
                 <div class="mt-8 max-w-none prose prose-neutral dark:prose-invert">
+                    {#if post.image}
+                        <img src={post.image} alt={post.imageAlt ?? ""} fetchpriority="high" />
+                    {/if}
                     <div class="xl:hidden">
                         <Toc breakpoint={0}>
                             {#snippet titleSnippet()}
@@ -115,9 +118,6 @@
                             {/snippet}
                         </Toc>
                     </div>
-                    {#if post.image}
-                        <img src={post.image} alt={post.imageAlt ?? ""} fetchpriority="high" />
-                    {/if}
                     {@render children()}
                 </div>
             </article>
