@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import Background from "$lib/components/Background.svelte";
-    import Island from "$lib/components/Island.svelte";
     import IconLink from "$lib/components/IconLink.svelte";
+    import Island from "$lib/components/Island.svelte";
     import MotionToggle from "$lib/components/MotionToggle.svelte";
     import { links } from "$lib/data";
     import { reportFrameStats } from "$lib/frameStats";
+    import { onMount } from "svelte";
+
     import "../app.css";
 
     const { children } = $props();

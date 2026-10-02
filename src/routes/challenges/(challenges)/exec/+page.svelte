@@ -1,12 +1,12 @@
 <script lang="ts">
-    import Prism from "prismjs";
-    import "prismjs/components/prism-python";
-    import Giscus from "@giscus/svelte";
     import Head from "$lib/components/Head.svelte";
-    import JsonLd from "$lib/components/JsonLd.svelte";
+    import "prismjs/components/prism-python";
     import Island from "$lib/components/Island.svelte";
+    import JsonLd from "$lib/components/JsonLd.svelte";
     import Tag from "$lib/components/Tag.svelte";
     import * as config from "$lib/config";
+    import Giscus from "@giscus/svelte";
+    import Prism from "prismjs";
 
     const codePreamble = `code = compile("print(...)", "<flag>", "exec")`;
 
@@ -61,10 +61,7 @@
         learningResourceType: "CTF challenge",
         educationalLevel: challenge.difficulty,
         keywords: [challenge.language, ...challenge.tags],
-        author: [
-            { "@type": "Person", name: "Elliott", url: "https://elliott.diy" },
-            { "@id": config.personId },
-        ],
+        author: [{ "@type": "Person", name: "Elliott", url: "https://elliott.diy" }, { "@id": config.personId }],
         isPartOf: { "@id": config.websiteId },
     }}
 />
@@ -92,14 +89,13 @@
                     use <code>exec()</code>?
                 </p>
                 <p>
-                    The flag is hidden in a <code>print</code> statement inside a compiled code object. This is
-                    provided to you in a variable named <code>code</code>
+                    The flag is hidden in a <code>print</code> statement inside a compiled code object. This is provided
+                    to you in a variable named <code>code</code>
                 </p>
                 <p>Your task is to execute it so that it prints the flag.</p>
                 <p>
-                    However, built-in execution functions like <code>exec</code> and <code>eval</code> are blocked by a
-                    custom security mechanism. The challenge is to bypass these restrictions and successfully run the code
-                    object.
+                    However, built-in execution functions like <code>exec</code> and <code>eval</code> are blocked by a custom
+                    security mechanism. The challenge is to bypass these restrictions and successfully run the code object.
                 </p>
                 <p>
                     To pass the challenge, the flag must be printed to <code>stdout</code>. Submit your Python code
@@ -150,9 +146,7 @@
                     class={[
                         "p-2 border font-mono border-sky-500 border-t-0 rounded-b-lg",
                         "focus-visible:outline-none resize-y whitespace-pre overflow-auto",
-                    ]}
-                >
-                </textarea>
+                    ]}></textarea>
             </div>
 
             <button

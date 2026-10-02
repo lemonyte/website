@@ -1,6 +1,6 @@
-import { response } from "super-sitemap/sveltekit";
 import { baseUrl } from "$lib/config";
 import { posts } from "$lib/posts";
+import { response } from "super-sitemap/sveltekit";
 
 export const GET = async () => {
     const postLastmods = new Map(
@@ -9,6 +9,7 @@ export const GET = async () => {
 
     return await response({
         origin: baseUrl.toString().replace(/\/+$/, ""),
-        processPaths: (paths) => paths.map((path) => ({ ...path, lastmod: postLastmods.get(path.path) ?? path.lastmod })),
+        processPaths: (paths) =>
+            paths.map((path) => ({ ...path, lastmod: postLastmods.get(path.path) ?? path.lastmod })),
     });
 };

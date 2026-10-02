@@ -2,17 +2,21 @@
     "name": "website",
     "version": "0.0.1",
     "private": true,
-    "type": "module",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/lemonyte/website.git"
     },
+    "type": "module",
     "scripts": {
         "dev": "vite dev",
         "build": "vite build",
         "preview": "vite preview",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+        "lint": "oxlint",
+        "lint:fix": "oxlint --fix",
+        "fmt": "oxfmt",
+        "fmt:check": "oxfmt --check"
     },
     "devDependencies": {
         "@cloudflare/workers-types": "^5.20260928.1",
@@ -24,6 +28,7 @@
         "@tailwindcss/vite": "^4.3.3",
         "@types/prismjs": "^1.26.6",
         "mdsvex": "^0.12.8",
+        "oxfmt": "^0.71.0",
         "prismjs": "^1.30.0",
         "rehype-autolink-headings": "^7.1.0",
         "rehype-callouts": "2.1.0",

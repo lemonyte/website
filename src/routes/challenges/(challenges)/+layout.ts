@@ -1,5 +1,5 @@
-import { error } from "@sveltejs/kit";
 import { challenges } from "$lib/challenges";
+import { error } from "@sveltejs/kit";
 
 export const prerender = true;
 

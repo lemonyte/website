@@ -1,13 +1,13 @@
 <script lang="ts">
+    import Head from "$lib/components/Head.svelte";
     import Island from "$lib/components/Island.svelte";
+    import JsonLd from "$lib/components/JsonLd.svelte";
     import PostList from "$lib/components/PostList.svelte";
     import Tag from "$lib/components/Tag.svelte";
-    import Head from "$lib/components/Head.svelte";
-    import JsonLd from "$lib/components/JsonLd.svelte";
     import TocIsland from "$lib/components/TocIsland.svelte";
-    import Toc from "svelte-toc";
-    import Giscus from "@giscus/svelte";
     import * as config from "$lib/config";
+    import Giscus from "@giscus/svelte";
+    import Toc from "svelte-toc";
 
     const { children, data } = $props();
     const { post, posts } = $derived(data);
@@ -19,13 +19,7 @@
     };
 </script>
 
-<Head
-    title={post.title}
-    description={post.description}
-    type="article"
-    image={post.image}
-    imageAlt={post.imageAlt}
->
+<Head title={post.title} description={post.description} type="article" image={post.image} imageAlt={post.imageAlt}>
     <meta property="article:published_time" content={post.date.toISOString()} />
     {#if post.updated}
         <meta property="article:modified_time" content={post.updated.toISOString()} />
