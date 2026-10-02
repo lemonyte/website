@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     import { challenges } from "#lib/challenges.ts";
     import Card from "#lib/components/Card.svelte";
     import ChallengeList from "#lib/components/ChallengeList.svelte";
@@ -13,6 +15,20 @@
     import type { Repository } from "#lib/repos.ts";
 
     const { data } = $props();
+
+    let freshRepos: Repository[] | undefined = $state();
+    const repos = $derived(freshRepos ?? data.repos);
+
+    onMount(async () => {
+        try {
+            const response = await fetch("/api/repos");
+            if (response.ok) {
+                freshRepos = await response.json();
+            }
+        } catch {
+            // Keep the prerendered list.
+        }
+    });
 </script>
 
 <Head />
@@ -128,26 +144,14 @@
         <Island>
             <h2 class="text-2xl mb-4">Projects</h2>
             <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-                {#await data.reposPromise}
-                    {#each Array(6) as _}
-                        <Card title="Loading..." description="Loading..." titleTags={["Loading..."]} />
-                    {/each}
-                {:then repos}
-                    {#await repos.json() then repos}
-                        {#each (repos as Repository[]).slice(0, 6) as repo}
-                            <Card
-                                title={repo.repo}
-                                href={repo.website || repo.link}
-                                description={repo.description}
-                                titleTags={[repo.language]}
-                            />
-                        {/each}
-                    {:catch error}
-                        <pre class="text-red-500">{error.message}</pre>
-                    {/await}
-                {:catch error}
-                    <pre class="text-red-500">{error.message}</pre>
-                {/await}
+                {#each repos as repo (repo.url)}
+                    <Card
+                        title={repo.name}
+                        href={repo.homepageUrl || repo.url}
+                        description={repo.description ?? ""}
+                        titleTags={repo.primaryLanguage ? [repo.primaryLanguage.name] : []}
+                    />
+                {/each}
             </div>
         </Island>
         <Island>
