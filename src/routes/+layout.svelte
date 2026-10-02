@@ -1,13 +1,17 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import Background from "$lib/components/Background.svelte";
     import Island from "$lib/components/Island.svelte";
     import IconLink from "$lib/components/IconLink.svelte";
     import { links } from "$lib/data";
+    import { reportFrameStats } from "$lib/frameStats";
     import "../app.css";
 
     const { children } = $props();
 
     let mobileNavOpen = $state(false);
+
+    onMount(reportFrameStats);
 </script>
 
 <Background />
