@@ -1,7 +1,8 @@
 <script lang="ts">
-    import { motion } from "$lib/motion.svelte";
     import { Canvas, Layer } from "svelte-canvas";
     import type { Render } from "svelte-canvas";
+
+    import { motion } from "#lib/motion.svelte.ts";
 
     const { numBlobs = 24, spread = 0.8, fps = 15 } = $props();
 

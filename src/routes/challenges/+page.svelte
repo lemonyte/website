@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { challenges } from "$lib/challenges";
-    import ChallengeList from "$lib/components/ChallengeList.svelte";
-    import Head from "$lib/components/Head.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import JsonLd from "$lib/components/JsonLd.svelte";
-    import * as config from "$lib/config";
+    import { challenges } from "#lib/challenges.ts";
+    import ChallengeList from "#lib/components/ChallengeList.svelte";
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import JsonLd from "#lib/components/JsonLd.svelte";
+    import * as config from "#lib/config.ts";
 
     const description = "Various custom-made security challenges to practice your cyber skills.";
 </script>

@@ -1,12 +1,13 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import Head from "$lib/components/Head.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import JsonLd from "$lib/components/JsonLd.svelte";
-    import PostList from "$lib/components/PostList.svelte";
-    import Tag from "$lib/components/Tag.svelte";
-    import * as config from "$lib/config";
-    import { posts, tags } from "$lib/posts";
+
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import JsonLd from "#lib/components/JsonLd.svelte";
+    import PostList from "#lib/components/PostList.svelte";
+    import Tag from "#lib/components/Tag.svelte";
+    import * as config from "#lib/config.ts";
+    import { posts, tags } from "#lib/posts.ts";
 
     const description =
         "Posts by Lemonyte about cybersecurity, malware analysis, Rust, Python, embedded systems, and more.";

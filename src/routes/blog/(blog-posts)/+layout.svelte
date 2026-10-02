@@ -1,13 +1,14 @@
 <script lang="ts">
-    import Head from "$lib/components/Head.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import JsonLd from "$lib/components/JsonLd.svelte";
-    import PostList from "$lib/components/PostList.svelte";
-    import Tag from "$lib/components/Tag.svelte";
-    import TocIsland from "$lib/components/TocIsland.svelte";
-    import * as config from "$lib/config";
     import Giscus from "@giscus/svelte";
     import Toc from "svelte-toc";
+
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import JsonLd from "#lib/components/JsonLd.svelte";
+    import PostList from "#lib/components/PostList.svelte";
+    import Tag from "#lib/components/Tag.svelte";
+    import TocIsland from "#lib/components/TocIsland.svelte";
+    import * as config from "#lib/config.ts";
 
     const { children, data } = $props();
     const { post, posts } = $derived(data);

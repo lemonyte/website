@@ -1,16 +1,16 @@
 <script lang="ts">
-    import { challenges } from "$lib/challenges";
-    import Card from "$lib/components/Card.svelte";
-    import ChallengeList from "$lib/components/ChallengeList.svelte";
-    import Head from "$lib/components/Head.svelte";
-    import IconLink from "$lib/components/IconLink.svelte";
-    import Island from "$lib/components/Island.svelte";
-    import JsonLd from "$lib/components/JsonLd.svelte";
-    import PostList from "$lib/components/PostList.svelte";
-    import * as config from "$lib/config";
-    import { links, skills } from "$lib/data";
-    import { posts } from "$lib/posts";
-    import type { Repository } from "$lib/repos";
+    import { challenges } from "#lib/challenges.ts";
+    import Card from "#lib/components/Card.svelte";
+    import ChallengeList from "#lib/components/ChallengeList.svelte";
+    import Head from "#lib/components/Head.svelte";
+    import IconLink from "#lib/components/IconLink.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import JsonLd from "#lib/components/JsonLd.svelte";
+    import PostList from "#lib/components/PostList.svelte";
+    import * as config from "#lib/config.ts";
+    import { links, skills } from "#lib/data.ts";
+    import { posts } from "#lib/posts.ts";
+    import type { Repository } from "#lib/repos.ts";
 
     const { data } = $props();
 </script>

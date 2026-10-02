@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { CTFChallenge } from "$lib/challenges";
-    import Card from "$lib/components/Card.svelte";
+    import type { CTFChallenge } from "#lib/challenges.ts";
+    import Card from "#lib/components/Card.svelte";
 
     interface Props {
         challenges: CTFChallenge[];

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Card from "$lib/components/Card.svelte";
-    import type { Post } from "$lib/posts";
+    import Card from "#lib/components/Card.svelte";
+    import type { Post } from "#lib/posts.ts";
 
     interface Props {
         posts: Post[];

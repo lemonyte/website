@@ -1,5 +1,5 @@
-import * as config from "$lib/config";
-import { posts } from "$lib/posts";
+import * as config from "#lib/config.ts";
+import { posts } from "#lib/posts.ts";
 
 export const prerender = true;
 

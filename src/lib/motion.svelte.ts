@@ -1,4 +1,4 @@
-import { browser } from "$app/environment";
+import { browser } from "$app/env";
 import { MediaQuery } from "svelte/reactivity";
 
 const STORAGE_KEY = "bg-motion";

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { motion } from "$lib/motion.svelte";
+    import { motion } from "#lib/motion.svelte.ts";
 
     const label = $derived(`${motion.enabled ? "Pause" : "Play"} background animation`);
 </script>

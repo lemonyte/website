@@ -1,7 +1,8 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import Head from "$lib/components/Head.svelte";
-    import Island from "$lib/components/Island.svelte";
+
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
 </script>
 
 <Head title={`${page.status} ${page.error?.message ?? ""}`.trim()} noindex />

@@ -1,5 +1,6 @@
-import { posts } from "$lib/posts";
 import { error } from "@sveltejs/kit";
+
+import { posts } from "#lib/posts.ts";
 
 export const prerender = true;
 

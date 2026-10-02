@@ -1,4 +1,4 @@
-import { motion } from "$lib/motion.svelte";
+import { motion } from "#lib/motion.svelte.ts";
 
 declare global {
     interface Window {

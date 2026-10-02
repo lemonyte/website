@@ -1,7 +1,8 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import * as config from "$lib/config";
     import type { Snippet } from "svelte";
+
+    import * as config from "#lib/config.ts";
 
     interface Props {
         title?: string;

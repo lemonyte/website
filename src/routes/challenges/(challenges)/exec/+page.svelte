@@ -1,12 +1,12 @@
 <script lang="ts">
-    import Head from "$lib/components/Head.svelte";
-    import "prismjs/components/prism-python";
-    import Island from "$lib/components/Island.svelte";
-    import JsonLd from "$lib/components/JsonLd.svelte";
-    import Tag from "$lib/components/Tag.svelte";
-    import * as config from "$lib/config";
     import Giscus from "@giscus/svelte";
     import Prism from "prismjs";
+
+    import Head from "#lib/components/Head.svelte";
+    import Island from "#lib/components/Island.svelte";
+    import JsonLd from "#lib/components/JsonLd.svelte";
+    import Tag from "#lib/components/Tag.svelte";
+    import * as config from "#lib/config.ts";
 
     const codePreamble = `code = compile("print(...)", "<flag>", "exec")`;
 

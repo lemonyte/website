@@ -1,6 +1,7 @@
-import { baseUrl } from "$lib/config";
-import { posts } from "$lib/posts";
 import { response } from "super-sitemap/sveltekit";
+
+import { baseUrl } from "#lib/config.ts";
+import { posts } from "#lib/posts.ts";
 
 export const GET = async () => {
     const postLastmods = new Map(
