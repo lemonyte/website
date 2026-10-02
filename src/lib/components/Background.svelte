@@ -1,16 +1,20 @@
 <script lang="ts">
     import { Canvas, Layer } from "svelte-canvas";
     import type { Render } from "svelte-canvas";
-    import { MediaQuery } from "svelte/reactivity";
+    import { motion } from "$lib/motion.svelte";
 
     const { numBlobs = 24, spread = 0.8, fps = 15 } = $props();
 
-    const reducedMotion = new MediaQuery("(prefers-reduced-motion: reduce)");
+    // Longest possible fade-in (max breatheSpeed + max breathePhase), in seconds.
+    const FADE_IN_END = 20 + Math.PI * 2;
 
     let canvas: Canvas | undefined = $state();
 
+    let clock: number | undefined;
+    let lastTime = 0;
+
     $effect(() => {
-        if (reducedMotion.current) {
+        if (!motion.enabled) {
             return;
         }
         const interval = 1000 / fps;
@@ -40,12 +44,18 @@
 
     const render: Render = ({ context, width, height, time }) => {
         time /= 1000;
+        // If motion starts out disabled, skip the fade-in so the static frame is fully visible.
+        clock ??= motion.enabled ? 0 : FADE_IN_END;
+        if (motion.enabled) {
+            // Cap the step so the animation doesn't jump after being paused or in a hidden tab.
+            clock += Math.min(time - lastTime, 0.25);
+        }
+        lastTime = time;
+        time = clock;
         const xMargin = width < 768 ? 0 : width * 0.2;
         blobs.forEach((blob) => {
-            // With reduced motion, draw a single static frame without the breathing or fade-in.
-            const breathe = reducedMotion.current ? 0 : time * ((2 * Math.PI) / blob.breatheSpeed);
-            let opacity = 0.3 + Math.sin(breathe + blob.breathePhase) * 0.1;
-            if (!reducedMotion.current && time < blob.breatheSpeed + blob.breathePhase) {
+            let opacity = 0.3 + Math.sin(time * ((2 * Math.PI) / blob.breatheSpeed) + blob.breathePhase) * 0.1;
+            if (time < blob.breatheSpeed + blob.breathePhase) {
                 opacity *= (time - blob.breathePhase) / blob.breatheSpeed;
             }
             const x = blob.x * ((width - 2 * xMargin) / 2) + width / 2;

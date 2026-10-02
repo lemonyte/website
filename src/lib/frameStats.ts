@@ -1,3 +1,5 @@
+import { motion } from "$lib/motion.svelte";
+
 declare global {
     interface Window {
         rybbit?: {
@@ -47,6 +49,7 @@ export const reportFrameStats = ({ warmup_ms = 2000, sample_ms = 5000 } = {}) =>
             devicePixelRatio: Math.round(devicePixelRatio * 100) / 100,
             cpuCores: navigator.hardwareConcurrency ?? 0,
             reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+            bgMotion: motion.enabled,
         });
     };
 

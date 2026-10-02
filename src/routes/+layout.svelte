@@ -3,6 +3,7 @@
     import Background from "$lib/components/Background.svelte";
     import Island from "$lib/components/Island.svelte";
     import IconLink from "$lib/components/IconLink.svelte";
+    import MotionToggle from "$lib/components/MotionToggle.svelte";
     import { links } from "$lib/data";
     import { reportFrameStats } from "$lib/frameStats";
     import "../app.css";
@@ -44,6 +45,8 @@
                     <a href="/blog" class="link">Blog</a>
                     <span class="hidden sm:inline opacity-50">•</span>
                     <a href="/challenges" class="link">CTF Challenges</a>
+                    <span class="hidden sm:inline opacity-50">•</span>
+                    <MotionToggle />
                 </div>
             </div>
         </Island>
