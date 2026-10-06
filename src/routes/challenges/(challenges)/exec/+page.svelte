@@ -6,8 +6,6 @@
     import Tag from "#lib/components/Tag.svelte";
     import * as config from "#lib/config.ts";
 
-    const codePreamble = `code = compile("print(...)", "<flag>", "exec")`;
-
     const { data } = $props();
     const { challenge } = $derived(data);
 
@@ -131,7 +129,13 @@
             <div class="flex flex-col items-stretch">
                 <pre class="whitespace-normal">
                     <code class="block p-2 select-none border border-sky-500 border-b-0 rounded-t-lg">
-                        {@html Prism.highlight(codePreamble, Prism.languages.javascript, "javascript")}
+                        code <span class="token operator">=</span> <span class="token builtin">compile</span><span
+                            class="token punctuation">(</span
+                        ><span class="token string">"print(...)"</span><span class="token punctuation">,</span> <span
+                            class="token string">"&lt;flag&gt;"</span
+                        ><span class="token punctuation">,</span> <span class="token string">"exec"</span><span
+                            class="token punctuation">)</span
+                        >
                     </code>
                 </pre>
 
