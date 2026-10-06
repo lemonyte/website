@@ -11,7 +11,11 @@
 
     const description = `Posts by ${config.siteName} about cybersecurity, malware analysis, Rust, Python, embedded systems, and more.`;
 
-    let tagFilter = $derived(page.url.searchParams.get("tag"));
+    let tagFilter: string | null = $state(null);
+    $effect(() => {
+        tagFilter = page.url.searchParams.get("tag");
+    });
+
     let filteredPosts = $derived(posts.filter((post) => (tagFilter ? post.tags.includes(tagFilter) : true)));
 </script>
 
