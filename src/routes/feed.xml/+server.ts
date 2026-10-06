@@ -20,7 +20,7 @@ export const GET = async () => {
     const xml = `
         <?xml version="1.0" encoding="UTF-8"?>
         <feed xmlns="http://www.w3.org/2005/Atom">
-            <title type="text">Lemonyte's Blog</title>
+            <title type="text">${escapeXml(config.blogName)}</title>
             <link href="${new URL("feed.xml", config.baseUrl)}" rel="self" type="application/atom+xml" />
             <link href="${new URL("blog", config.baseUrl)}" rel="alternate" type="text/html" />
             <id>${new URL("feed.xml", config.baseUrl)}</id>

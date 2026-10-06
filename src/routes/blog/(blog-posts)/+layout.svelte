@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Giscus from "@giscus/svelte";
     import Toc from "svelte-toc";
 
+    import Comments from "#lib/components/Comments.svelte";
     import Head from "#lib/components/Head.svelte";
     import Island from "#lib/components/Island.svelte";
     import JsonLd from "#lib/components/JsonLd.svelte";
@@ -67,44 +67,42 @@
         <Island>
             <article>
                 <div class="flex flex-col gap-2">
-                    {#if post}
-                        <h1 class="text-4xl font-semibold">{post.title}</h1>
-                        <div>
-                            {#if post.authors.length}
-                                <span class="inline-flex flex-row w-min">
-                                    {#each post.authors as author, index}
-                                        <a href={author.url} class="link">{author.name}</a>
-                                        {#if index < post.authors.length - 1}
-                                            <span class="text-neutral-500 dark:text-neutral-400">,&nbsp;</span>
-                                        {/if}
-                                    {/each}
-                                </span>
-                                <span class="text-neutral-500 dark:text-neutral-400"> • </span>
-                            {/if}
-                            <span class="text-neutral-500 dark:text-neutral-400">
-                                <time datetime={post.date.toISOString()}>
-                                    {post.date.toLocaleDateString(undefined, dateOptions)}
-                                </time>
-                                {#if post.updated}
-                                    <span> • </span>
-                                    <span>
-                                        Updated
-                                        <time datetime={post.updated.toISOString()}>
-                                            {post.updated.toLocaleDateString(undefined, dateOptions)}
-                                        </time>
-                                    </span>
-                                {/if}
-                            </span>
-                        </div>
-                        {#if post.tags.length}
-                            <div class="flex flex-row gap-2">
-                                {#each post.tags as tag}
-                                    <a href={`/blog?tag=${encodeURIComponent(tag)}`}>
-                                        <Tag hover={true}>{tag}</Tag>
-                                    </a>
+                    <h1 class="text-4xl font-semibold">{post.title}</h1>
+                    <div>
+                        {#if post.authors.length}
+                            <span class="inline-flex flex-row w-min">
+                                {#each post.authors as author, index}
+                                    <a href={author.url} class="link">{author.name}</a>
+                                    {#if index < post.authors.length - 1}
+                                        <span class="text-neutral-500 dark:text-neutral-400">,&nbsp;</span>
+                                    {/if}
                                 {/each}
-                            </div>
+                            </span>
+                            <span class="text-neutral-500 dark:text-neutral-400"> • </span>
                         {/if}
+                        <span class="text-neutral-500 dark:text-neutral-400">
+                            <time datetime={post.date.toISOString()}>
+                                {post.date.toLocaleDateString(undefined, dateOptions)}
+                            </time>
+                            {#if post.updated}
+                                <span> • </span>
+                                <span>
+                                    Updated
+                                    <time datetime={post.updated.toISOString()}>
+                                        {post.updated.toLocaleDateString(undefined, dateOptions)}
+                                    </time>
+                                </span>
+                            {/if}
+                        </span>
+                    </div>
+                    {#if post.tags.length}
+                        <div class="flex flex-row gap-2">
+                            {#each post.tags as tag}
+                                <a href={`/blog?tag=${encodeURIComponent(tag)}`}>
+                                    <Tag hover={true}>{tag}</Tag>
+                                </a>
+                            {/each}
+                        </div>
                     {/if}
                 </div>
                 <div class="mt-8 max-w-none prose prose-neutral dark:prose-invert">
@@ -127,21 +125,7 @@
     <aside class="mt-8">
         <Island>
             {#key post.slug}
-                <Giscus
-                    id="comments"
-                    repo="lemonyte/website"
-                    repoId="R_kgDOKC4xmg"
-                    category="Giscus comments"
-                    categoryId="DIC_kwDOKC4xms4CqA6y"
-                    mapping="pathname"
-                    term=""
-                    strict="1"
-                    reactionsEnabled="1"
-                    inputPosition="top"
-                    theme="transparent_dark"
-                    lang="en"
-                    loading="lazy"
-                />
+                <Comments />
             {/key}
         </Island>
     </aside>

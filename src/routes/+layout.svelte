@@ -5,6 +5,7 @@
     import IconLink from "#lib/components/IconLink.svelte";
     import Island from "#lib/components/Island.svelte";
     import MotionToggle from "#lib/components/MotionToggle.svelte";
+    import { siteName } from "#lib/config.ts";
     import { links } from "#lib/data.ts";
     import { reportFrameStats } from "#lib/frameStats.ts";
 
@@ -32,18 +33,24 @@
         <Island>
             <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
                 <span class="flex flex-row items-center">
-                    <a href="/" class="link font-semibold text-xl">Lemonyte</a>
+                    <a href="/" class="link font-semibold text-xl">{siteName}</a>
                     <button
                         class={[
                             "inline-flex items-center justify-center sm:hidden text-2xl ml-auto",
                             "w-8 h-8 rounded-md bg-neutral-300/40 dark:bg-neutral-700/40",
                         ]}
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={mobileNavOpen}
+                        aria-controls="nav-links"
                         onclick={() => (mobileNavOpen = !mobileNavOpen)}
                     >
                         {mobileNavOpen ? "\u00D7" : "\u2261"}
                     </button>
                 </span>
-                <div class={["flex flex-col sm:flex-row gap-2 sm:flex sm:ml-auto", { hidden: !mobileNavOpen }]}>
+                <div
+                    id="nav-links"
+                    class={["flex flex-col sm:flex-row gap-2 sm:flex sm:ml-auto", { hidden: !mobileNavOpen }]}
+                >
                     <a href="/blog" class="link">Blog</a>
                     <span class="hidden sm:inline opacity-50">•</span>
                     <a href="/challenges" class="link">CTF Challenges</a>
@@ -63,9 +70,9 @@
             <div class="flex flex-row">
                 <div class="flex flex-col gap-2">
                     <div class="prose prose-neutral dark:prose-invert text-sm">
-                        &copy; {new Date().getFullYear()} Lemonyte<br />
+                        &copy; {new Date().getFullYear()} {siteName}<br />
                         Made with <a href="https://svelte.dev/">Svelte</a> and a keyboard.<br />
-                        Powered by <a href="https://pages.dev">Cloudflare</a> and late-night debugging.
+                        Powered by <a href="https://workers.cloudflare.com">Cloudflare</a> and late-night debugging.
                     </div>
                     <div class="flex flex-row gap-3 shrink-0">
                         {#each links as link}
