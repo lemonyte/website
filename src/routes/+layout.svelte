@@ -70,7 +70,8 @@
             <div class="flex flex-row">
                 <div class="flex flex-col gap-2">
                     <div class="prose prose-neutral dark:prose-invert text-sm">
-                        &copy; {new Date().getFullYear()} {siteName}<br />
+                        &copy; {new Date().getFullYear()}
+                        {siteName}<br />
                         Made with <a href="https://svelte.dev/">Svelte</a> and a keyboard.<br />
                         Powered by <a href="https://workers.cloudflare.com">Cloudflare</a> and late-night debugging.
                     </div>
