@@ -7,7 +7,9 @@
     import PostList from "#lib/components/PostList.svelte";
     import Tag from "#lib/components/Tag.svelte";
     import * as config from "#lib/config.ts";
-    import { posts, tags } from "#lib/posts.ts";
+
+    const { data } = $props();
+    const { posts, tags } = $derived(data);
 
     const description = `Posts by ${config.siteName} about cybersecurity, malware analysis, Rust, Python, embedded systems, and more.`;
 

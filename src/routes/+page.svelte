@@ -11,7 +11,6 @@
     import PostList from "#lib/components/PostList.svelte";
     import * as config from "#lib/config.ts";
     import { links, skills } from "#lib/data.ts";
-    import { posts } from "#lib/posts.ts";
     import type { Repository } from "#lib/repos.ts";
 
     const { data } = $props();
@@ -146,7 +145,7 @@
         </Island>
         <Island>
             <h2 class="text-2xl mb-4"><a href="/blog" class="link">Posts</a></h2>
-            <PostList {posts} />
+            <PostList posts={data.posts} />
         </Island>
         <Island>
             <h2 class="text-2xl mb-4"><a href="/challenges" class="link">CTF Challenges</a></h2>
