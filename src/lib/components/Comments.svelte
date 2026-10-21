@@ -1,5 +1,8 @@
 <script lang="ts">
     import Giscus from "@giscus/svelte";
+    import { MediaQuery } from "svelte/reactivity";
+
+    const dark = new MediaQuery("(prefers-color-scheme: dark)");
 </script>
 
 <Giscus
@@ -13,7 +16,7 @@
     strict="1"
     reactionsEnabled="1"
     inputPosition="top"
-    theme="transparent_dark"
+    theme={dark.current ? "transparent_dark" : "transparent_light"}
     lang="en"
     loading="lazy"
 />
