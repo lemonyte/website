@@ -13,6 +13,7 @@
         year: "numeric",
         month: "short",
         day: "numeric",
+        timeZone: "UTC",
     };
 </script>
 
@@ -23,7 +24,7 @@
                 title={post.title}
                 href={`/blog/${post.slug}`}
                 description={post.description}
-                titleTags={[post.date.toLocaleDateString(undefined, dateOptions)]}
+                titleTags={[post.date.toLocaleDateString("en-US", dateOptions)]}
                 bottomTags={post.tags}
             />
         {/each}

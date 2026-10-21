@@ -17,6 +17,7 @@
         year: "numeric",
         month: "long",
         day: "numeric",
+        timeZone: "UTC",
     };
 </script>
 
@@ -82,14 +83,14 @@
                         {/if}
                         <span class="text-neutral-500 dark:text-neutral-400">
                             <time datetime={post.date.toISOString()}>
-                                {post.date.toLocaleDateString(undefined, dateOptions)}
+                                {post.date.toLocaleDateString("en-US", dateOptions)}
                             </time>
                             {#if post.updated}
                                 <span> • </span>
                                 <span>
                                     Updated
                                     <time datetime={post.updated.toISOString()}>
-                                        {post.updated.toLocaleDateString(undefined, dateOptions)}
+                                        {post.updated.toLocaleDateString("en-US", dateOptions)}
                                     </time>
                                 </span>
                             {/if}
