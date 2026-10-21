@@ -1,11 +1,13 @@
 <script lang="ts">
     import { Canvas, Layer } from "svelte-canvas";
     import type { Render } from "svelte-canvas";
+    import { MediaQuery } from "svelte/reactivity";
 
     import { motion } from "#lib/motion.svelte.ts";
 
     const { numBlobs = 24, spread = 0.8, fps = 15 } = $props();
 
+    const dark = new MediaQuery("(prefers-color-scheme: dark)");
     // Longest possible fade-in (max breatheSpeed + max breathePhase), in seconds.
     const FADE_IN_END = 20 + Math.PI * 2;
 
@@ -54,8 +56,10 @@
         lastTime = time;
         time = clock;
         const xMargin = width < 768 ? 0 : width * 0.2;
+        const opacityScale = dark.current ? 1 : 0.6;
         blobs.forEach((blob) => {
-            let opacity = 0.3 + Math.sin(time * ((2 * Math.PI) / blob.breatheSpeed) + blob.breathePhase) * 0.1;
+            let opacity =
+                (0.3 + Math.sin(time * ((2 * Math.PI) / blob.breatheSpeed) + blob.breathePhase) * 0.1) * opacityScale;
             if (time < blob.breatheSpeed + blob.breathePhase) {
                 opacity *= (time - blob.breathePhase) / blob.breatheSpeed;
             }

@@ -37,7 +37,7 @@
                     <button
                         class={[
                             "inline-flex items-center justify-center sm:hidden text-2xl ml-auto",
-                            "w-8 h-8 rounded-md bg-neutral-300/40 dark:bg-neutral-700/40",
+                            "w-8 h-8 rounded-md bg-fill/30",
                         ]}
                         aria-label="Toggle navigation menu"
                         aria-expanded={mobileNavOpen}

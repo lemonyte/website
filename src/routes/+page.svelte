@@ -61,7 +61,7 @@
         <Island>
             <main>
                 <div class="max-w-none prose prose-neutral dark:prose-invert">
-                    <h1 class="font-normal text-2xl mb-6">👋 Hi, I'm <b>Lemonyte</b></h1>
+                    <h1 class="text-4xl font-semibold mb-6">👋 Hi, I'm <b>Lemonyte</b></h1>
                     <p>Open-sourcerer, cybersecurity student, STEM teacher, and motorsport enthusiast.</p>
                     <ul class="px-4 list-disc">
                         <li>
@@ -144,11 +144,17 @@
             </main>
         </Island>
         <Island>
-            <h2 class="text-2xl mb-4"><a href="/blog" class="link">Posts</a></h2>
+            <div class="flex items-baseline mb-4">
+                <h2 class="text-2xl">Posts</h2>
+                <a href="/blog" class="link text-sm ml-auto">View all &rarr;</a>
+            </div>
             <PostList posts={data.posts} />
         </Island>
         <Island>
-            <h2 class="text-2xl mb-4"><a href="/challenges" class="link">CTF Challenges</a></h2>
+            <div class="flex items-baseline mb-4">
+                <h2 class="text-2xl">CTF Challenges</h2>
+                <a href="/challenges" class="link text-sm ml-auto">View all &rarr;</a>
+            </div>
             <ChallengeList {challenges} />
         </Island>
         <Island>

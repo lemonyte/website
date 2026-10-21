@@ -12,13 +12,7 @@
     const { title = "", href = "", description = "", titleTags = [], bottomTags = [] }: Props = $props();
 </script>
 
-<a
-    {href}
-    class={[
-        "flex flex-col p-3 rounded-lg transition select-none",
-        "bg-neutral-200/40 hover:bg-neutral-300/40 dark:bg-neutral-900/40 dark:hover:bg-neutral-800/40",
-    ]}
->
+<a {href} class="flex flex-col p-3 rounded-lg transition select-none bg-fill/15 hover:bg-fill/25">
     <div class="flex flex-row gap-1">
         <span class="text-xl font-semibold text-ellipsis overflow-hidden whitespace-nowrap">
             {title}
@@ -31,7 +25,7 @@
             </div>
         {/if}
     </div>
-    <span class="text-neutral-500 dark:text-neutral-400 text-sm text-ellipsis overflow-hidden whitespace-nowrap">
+    <span class="text-muted text-sm text-ellipsis overflow-hidden whitespace-nowrap">
         {description}
     </span>
     {#if bottomTags.length}

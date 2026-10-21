@@ -67,7 +67,7 @@
         <div class="flex flex-col">
             <div class="flex flex-col gap-2">
                 <h1 class="text-4xl font-semibold">{challenge.title}</h1>
-                <div class="text-neutral-500 dark:text-neutral-400 prose prose-neutral dark:prose-invert">
+                <div class="text-muted prose prose-neutral dark:prose-invert">
                     <span>Created by <a href="https://elliott.diy">Elliott</a> and <a href="/">Lemonyte</a></span>
                 </div>
 
@@ -126,9 +126,14 @@
     <Island>
         <div class="flex flex-col gap-4">
             <h2 class="text-2xl mb-4">Try your code</h2>
-            <div class="flex flex-col items-stretch">
+            <div
+                class={[
+                    "flex flex-col items-stretch rounded-lg overflow-hidden ring-1 ring-edge",
+                    "bg-neutral-800 dark:bg-black/50 text-neutral-200 focus-within:ring-2 focus-within:ring-accent",
+                ]}
+            >
                 <pre class="whitespace-normal">
-                    <code class="block p-2 select-none border border-sky-500 border-b-0 rounded-t-lg">
+                    <code class="block p-2 select-none">
                         code <span class="token operator">=</span> <span class="token builtin">compile</span><span
                             class="token punctuation">(</span
                         ><span class="token string">"print(...)"</span><span class="token punctuation">,</span> <span
@@ -146,7 +151,7 @@
                     spellcheck="false"
                     autocapitalize="off"
                     class={[
-                        "p-2 border font-mono border-sky-500 border-t-0 rounded-b-lg",
+                        "p-2 font-mono placeholder:text-neutral-500",
                         "focus-visible:outline-none resize-y whitespace-pre overflow-auto",
                     ]}></textarea>
             </div>
@@ -155,7 +160,7 @@
                 onclick={submit}
                 class={[
                     "text-xl font-semibold whitespace-nowrap p-2 rounded-lg transition",
-                    "bg-neutral-300/40 dark:bg-neutral-700/40 hover:bg-neutral-300/80 dark:hover:bg-neutral-700/80",
+                    "bg-sky-600 text-white hover:bg-sky-700",
                     "disabled:opacity-50 disabled:cursor-not-allowed",
                 ]}
                 disabled={isSubmitting}

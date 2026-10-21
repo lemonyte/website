@@ -75,13 +75,13 @@
                                 {#each post.authors as author, index}
                                     <a href={author.url} class="link">{author.name}</a>
                                     {#if index < post.authors.length - 1}
-                                        <span class="text-neutral-500 dark:text-neutral-400">,&nbsp;</span>
+                                        <span class="text-muted">,&nbsp;</span>
                                     {/if}
                                 {/each}
                             </span>
-                            <span class="text-neutral-500 dark:text-neutral-400"> • </span>
+                            <span class="text-muted"> • </span>
                         {/if}
-                        <span class="text-neutral-500 dark:text-neutral-400">
+                        <span class="text-muted">
                             <time datetime={post.date.toISOString()}>
                                 {post.date.toLocaleDateString("en-US", dateOptions)}
                             </time>
@@ -133,7 +133,10 @@
 
     <aside class="mt-8">
         <Island>
-            <h2 class="text-2xl mb-4 toc-exclude"><a href="/blog" class="link">Read next</a></h2>
+            <div class="flex items-baseline mb-4">
+                <h2 class="text-2xl toc-exclude">Read next</h2>
+                <a href="/blog" class="link text-sm ml-auto">View all &rarr;</a>
+            </div>
             <PostList posts={posts.filter((otherPost) => otherPost.slug !== post.slug)} limit={3} />
         </Island>
     </aside>

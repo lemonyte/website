@@ -15,7 +15,7 @@
                     <span class="text-9xl font-semibold">{page.status}</span>
                     <span class="text-2xl">{page.error?.message}</span>
                 </h1>
-                <a href="/" class="text-sky-500 hover:underline">&larr; Go back home</a>
+                <a href="/" class="link">&larr; Go back home</a>
             </div>
         </div>
     </Island>

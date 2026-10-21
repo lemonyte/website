@@ -3,14 +3,32 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+    --color-page: var(--color-neutral-100);
+    --color-surface: rgb(255 255 255 / 0.5);
+    --color-edge: rgb(0 0 0 / 0.05);
+    --color-fill: var(--color-neutral-400);
+    --color-muted: var(--color-neutral-600);
+    --color-accent: var(--color-sky-500);
+}
+
 @layer base {
     :root {
-        @apply bg-neutral-300 text-black dark:bg-black dark:text-white;
+        @apply bg-page text-black dark:text-white;
+        color-scheme: light dark;
+
+        @media (prefers-color-scheme: dark) {
+            --color-page: var(--color-neutral-950);
+            --color-surface: oklch(from var(--color-neutral-900) l c h / 40%);
+            --color-edge: rgb(255 255 255 / 0.1);
+            --color-fill: var(--color-neutral-600);
+            --color-muted: var(--color-neutral-400);
+        }
     }
 }
 
 @utility link {
-    @apply underline transition-all duration-75 decoration-sky-500 decoration-1 hover:decoration-2;
+    @apply underline transition-all duration-75 decoration-accent decoration-1 hover:decoration-2;
 }
 
 /* Tailwind applies filters in the wrong order. */
@@ -30,10 +48,13 @@
 
     @variant prose-code {
         &:not(pre code) {
-            @apply px-1 py-0.5 rounded-sm before:content-none after:content-none;
-            background-color: var(--tw-prose-pre-bg);
-            color: var(--tw-prose-pre-code);
+            @apply px-1 py-0.5 rounded-sm before:content-none after:content-none bg-fill/25 text-neutral-800;
             overflow-wrap: break-word;
+
+            @variant dark {
+                background-color: var(--tw-prose-pre-bg);
+                color: var(--tw-prose-pre-code);
+            }
         }
     }
 
@@ -54,10 +75,21 @@ pre[class*="language-"] {
 
 .callout {
     @apply rounded-md;
+    /* The theme's blend modes muddy the tint over the background blobs, so layer it over a surface instead. */
+    --tint: rgb(from var(--rc-color-light, var(--rc-color-default)) r g b / 0.15);
+    mix-blend-mode: normal;
+    background-color: var(--color-surface);
+    background-image: linear-gradient(var(--tint), var(--tint));
+
+    @media (prefers-color-scheme: dark) {
+        --tint: rgb(from var(--rc-color-dark, var(--rc-color-default)) r g b / 0.15);
+        mix-blend-mode: normal;
+        background-color: var(--color-surface);
+    }
 }
 
 aside.toc {
-    --bg-color: var(--color-neutral-300);
+    --bg-color: var(--color-fill);
 
     --toc-padding: var(--spacing);
 
@@ -84,10 +116,6 @@ aside.toc {
         --toc-title-color: oklch(from var(--tw-prose-headings) l c h / 60%);
 
         --toc-li-color: oklch(from var(--tw-prose-links) l c h / 50%);
-    }
-
-    @media (prefers-color-scheme: dark) {
-        --bg-color: var(--color-neutral-700);
     }
 
     /* The title is a custom snippet, so svelte-toc's scoped title styles don't reach it. */
