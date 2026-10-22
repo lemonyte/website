@@ -39,7 +39,7 @@
             "shrink-0 transition duration-75",
             monochrome && "filter-monochrome",
             animateHover &&
-                (animateMode === "saturation" ? "saturate-0 hover:saturate-100" : "opacity-50 hover:opacity-100"),
+                (animateMode === "saturation" ? "saturate-0 hover:saturate-100" : "opacity-80 hover:opacity-100"),
         ]}
         {width}
         {height}

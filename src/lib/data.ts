@@ -68,9 +68,14 @@ export const skills = [
         alt: "Svelte",
     },
     {
-        url: "https://deno.land",
-        iconUrl: "/icons/deno.svg",
-        alt: "Deno",
+        url: "https://bun.sh",
+        iconUrl: "/icons/bun.svg",
+        alt: "Bun",
+    },
+    {
+        url: "https://hono.dev",
+        iconUrl: "/icons/hono.svg",
+        alt: "Hono",
     },
     {
         url: "https://www.rust-lang.org",
@@ -89,19 +94,9 @@ export const skills = [
         alt: "C++",
     },
     {
-        url: "https://unity.com",
-        iconUrl: "/icons/unity.svg",
-        alt: "Unity",
-    },
-    {
         url: "https://fastapi.tiangolo.com",
         iconUrl: "/icons/fastapi.svg",
         alt: "FastAPI",
-    },
-    {
-        url: "https://www.cloudflare.com",
-        iconUrl: "/icons/cloudflare.svg",
-        alt: "Cloudflare",
     },
     {
         url: "https://www.sqlite.org/index.html",
@@ -109,18 +104,49 @@ export const skills = [
         alt: "SQLite",
     },
     {
+        url: "https://www.postgresql.org",
+        iconUrl: "/icons/postgresql.svg",
+        alt: "PostgreSQL",
+    },
+    {
+        url: "https://redis.io",
+        iconUrl: "/icons/redis.svg",
+        alt: "Redis",
+    },
+    {
+        url: "https://www.docker.com",
+        iconUrl: "/icons/docker.svg",
+        alt: "Docker",
+    },
+    {
+        url: "https://grafana.com",
+        iconUrl: "/icons/grafana.svg",
+        alt: "Grafana",
+    },
+    {
+        url: "https://www.cloudflare.com",
+        iconUrl: "/icons/cloudflare.svg",
+        alt: "Cloudflare",
+    },
+    {
         url: "https://git-scm.com",
         iconUrl: "/icons/git.svg",
         alt: "Git",
     },
     {
-        url: "https://www.blender.org",
-        iconUrl: "/icons/blender.svg",
-        alt: "Blender",
-    },
-    {
         url: "https://www.arduino.cc",
         iconUrl: "/icons/arduino.svg",
         alt: "Arduino",
+    },
+    {
+        url: "https://www.st.com/stm32",
+        iconUrl: "/icons/stm32.svg",
+        alt: "STM32",
+        monochrome: true,
+    },
+    {
+        url: "https://www.altium.com/altium-designer",
+        iconUrl: "/icons/altium.svg",
+        alt: "Altium Designer",
     },
 ];
