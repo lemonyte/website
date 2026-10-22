@@ -10,6 +10,8 @@
     import TocIsland from "#lib/components/TocIsland.svelte";
     import * as config from "#lib/config.ts";
 
+    import "./callouts.css";
+
     const { children, data } = $props();
     const { post, posts } = $derived(data);
 

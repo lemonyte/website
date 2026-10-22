@@ -1,5 +1,4 @@
 @import "prism-themes/themes/prism-night-owl.css";
-@import "rehype-callouts/theme/obsidian";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -90,21 +89,6 @@
 
 pre[class*="language-"] {
     background-color: var(--tw-prose-pre-bg);
-}
-
-.callout {
-    @apply rounded-md;
-    /* The theme's blend modes muddy the tint over the background blobs, so layer it over a surface instead. */
-    --tint: rgb(from var(--rc-color-light, var(--rc-color-default)) r g b / 0.15);
-    mix-blend-mode: normal;
-    background-color: var(--color-surface);
-    background-image: linear-gradient(var(--tint), var(--tint));
-
-    @media (prefers-color-scheme: dark) {
-        --tint: rgb(from var(--rc-color-dark, var(--rc-color-default)) r g b / 0.15);
-        mix-blend-mode: normal;
-        background-color: var(--color-surface);
-    }
 }
 
 aside.toc {
