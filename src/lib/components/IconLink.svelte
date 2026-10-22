@@ -43,5 +43,6 @@
         ]}
         {width}
         {height}
+        loading="lazy"
     />
 </a>
