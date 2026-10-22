@@ -172,10 +172,15 @@
         </Island>
         <Island>
             <h2 class="text-2xl mb-4">Skills</h2>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-x-4 gap-y-4">
-                {#each skills as skill}
-                    <IconLink {...skill} />
-                {/each}
+            <div class="@container">
+                <div
+                    class="balanced-grid grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] gap-4"
+                    style:--n={skills.length}
+                >
+                    {#each skills as skill}
+                        <IconLink {...skill} />
+                    {/each}
+                </div>
             </div>
         </Island>
     </div>

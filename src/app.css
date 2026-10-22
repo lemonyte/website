@@ -41,6 +41,25 @@
     }
 }
 
+/*
+ * Uses the fewest rows that fit, then spreads the --n items evenly across them so the last row is as full as possible.
+ * Needs an @container parent, and the 40px and gap-4 must match the element's fallback grid classes.
+ */
+@supports (width: round(down, 1px, 1px)) and (width: 1cqi) {
+    .balanced-grid {
+        --min: 40px;
+        --gap: calc(var(--spacing) * 4);
+        /* tan(atan2(a, b)) is a / b as a plain number; the 0.01px absorbs float error at exact breakpoints. */
+        --max: max(1, round(down, tan(atan2(100cqi + var(--gap) + 0.01px, var(--min) + var(--gap))), 1));
+        --rows: round(up, calc(var(--n) / var(--max)), 1);
+        --cols: round(up, calc(var(--n) / var(--rows)), 1);
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols) - 0.01px), 1fr)
+        );
+    }
+}
+
 .prose {
     img {
         @apply rounded-md;
