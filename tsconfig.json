@@ -3,7 +3,8 @@
     "compilerOptions": {
         "checkJs": false,
         "sourceMap": true,
-        "strict": true
+        "strict": true,
+        "types": ["$app/types", "./src/worker-configuration.d.ts", "node"]
     },
-    "include": ["src"]
+    "include": ["src", "vite.config.ts"]
 }

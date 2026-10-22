@@ -17,7 +17,9 @@ export default defineConfig({
             preprocess: [
                 vitePreprocess(),
                 mdsvex({
+                    // @ts-expect-error mdsvex's types target unified 9, these plugins target unified 11; they work at runtime.
                     remarkPlugins: [remarkGithub],
+                    // @ts-expect-error mdsvex's types target unified 9, these plugins target unified 11; they work at runtime.
                     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeCallouts],
                 }),
             ],
