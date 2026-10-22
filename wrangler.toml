@@ -18,3 +18,7 @@ custom_domain = true
 [[r2_buckets]]
 binding = "MEDIA"
 bucket_name = "website-media"
+
+[[previews.r2_buckets]]
+binding = "MEDIA"
+bucket_name = "website-media"
