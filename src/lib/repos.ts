@@ -1,13 +1,9 @@
 export interface Repository {
     name: string;
-    owner: { login: string };
     url: string;
     description: string | null;
-    openGraphImageUrl: string;
     homepageUrl: string | null;
-    primaryLanguage: { name: string; color: string | null } | null;
-    stargazerCount: number;
-    forkCount: number;
+    primaryLanguage: { name: string } | null;
 }
 
 const query = `
@@ -17,14 +13,10 @@ const query = `
                 nodes {
                     ... on Repository {
                         name
-                        owner { login }
                         url
                         description
-                        openGraphImageUrl
                         homepageUrl
-                        primaryLanguage { name color }
-                        stargazerCount
-                        forkCount
+                        primaryLanguage { name }
                     }
                 }
             }
